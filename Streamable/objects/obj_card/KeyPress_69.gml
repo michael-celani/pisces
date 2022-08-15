@@ -1,5 +1,6 @@
 /// @description Put in Exile
-if is_hovering {
-	add_to_card_stack(self, obj_exile);
-}
+if !is_hovering return;
+
+clear_menus(self);
+move_to_exile(self);
 

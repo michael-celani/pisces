@@ -1,5 +1,5 @@
 /// @description Put in Graveyard
-if is_hovering {
-	add_to_card_stack(self, obj_graveyard);
-}
+if !is_hovering return;
 
+clear_menus(self);
+move_to_graveyard(self);

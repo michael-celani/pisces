@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Game",
-    "path": "folders/Scripts/Game.yy",
+    "name": "Right-Click Menu",
+    "path": "folders/Scripts/Game/Right-Click Menu.yy",
   },
   "resourceVersion": "1.0",
-  "name": "add_to_card_stack",
+  "name": "scr_rclick_menu",
   "tags": [],
   "resourceType": "GMScript",
 }

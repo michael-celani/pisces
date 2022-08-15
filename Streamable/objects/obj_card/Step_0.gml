@@ -1,4 +1,4 @@
-/// @description Step
+
 visible = !(bbox_left > room_width || bbox_right < 0 || bbox_bottom < 0 || bbox_top > room_height)
 
 // Motion

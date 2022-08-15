@@ -1,5 +1,5 @@
 /// @description Put At Bottom of Deck
-if is_hovering {
-	add_to_card_stack(self, obj_deck);
-}
+if !is_hovering return;
 
+clear_menus(self);
+move_to_deck_bottom(self);

@@ -1,5 +1,3 @@
-/// @description Create
-
 offset_drag = false;
 
 is_tapping = false;
@@ -19,3 +17,6 @@ parent_stack = noone;
 image_xscale = obj_options.default_scaling;
 image_yscale = obj_options.default_scaling;
 time_hovering = 0;
+
+event_inherited();
+

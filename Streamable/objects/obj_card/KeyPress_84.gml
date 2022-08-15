@@ -1,6 +1,5 @@
 /// @description Tap
-if is_hovering {
-	self.is_tapping = true;
-}
+if !is_hovering return;
 
-
+clear_menus(self);
+tap_card(self);

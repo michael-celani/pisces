@@ -7,6 +7,6 @@ if (!success) {
 
 if (card.CanCreate())
 {
-	card.Create(room_width / 2, room_height / 2, spawn_number);
+	card.Create(room_width / 2, room_height / 2, 1);
 	instance_destroy();
 }

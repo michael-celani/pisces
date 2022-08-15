@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "remove_from_card_stack",
+  "name": "scr_options",
   "tags": [],
   "resourceType": "GMScript",
 }
