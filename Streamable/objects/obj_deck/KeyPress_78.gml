@@ -1,4 +1,5 @@
 /// @description New Turn
+if !keys_are_active() return;
 
 with (obj_card)
 {

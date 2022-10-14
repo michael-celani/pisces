@@ -20,5 +20,5 @@ function lowest_at_point(px, py){
 
 	ds_list_destroy(_list);
 	
-	return min_elem == id
+	return min_elem
 }

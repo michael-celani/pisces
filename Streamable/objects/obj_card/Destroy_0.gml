@@ -31,3 +31,12 @@ if uniq_front {
 if uniq_back {
 	sprite_delete(back_sprite);	
 }
+
+
+clear_menus(self);
+my_menu.Destroy();
+my_submenu.Destroy();
+my_partsmenu.Destroy();
+delete my_partsmenu;
+delete my_submenu;
+delete my_menu;

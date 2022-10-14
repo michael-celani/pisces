@@ -30,11 +30,11 @@ for (var index = 0; index < num_cards; index++) {
 	card_id.is_revealed = !hidden_zone;
 	
 	if card_id.is_hovering {
-		card_id.depth = -500;	
+		card_id.depth = -950;	
 	}
 	else
 	{
-		card_id.depth = -305 - index;
+		card_id.depth = -805 - index;
 	}
 }
 

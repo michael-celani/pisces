@@ -10,4 +10,9 @@ tapped_angle = 90;
 tap_length = 1000000 * 0.33;
 
 snap_to_grid = true;
-grid_size = 64
+grid_size = 32
+
+multi_drag = false;
+
+background_sprite = spr_black;
+lowest_object = noone;

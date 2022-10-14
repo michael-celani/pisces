@@ -1,12 +1,11 @@
 {
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "scr_cards",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Cards",
-    "path": "folders/Scripts/Game/Cards.yy",
+    "name": "Game",
+    "path": "folders/Scripts/Game.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "scr_cards",
-  "tags": [],
-  "resourceType": "GMScript",
 }

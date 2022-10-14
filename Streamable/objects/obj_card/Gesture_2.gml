@@ -1,4 +1,5 @@
 /// @description Dragging
+if keyboard_check(vk_shift) return;
 
 if (mouse_check_button(mb_right))
 {
@@ -10,7 +11,7 @@ if (mouse_check_button(mb_right))
 	
 	remove_from_card_stack(self);
 }
-else if lowest_at_point(mouse_x, mouse_y)
+else if id == obj_options.lowest_object
 {
 	is_dragged = true;
 	offset_drag = false;

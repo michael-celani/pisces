@@ -1,6 +1,5 @@
 /// @description Hovered
 animation = (animation * 2 + 1) / 3
-
 var prev_hovered = hovered;
 bounding_x_start = x;
 bounding_x_end = x + width + padding + padding;

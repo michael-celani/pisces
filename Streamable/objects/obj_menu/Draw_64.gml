@@ -1,15 +1,17 @@
 /// @description Draw Options
+/*
 if !surface_exists(draw_surf)
 {
 	draw_surf = surface_create(image_xscale, image_yscale);
 }
 
 surface_set_target(draw_surf);
+*/
 
-var bounding_x_start = 0;
-var bounding_x_end = width;
-var bounding_y_start = 0;
-var bounding_y_end = height;
+var bounding_x_start = 0 + x;
+var bounding_x_end = width + x; 
+var bounding_y_start = 0 + y;
+var bounding_y_end = height + y;
 var num_options = ds_list_size(options);
 var radius = 10;
 var pressing = mouse_check_button(mb_left);
@@ -53,9 +55,10 @@ for (var i = 0; i < num_options; i++)
 	bounding_y_start += height;
 	bounding_y_end += height;
 }
-
+/*
 surface_reset_target();
 
 draw_set_alpha(animation);
 draw_surface_stretched(draw_surf, x, y, image_xscale * animation, image_yscale * animation);
 draw_set_alpha(1);
+*/

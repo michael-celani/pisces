@@ -2,7 +2,15 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function tap_card(card_inst) 
 {
-	card_inst.is_tapping = true;
+	if (!card_inst.is_tapping)
+	{
+		card_inst.is_tapping = true;	
+	}
+	else
+	{
+		card_inst.tapped = !card_inst.tapped;
+		card_inst.is_tapping = obj_options.tap_length - card_inst.is_tapping
+	}
 }
 
 function flip_card(card_inst)
@@ -18,7 +26,7 @@ function flip_card(card_inst)
 
 function duplicate_card(card_inst)
 {
-	instance_create_layer(card_inst.x + card_inst.sprite_width / 2, card_inst.y + card_inst.sprite_height / 2, "Instances", obj_card, 
+	instance_create_layer(card_inst.x + card_inst.sprite_width / 3, card_inst.y + card_inst.sprite_height / 3, "Instances", obj_card, 
 	{ 
 		"name": card_inst.name, 
 		sprite_index: card_inst.front_sprite, 
