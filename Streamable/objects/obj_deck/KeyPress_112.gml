@@ -5,5 +5,5 @@ if active {
 	keyboard_string = "";
 }
 else {
-	active = !any_stack_active();
+	active = true;
 }
