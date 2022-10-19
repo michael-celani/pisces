@@ -26,12 +26,13 @@ function flip_card(card_inst)
 
 function duplicate_card(card_inst)
 {
-	instance_create_layer(card_inst.x + card_inst.sprite_width / 3, card_inst.y + card_inst.sprite_height / 3, "Instances", obj_card, 
+	instance_create_layer(card_inst.x + card_inst.sprite_width / 9, card_inst.y + card_inst.sprite_height / 9, "Instances", obj_card, 
 	{ 
 		"name": card_inst.name, 
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
+		"is_revealed": card_inst.is_revealed,
 		depth : card_inst.depth - 5
 	});
 }

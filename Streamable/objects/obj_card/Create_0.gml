@@ -66,7 +66,7 @@ if array_length(all_parts) > 0
 		
 		var func = method(curr_card, function(card_inst)
 		{
-			instance_create_layer(card_inst.x + card_inst.sprite_width / 3, card_inst.y + card_inst.sprite_height / 3, "Instances", obj_id_request, { "req": self.internal_id, "spawn_number": 1 })
+			instance_create_layer(card_inst.x + card_inst.sprite_width / 9, card_inst.y + card_inst.sprite_height / 9, "Instances", obj_id_request, { "req": self.internal_id, "spawn_number": 1 })
 		})
 		var menu_opt = new RightClickMenuOption(curr_card.internal_name, func, noop, noop);
 		my_partsmenu.AddOption(menu_opt)

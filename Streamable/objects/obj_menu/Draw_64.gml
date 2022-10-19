@@ -20,7 +20,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
 // Draw the menu edges:
-draw_set_color(c_black);
+draw_set_color(menu_color);
 draw_roundrect_ext(
 	bounding_x_start, 
 	bounding_y_start, 
@@ -38,7 +38,7 @@ for (var i = 0; i < num_options; i++)
 	
 	if hovered == i
 	{
-		draw_set_color(c_purple);
+		draw_set_color(hover_color);
 		draw_rectangle(bounding_x_start + 1, bounding_y_start, bounding_x_end + 2 * padding - 1, bounding_y_end, false);
 	}
 

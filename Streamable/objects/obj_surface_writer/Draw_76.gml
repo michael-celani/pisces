@@ -1,5 +1,4 @@
 /// @description Regenerate surface
-if !camera_on return;
 
 if !surface_exists(display_surface) {
 	var surface_width = surface_get_width(application_surface);

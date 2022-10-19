@@ -20,13 +20,13 @@
   "installdir": "",
   "files": [
     {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","filename":"mmap_buffer_gml.dll","origname":"","init":"","final":"","kind":1,"uncompress":false,"functions":[
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"start_camera","externalName":"start_camera","kind":1,"help":"start_camera()","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"send_frame","externalName":"send_frame","kind":1,"help":"send_frame(ptr)","hidden":false,"returnType":2,"argCount":0,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"start_camera","externalName":"start_camera","kind":1,"help":"start_camera()","hidden":false,"returnType":2,"argCount":0,"args":[
             1,
             1,
             2,
           ],"documentation":"",},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"camera_exists","externalName":"camera_is_installed","kind":1,"help":"","hidden":false,"returnType":2,"argCount":0,"args":[],"documentation":"",},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"stop_camera","externalName":"stop_camera","kind":1,"help":"stop_camera()","hidden":false,"returnType":1,"argCount":0,"args":[],"documentation":"",},
       ],"constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"ext_camera_Macro1","value":"","hidden":false,},
       ],"ProxyFiles":[],"copyToTargets":-1,"usesRunnerInterface":false,"order":[

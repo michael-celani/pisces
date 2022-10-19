@@ -151,7 +151,9 @@ function CardFactory() constructor
 	
 	static Create = function(create_x, create_y, number)
 	{
-		repeat (number) {
+		cards = array_create(number);
+		
+		for (var j = 0; j < number; j++) {
 			var data_struct = { 
 				"name": card_data.name, 
 				sprite_index: front_sprite, 
@@ -174,7 +176,9 @@ function CardFactory() constructor
 				}
 			}
 			
-			return instance_create_layer(create_x, create_y, "Instances", obj_card, data_struct);
+			cards[j] = instance_create_layer(create_x, create_y, "Instances", obj_card, data_struct);
 		}
+		
+		return cards;
 	}
 }

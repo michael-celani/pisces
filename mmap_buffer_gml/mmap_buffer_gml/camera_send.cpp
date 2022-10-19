@@ -1,18 +1,29 @@
-#define PY_SSIZE_T_CLEAN
-#define BOOST_PYTHON_STATIC_LIB
-#define BOOST_NUMPY_STATIC_LIB
-#include <windows.h>
-#include <stdio.h>
 #include <conio.h>
+#include <stdio.h>
 #include <tchar.h>
-#include <vector>
-#include <iostream>
-#include "virtual_output.h"
-#include <thread>
-#include "camera_send.h"
+#include <windows.h>
 
-// File Pointers
-VirtualOutput *camera;
+#include <chrono>
+#include <iostream>
+#include <mutex>
+#include <thread>
+#include <vector>
+
+#include "camera_send.h"
+#include "virtual_output.h"
+
+// Camera
+VirtualOutput* camera;
+
+// Buffer data from GMS
+unsigned char* data_buff;
+unsigned char* data_ready;
+int data_buffs;
+
+// Threads
+std::thread thread_thing;
+std::atomic<bool> shouldQuit;
+std::mutex mut;
 
 extern "C" __declspec(dllexport) double camera_is_installed()
 {
@@ -29,24 +40,70 @@ extern "C" __declspec(dllexport) double camera_is_installed()
     }
 }
 
-extern "C" __declspec(dllexport) double start_camera()
+extern "C" __declspec(dllexport) double start_camera(unsigned char* buff, unsigned char* ready, double buff_nums)
 {
-    camera = new VirtualOutput(1920, 1080, 120, libyuv::FOURCC_ABGR);
+    std::lock_guard<std::mutex> lock(mut);
+
+    if (camera != NULL)
+    {
+        return 0;
+    }
+
+    int width = 1920;
+    int height = 1080;
+    int fps = 120;
+
+    data_buff = buff;
+    data_ready = ready;
+    data_buffs = (int) buff_nums;
+
+    camera = new VirtualOutput(width, height, fps, libyuv::FOURCC_ABGR);
+    thread_thing = std::thread(camera_impl);
+
+    shouldQuit = false;
+
     return 0;
 }
 
-extern "C" __declspec(dllexport) double send_frame(unsigned char* buff, unsigned char* ready, double buff_num)
+extern "C" __declspec(dllexport) double stop_camera()
 {
-    int index = (int) buff_num;
-    buff = &buff[index * 1920 * 1080 * 4];
-    ready = &ready[index];
+    std::lock_guard<std::mutex> lock(mut);
 
-    std::thread(send_frame_impl, buff, ready).detach();
+    if (camera != NULL)
+    {
+        shouldQuit = true;
+        thread_thing.join();
+        camera->stop();
+        delete camera;
+        camera = NULL;
+    }
+
     return 0;
 }
 
-void send_frame_impl(unsigned char* buff, unsigned char* ready)
+void camera_impl()
 {
-    camera->send(buff);
-    *ready = 0;
+    int curr_buff = 0;
+    while (TRUE)
+    {
+        std::this_thread::sleep_for(std::chrono::microseconds(50));
+
+        if (!shouldQuit)
+        {
+            // Send frame
+            unsigned char* buff = &data_buff[curr_buff * 1920 * 1080 * 4];
+            unsigned char* ready = &data_ready[curr_buff];
+
+            if (*ready == 2)
+            {
+                camera->send(buff);
+                *ready = 0;
+                curr_buff = (curr_buff + 1) % data_buffs;
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
 }

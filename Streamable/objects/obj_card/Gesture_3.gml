@@ -3,8 +3,8 @@
 if is_dragged
 {
 	if offset_drag {
-		next_x = mouse_x + (offset_x - event_data[? "rawstartposX"])
-		next_y = mouse_y + (offset_y - event_data[? "rawstartposY"])
+		next_x += event_data[? "diffX"]
+		next_y += event_data[? "diffY"]
 	}
 	else
 	{

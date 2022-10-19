@@ -52,3 +52,47 @@ function search_scryfall(options_inst)
 	keyboard_string = "";
 }
 
+function open_options(options_inst)
+{
+	if (!instance_exists(obj_window))
+	{
+		if !keys_are_active() return;
+		var window = instance_create_layer(room_width / 2 - 640, room_height / 2 - 360, "UI", obj_window, { "height": 220 });
+		var title = instance_create_layer(window.x, window.y, "UI", obj_title_bar, {"parent_component": window});
+		var close = instance_create_layer(window.x + window.width - 60, window.y + 20, "UI", obj_close, {"parent_component": title});
+	
+		var check_label = instance_create_layer(window.x + 20, window.y + 95, "UI", obj_label, {
+			"parent_component": window,
+			"label_font": fnt_beleren,
+			"label_text": "Card Size:"
+		});
+	
+		var button = instance_create_layer(window.x + 20, window.y + 150, "UI", obj_button,
+			{
+				"parent_component": window,
+				"active": camera_exists(),
+				"on_click": toggle_camera_mirroring,
+				"button_text": "Toggle Camera Mirroring"
+			});
+		
+		var button2 = instance_create_layer(button.x + button.image_xscale + 10, button.y, "UI", obj_button,
+			{
+				"parent_component": window,
+				"on_click": function() { load_background(obj_options) },
+				"button_text": "Load Background"
+			});
+	
+		var slider = instance_create_layer(window.x + window.width - 740, window.y + 115, "UI", obj_slider, 
+			{ 
+				"parent_component": window,
+				"value_low": 0.25,
+				"value_high": 0.5,
+				"value": options_inst.default_scaling,
+				"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
+			});
+	}
+	else
+	{
+		instance_destroy(obj_window);
+	}	
+}
