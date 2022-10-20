@@ -15,4 +15,3 @@ grid_size = 32
 multi_drag = false;
 
 background_sprite = spr_black;
-lowest_object = noone;

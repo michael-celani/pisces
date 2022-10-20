@@ -16,8 +16,11 @@
     {"inherit":false,"visible":false,"xview":0,"yview":0,"wview":1366,"hview":768,"xport":0,"yport":0,"wport":1366,"hport":768,"hborder":32,"vborder":32,"hspeed":-1,"vspeed":-1,"objectId":null,},
   ],
   "layers": [
-    {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"UI","instances":[],"visible":true,"depth":-2500,"userdefinedDepth":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
+    {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"UI","instances":[
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_408EA53A","properties":[],"isDnd":false,"objectId":{"name":"obj_selector","path":"objects/obj_selector/obj_selector.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":256.0,},
+      ],"visible":true,"depth":-2500,"userdefinedDepth":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","instances":[
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_196F33E2","properties":[],"isDnd":false,"objectId":{"name":"obj_keyboard_dispatch","path":"objects/obj_keyboard_dispatch/obj_keyboard_dispatch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":224.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2CDA2F74","properties":[],"isDnd":false,"objectId":{"name":"obj_options","path":"objects/obj_options/obj_options.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":64.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4788FB26","properties":[],"isDnd":false,"objectId":{"name":"obj_hand","path":"objects/obj_hand/obj_hand.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":960.0,"y":1056.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_6D4D2469","properties":[],"isDnd":false,"objectId":{"name":"obj_deck","path":"objects/obj_deck/obj_deck.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":128.0,},
@@ -40,6 +43,8 @@
     {"name":"inst_26B8AC73","path":"rooms/rm_table/rm_table.yy",},
     {"name":"inst_5939BF32","path":"rooms/rm_table/rm_table.yy",},
     {"name":"inst_1F644FEA","path":"rooms/rm_table/rm_table.yy",},
+    {"name":"inst_196F33E2","path":"rooms/rm_table/rm_table.yy",},
+    {"name":"inst_408EA53A","path":"rooms/rm_table/rm_table.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

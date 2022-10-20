@@ -11,7 +11,7 @@ if (is_dragged)
 	total_scaling += obj_options.dragging_scaling;
 }
 
-is_hovering = id == obj_options.lowest_object && !is_dragged
+is_hovering = id == obj_selector.lowest_object && !is_dragged
 
 if (is_hovering)
 {

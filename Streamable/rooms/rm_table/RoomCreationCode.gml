@@ -7,6 +7,7 @@ vertex_format_add_position();
 vertex_format_add_normal();
 global.format_perspective = vertex_format_end();
 
+// Global Menu:
 var noop = function() {};
 var options = new RightClickMenuOption("Open Options", open_options, noop, noop);
 var load_deck = new RightClickMenuOption("Load Decklist", load_decklist, noop, noop);
