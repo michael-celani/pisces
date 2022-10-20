@@ -37,6 +37,7 @@
     {"id":{"name":"sh_perspective","path":"shaders/sh_perspective/sh_perspective.yy",},"order":0,},
     {"id":{"name":"obj_close","path":"objects/obj_close/obj_close.yy",},"order":6,},
     {"id":{"name":"spr_border","path":"sprites/spr_border/spr_border.yy",},"order":2,},
+    {"id":{"name":"obj_card_annotation","path":"objects/obj_card_annotation/obj_card_annotation.yy",},"order":17,},
     {"id":{"name":"obj_slider","path":"objects/obj_slider/obj_slider.yy",},"order":8,},
     {"id":{"name":"scr_components","path":"scripts/scr_components/scr_components.yy",},"order":7,},
     {"id":{"name":"obj_deck","path":"objects/obj_deck/obj_deck.yy",},"order":7,},

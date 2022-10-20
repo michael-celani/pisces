@@ -154,6 +154,50 @@ if camera_mirroring_enabled()
 		draw_set_alpha(1.0);
 		draw_text(x4, y4, string(counters));
 	}
+	if (note_content != "" and !is_zoomed and !is_tapping and is_revealed)
+	{
+		var lx4 = x4 + 0.05*sprite_width;
+		var ly4 = y4 - 0.05*sprite_height;
+		var lx3 = x3 - 0.05*sprite_width;
+		var ly3 = y3 - 0.20*sprite_height;
+		var x_note_center =x4 + (lx3 - lx4)*0.5;
+		var y_note_center =y4 + (ly3 - ly4)*0.75;
+		if tapped{
+			/// if this is tapped update the above values to move the note appropriately
+			lx4 = x3 + 0.05*sprite_height;
+			ly4 = y3 - 0.05*sprite_width;
+			lx3 = x2 - 0.05*sprite_height;
+			ly3 = y2 - 0.30*sprite_width;
+			x_note_center =x3 + (lx3 - lx4)*0.5;
+			y_note_center =y3 + (ly3 - ly4)*0.75;
+		
+		}	
+		///this version is for notes just on board
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		///box
+		if is_hovering{
+			draw_set_alpha(0.4);
+		}
+		else{
+			draw_set_alpha(0.15);
+		}
+		draw_roundrect_color_ext(lx4,ly4,lx3,ly3,10,10,c_black,c_black,false);
+	
+		///text
+		draw_set_color(c_white);
+		if is_hovering{
+			draw_set_alpha(0.90);
+		}
+		else{
+			draw_set_alpha(0.50);
+		}
+		var text_scale_factor = 1/(0.5 - 0.15);
+		var text_scale = 0.25+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
+		draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
+		///reset for the other menus
+		draw_set_alpha(1.0);
+	}
 	
 	surface_reset_target();
 }
@@ -216,6 +260,50 @@ if ((is_hovering or is_dragged) and !is_zoomed)
 	draw_sprite_pos_fixed(spr_border, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 }
 
+if (note_content != "" and !is_zoomed and !is_tapping)
+{
+	var lx4 = x4 + 0.05*sprite_width;
+	var ly4 = y4 - 0.05*sprite_height;
+	var lx3 = x3 - 0.05*sprite_width;
+	var ly3 = y3 - 0.20*sprite_height;
+	var x_note_center =x4 + (lx3 - lx4)*0.5;
+	var y_note_center =y4 + (ly3 - ly4)*0.75;
+	if tapped{
+		/// if this is tapped update the above values to move the note appropriately
+		lx4 = x3 + 0.05*sprite_height;
+		ly4 = y3 - 0.05*sprite_width;
+		lx3 = x2 - 0.05*sprite_height;
+		ly3 = y2 - 0.30*sprite_width;
+		x_note_center =x3 + (lx3 - lx4)*0.5;
+		y_note_center =y3 + (ly3 - ly4)*0.75;
+		
+	}	
+	///this version is for notes just on board
+	draw_set_valign(fa_center);
+	draw_set_halign(fa_center);
+	///box
+	if is_hovering{
+		draw_set_alpha(0.4);
+	}
+	else{
+		draw_set_alpha(0.15);
+	}
+	draw_roundrect_color_ext(lx4,ly4,lx3,ly3,10,10,c_black,c_black,false);
+	
+	///text
+	draw_set_color(c_white);
+	if is_hovering{
+		draw_set_alpha(0.90);
+	}
+	else{
+		draw_set_alpha(0.50);
+	}
+	var text_scale_factor = 1/(0.5 - 0.15);
+	var text_scale = 0.25+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
+	draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
+	///reset for the other menus
+	draw_set_alpha(1.0);
+}
 
 if (counters != 0)
 {

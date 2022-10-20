@@ -52,11 +52,13 @@ var send_to = new RightClickMenuOption("Send To >", noop, function(owner, menu) 
 });
 
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop);
+var note = new RightClickMenuOption("Update Note", update_note,noop,noop);
 
 my_menu.AddOption(tap);
 my_menu.AddOption(flip);
 my_menu.AddOption(duplicate);
 my_menu.AddOption(send_to);
+my_menu.AddOption(note);
 
 if array_length(all_parts) > 0
 {
