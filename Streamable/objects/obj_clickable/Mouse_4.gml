@@ -1,5 +1,5 @@
 /// @description Activate
 if (!active) return;
-if id != obj_options.lowest_object return;
+if id != obj_selector.lowest_object return;
 
 pressing = true;

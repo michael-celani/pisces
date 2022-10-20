@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_vertical_stack",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_pixel",
+    "path": "sprites/spr_pixel/spr_pixel.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
