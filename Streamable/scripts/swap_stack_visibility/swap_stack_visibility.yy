@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "any_stack_active",
+  "name": "swap_stack_visibility",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
