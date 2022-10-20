@@ -1,4 +1,4 @@
 /// @description 
-if id != obj_options.lowest_object return;
+if id != obj_selector.lowest_object return;
 
 dragging = true;

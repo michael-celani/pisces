@@ -255,7 +255,7 @@ else
 	draw_sprite_pos(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
 }
 
-if ((is_hovering or is_dragged) and !is_zoomed)
+if ((is_hovering or is_dragged or is_selected) and !is_zoomed)
 {
 	draw_sprite_pos_fixed(spr_border, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 }

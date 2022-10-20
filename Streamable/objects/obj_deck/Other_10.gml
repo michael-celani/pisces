@@ -1,6 +1,4 @@
 /// @description Draw Card
-if !keys_are_active() return;
-
 if ds_list_size(stack_list) != 0
 {
 	with (stack_list[| 0])

@@ -34,7 +34,7 @@ for (var index = 0; index < num_cards; index++) {
 	}
 	else
 	{
-		card_id.depth = -805 - index;
+		card_id.depth = -900 + index;
 	}
 }
 

@@ -9,7 +9,4 @@ if (parent_component != noone)
 	image_yscale = height;
 }
 
-drag_start_x = x;
-drag_start_y = y;
-
 event_inherited();
