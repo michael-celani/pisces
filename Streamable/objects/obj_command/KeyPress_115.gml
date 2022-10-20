@@ -6,16 +6,12 @@ if active {
 }
 else {
 	///find if there is an active zone. if not, just set true. if so, swap visibility.
-	if (!any_stack_active()){
+	var active_stack = find_active_stack();
+	
+	if (active_stack == noone){
 		active = true;
 	}
-	else {
-		///there is an active stack, swap with it
-		with(obj_vertical_stack)
-		{
-			if(active){
-				swap_stack_visibility(self,obj_command);
-			}
-		}
+	else if (active_stack != self) {
+		swap_stack_visibility(self, active_stack);
 	}
 }

@@ -9,3 +9,12 @@ function any_stack_active(){
 	
 	return false;
 }
+
+function find_active_stack() {
+	with (obj_vertical_stack)
+	{
+		if (active) return self;	
+	}
+	
+	return noone;
+}
