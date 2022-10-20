@@ -12,7 +12,6 @@ function swap_stack_visibility(currentStack,targetStack){
 	
 	with (obj_card) {
 		if (self.parent_stack != noone and self.parent_stack != obj_hand){
-			
 			self.x = self.parent_stack.x;
 		}
 	}
