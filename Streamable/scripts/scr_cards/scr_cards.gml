@@ -121,7 +121,7 @@ function clear_menus(card_inst)
 	}
 }
 
-function focus_on_card(card_inst){
-	///zoom in on the card for just while holding the focus key (alt by default)
+function update_note(new_string)
+{
 	
 }
