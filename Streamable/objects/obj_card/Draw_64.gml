@@ -109,6 +109,32 @@ if camera_mirroring_enabled()
 		draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
 		draw_sprite_pos_fixed(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 	}
+	else if (is_zoomed and (is_hovering or is_dragged))
+	{
+	///first determine zoom size, for now double along both axes
+	var zoom_x_offset = sprite_width;
+	var zoom_y_offset = sprite_height;
+
+	///determine offset towards center
+	var disp_x_offset = sprite_width/2 * (room_width/2 - x)/(room_width/2);
+	var disp_y_offset = sprite_height/2 * (room_height/2 - y)/(room_height/2);
+
+	///assemble points
+	var zx1 = x - zoom_x_offset + disp_x_offset;
+	var zy1 = y - zoom_y_offset + disp_y_offset;
+	var zx2 = x + zoom_x_offset + disp_x_offset;
+	var zy2 = y - zoom_y_offset + disp_y_offset;
+	var zx3 = x + zoom_x_offset + disp_x_offset;
+	var zy3 = y + zoom_y_offset + disp_y_offset;
+	var zx4 = x - zoom_x_offset + disp_x_offset;
+	var zy4 = y + zoom_y_offset + disp_y_offset;
+	
+	
+	
+	///render
+	draw_sprite_pos_fixed(spr_card_shadow, image_index, zx1 + off, zy1 + off, zx2 + off, zy2 + off, zx3 + off, zy3 + off, zx4 + off, zy4 + off, c_white, 0.25);
+	draw_sprite_pos_fixed(spr, image_index, zx1, zy1, zx2, zy2, zx3, zy3, zx4, zy4, c_white, 1);
+	}
 	else
 	{
 		draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
