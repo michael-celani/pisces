@@ -3,16 +3,17 @@
 function swap_stack_visibility(currentStack,targetStack){
 	///start by swapping the contents of the two stacks
 	tempStackX = targetStack.x;
-	targetStack.x = currentStack.x;
-	currentStack.x = tempStackX;
-	
+	targetStack.next_x = currentStack.x;
+	currentStack.next_x = tempStackX;
+
 	tempActiveState = targetStack.active;
 	targetStack.active = currentStack.active;
 	currentStack.active = tempActiveState
-	
+
 	with (obj_card) {
 		if (self.parent_stack != noone and self.parent_stack != obj_hand){
-			self.x = self.parent_stack.x;
+
+			self.next_x = self.parent_stack.x;
 		}
 	}
 }
