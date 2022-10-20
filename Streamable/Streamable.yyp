@@ -43,6 +43,7 @@
     {"id":{"name":"obj_title_bar","path":"objects/obj_title_bar/obj_title_bar.yy",},"order":3,},
     {"id":{"name":"scr_smoothstep","path":"scripts/scr_smoothstep/scr_smoothstep.yy",},"order":0,},
     {"id":{"name":"scr_round_to_nearest","path":"scripts/scr_round_to_nearest/scr_round_to_nearest.yy",},"order":4,},
+    {"id":{"name":"swap_stack_visibility","path":"scripts/swap_stack_visibility/swap_stack_visibility.yy",},"order":8,},
     {"id":{"name":"obj_surface_writer","path":"objects/obj_surface_writer/obj_surface_writer.yy",},"order":0,},
     {"id":{"name":"obj_command","path":"objects/obj_command/obj_command.yy",},"order":11,},
     {"id":{"name":"scr_options","path":"scripts/scr_options/scr_options.yy",},"order":4,},
