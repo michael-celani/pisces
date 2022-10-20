@@ -2,12 +2,12 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function increase_game_size(options_inst)
 {
-	options_inst.default_scaling = clamp(options_inst.default_scaling + 0.05, 0.2, 0.5);
+	options_inst.default_scaling = clamp(options_inst.default_scaling + 0.05, 0.1, 0.5);
 }
 
 function decrease_game_size(options_inst)
 {
-	options_inst.default_scaling = clamp(options_inst.default_scaling - 0.05, 0.2, 0.5);
+	options_inst.default_scaling = clamp(options_inst.default_scaling - 0.05, 0.1, 0.5);
 }
 
 function load_decklist(options_inst)
@@ -85,7 +85,7 @@ function open_options(options_inst)
 		var slider = instance_create_layer(window.x + window.width - 740, window.y + 115, "UI", obj_slider, 
 			{ 
 				"parent_component": window,
-				"value_low": 0.25,
+				"value_low": 0.15,
 				"value_high": 0.5,
 				"value": options_inst.default_scaling,
 				"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
