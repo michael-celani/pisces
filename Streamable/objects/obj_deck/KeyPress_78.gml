@@ -1,5 +1,6 @@
 /// @description New Turn
 if !keys_are_active() return;
+if instance_exists(obj_card_annotation) return;
 
 with (obj_card)
 {
