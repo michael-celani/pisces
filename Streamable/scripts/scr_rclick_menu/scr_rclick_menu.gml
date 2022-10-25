@@ -3,11 +3,6 @@ function RightClickMenu() constructor
 {
 	menu_options = ds_list_create()
 	
-	static Length = function()
-	{
-		return ds_list_size(menu_options);	
-	}
-	
 	static CreateMenu = function(_x, _y, _owner)
 	{		
 		var draw_y = _y;
@@ -29,7 +24,7 @@ function RightClickMenu() constructor
 		return instance_create_layer(
 				_x, 
 				draw_y, 
-				"Instances", 
+				"UI", 
 				obj_menu, 
 				{ 
 					owner: _owner,
@@ -71,15 +66,4 @@ function RightClickMenuOption(_name, _action, _onhover, _onunhover) constructor
 		
 		action(owner)
 	}
-}
-
-function hello_world()
-{
-	show_debug_message("Hello world");	
-}
-
-
-function goodbye_world()
-{
-	show_debug_message("Goodbye world");	
 }

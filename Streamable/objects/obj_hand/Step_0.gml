@@ -12,12 +12,14 @@ for (var index = 0; index < num_cards; index++) {
 	
 	
 	if card_id.is_hovering {
-		card_id.depth = -700;	
+		layer_add_instance("Dragging", card_id);
+		obj_height_manager.height_modified = true;
 		card_id.next_y = room_height - card_id.sprite_height / 2
 	}
 	else
 	{
-		card_id.depth = -600 + index;
+		layer_add_instance("Hand", card_id);
+		obj_height_manager.height_modified = true;
 		card_id.next_y = room_height;
 	}
 }

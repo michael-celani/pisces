@@ -1,17 +1,17 @@
 /// @description Draw Options
-/*
+
 if !surface_exists(draw_surf)
 {
 	draw_surf = surface_create(image_xscale, image_yscale);
 }
 
 surface_set_target(draw_surf);
-*/
+draw_clear_alpha(c_white,0);
 
-var bounding_x_start = 0 + x;
-var bounding_x_end = width + x; 
-var bounding_y_start = 0 + y;
-var bounding_y_end = height + y;
+var bounding_x_start = 0;
+var bounding_x_end = width; 
+var bounding_y_start = 0;
+var bounding_y_end = height;
 var num_options = ds_list_size(options);
 var radius = 10;
 var pressing = mouse_check_button(mb_left);
@@ -50,15 +50,17 @@ for (var i = 0; i < num_options; i++)
 		draw_set_color(c_white);
 	}
 	
+	gpu_set_colorwriteenable(true, true, true, false);
 	draw_text(bounding_x_start + padding, bounding_y_start, option.name);
+	gpu_set_colorwriteenable(true, true, true, true);
 	
 	bounding_y_start += height;
 	bounding_y_end += height;
 }
-/*
+
 surface_reset_target();
 
-draw_set_alpha(animation);
-draw_surface_stretched(draw_surf, x, y, image_xscale * animation, image_yscale * animation);
+var percentage = smootherstep(15, 0, alarm[0])
+draw_set_alpha(percentage);
+draw_surface_stretched(draw_surf, x, y, image_xscale * percentage, image_yscale * percentage);
 draw_set_alpha(1);
-*/

@@ -1,7 +1,7 @@
 /// @description Draw
 
-var draw_width = display_get_gui_width();
-var draw_height = display_get_gui_height();
+var draw_width = room_width;
+var draw_height = room_height;
 var draw_x = x - 745 * obj_options.default_scaling * 0.6
 
 draw_set_color(stack_color);

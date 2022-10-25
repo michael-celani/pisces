@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function camera_mirroring_enabled()
 {
-	return instance_exists(obj_surface_writer) && surface_exists(obj_surface_writer.display_surface);
+	return instance_exists(obj_surface_writer) and surface_exists(obj_surface_writer.display_surface);
 }
 
 function enable_camera_mirroring()

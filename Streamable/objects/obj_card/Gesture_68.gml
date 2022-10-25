@@ -1,11 +1,8 @@
 /// @description Dragging
-
-if !is_dragged
-{
-	return;	
-}
+if !is_dragged return;
 
 is_dragged = false;
+subscribed_events = {};
 is_selected = false;
 
 var active_stack = find_active_stack()
@@ -49,8 +46,8 @@ if (mouse_y > room_height - sprite_height / 2 - 50)
 	return;
 }
 
-depth += 1000;
-
+layer_add_instance("Battlefield", self);
+obj_height_manager.height_modified = true;
 is_revealed = true;
 
 if event_data[? "isflick"] {
@@ -66,10 +63,8 @@ if event_data[? "isflick"] {
 	}
 }
 
-/*
-if (obj_options.snap_to_grid)
+if obj_options.snap_to_grid and not offset_drag
 {
 	next_x = round_to_nearest(next_x, obj_options.grid_size);
 	next_y = round_to_nearest(next_y, obj_options.grid_size);
 }
-*/

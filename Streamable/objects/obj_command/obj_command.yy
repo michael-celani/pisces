@@ -25,12 +25,12 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":115,"eventType":9,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"stack_name","path":"objects/obj_vertical_stack/obj_vertical_stack.yy",},"objectId":{"name":"obj_vertical_stack","path":"objects/obj_vertical_stack/obj_vertical_stack.yy",},"value":"Command",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"hidden_zone","path":"objects/obj_card_stack/obj_card_stack.yy",},"objectId":{"name":"obj_card_stack","path":"objects/obj_card_stack/obj_card_stack.yy",},"value":"0",},
   ],
   "parent": {
     "name": "Objects",

@@ -1,15 +1,3 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function increase_game_size(options_inst)
-{
-	options_inst.default_scaling = clamp(options_inst.default_scaling + 0.05, 0.2, 0.5);
-}
-
-function decrease_game_size(options_inst)
-{
-	options_inst.default_scaling = clamp(options_inst.default_scaling - 0.05, 0.2, 0.5);
-}
-
 function load_decklist(options_inst)
 {
 	var file = get_open_filename("decklists (.txt)|*.txt", "deck.txt");
@@ -31,7 +19,7 @@ function load_decklist(options_inst)
 
 function load_background(options_inst)
 {
-	var file = get_open_filename("images (.png)|*.png", "background.png");
+	var file = get_open_filename("Images|*.png;*.jpg", "background.png");
 	
 	if file != ""
 	{
@@ -46,53 +34,33 @@ function load_background(options_inst)
 
 function search_scryfall(options_inst)
 {
-	if instance_exists(obj_search_request) return;
-	
-	instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_search_request);
-	keyboard_string = "";
+	var width = 1280;
+	var create_x = room_width / 2 - width/ 2;
+	var search_window = instance_create_layer(create_x, 50, "Instances", obj_scryfall_window, {"width": width, "height": 240});
 }
 
 function open_options(options_inst)
 {
-	if (!instance_exists(obj_window))
+	if (!instance_exists(obj_options_window))
 	{
 		if !keys_are_active() return;
-		var window = instance_create_layer(room_width / 2 - 640, room_height / 2 - 360, "UI", obj_window, { "height": 220 });
-		var title = instance_create_layer(window.x, window.y, "UI", obj_title_bar, {"parent_component": window});
-		var close = instance_create_layer(window.x + window.width - 60, window.y + 20, "UI", obj_close, {"parent_component": title});
-	
-		var check_label = instance_create_layer(window.x + 20, window.y + 95, "UI", obj_label, {
-			"parent_component": window,
-			"label_font": fnt_beleren,
-			"label_text": "Card Size:"
-		});
-	
-		var button = instance_create_layer(window.x + 20, window.y + 150, "UI", obj_button,
-			{
-				"parent_component": window,
-				"active": camera_exists(),
-				"on_click": toggle_camera_mirroring,
-				"button_text": "Toggle Camera Mirroring"
-			});
 		
-		var button2 = instance_create_layer(button.x + button.image_xscale + 10, button.y, "UI", obj_button,
-			{
-				"parent_component": window,
-				"on_click": function() { load_background(obj_options) },
-				"button_text": "Load Background"
-			});
-	
-		var slider = instance_create_layer(window.x + window.width - 740, window.y + 115, "UI", obj_slider, 
-			{ 
-				"parent_component": window,
-				"value_low": 0.25,
-				"value_high": 0.5,
-				"value": options_inst.default_scaling,
-				"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
-			});
+		instance_create_layer(room_width / 2 - 640, room_height / 2 - 360, "UI", obj_options_window);
 	}
 	else
 	{
-		instance_destroy(obj_window);
+		instance_destroy(obj_options_window);
 	}	
+}
+
+function close_top_component()
+{
+	var component = parent_component;
+	
+	while (component.parent_component != noone)
+	{
+		component = component.parent_component;	
+	}
+	
+	instance_destroy(component);
 }

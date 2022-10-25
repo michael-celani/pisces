@@ -1,4 +1,5 @@
 /// @description
+if !keys_are_active() return;
 
 // Key is 0-9:
 if keyboard_lastkey >= 48 && keyboard_lastkey <= 57

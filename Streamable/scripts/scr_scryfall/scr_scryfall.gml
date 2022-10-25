@@ -176,7 +176,7 @@ function CardFactory() constructor
 				}
 			}
 			
-			cards[j] = instance_create_layer(create_x, create_y, "Instances", obj_card, data_struct);
+			cards[j] = instance_create_layer(create_x, create_y, "Battlefield", obj_card, data_struct);
 		}
 		
 		return cards;

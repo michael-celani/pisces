@@ -1,8 +1,7 @@
 /// @description Activate
 
 if active {
-	active = false;	
-	keyboard_string = "";
+	active = false;
 }
 else {
 	var active_stack = find_active_stack();

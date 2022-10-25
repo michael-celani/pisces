@@ -2,7 +2,6 @@
 
 if active {
 	active = false;	
-	keyboard_string = "";
 }
 else {
 	///find if there is an active zone. if not, just set true. if so, swap visibility.

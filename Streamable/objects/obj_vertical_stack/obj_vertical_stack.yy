@@ -42,7 +42,9 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"stack_color","varType":7,"value":"$101F1912","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"stack_header_color","varType":7,"value":"$00DB8357","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
   ],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"zone_layer","path":"objects/obj_card_stack/obj_card_stack.yy",},"objectId":{"name":"obj_card_stack","path":"objects/obj_card_stack/obj_card_stack.yy",},"value":"\"InVertical\"",},
+  ],
   "parent": {
     "name": "Objects",
     "path": "folders/Objects.yy",
