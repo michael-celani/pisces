@@ -1,11 +1,12 @@
 /// @description Create buffer
-var surface_width = surface_get_width(application_surface);
-var surface_height = surface_get_height(application_surface);
+var surface_width = room_width;
+var surface_height = room_height;
 display_surface = surface_create(surface_width, surface_height);
+final_surface = surface_create(1920, 1080);
 
 curr_buff = 0;
 num_buffers = 3;
-indv_size = surface_width * surface_height * 4;
+indv_size = 1920 * 1080 * 4;
 buffer_size = indv_size * num_buffers;
 
 // Create shared memory:

@@ -23,8 +23,6 @@ offset_y = y;
 
 counters = 0;
 
-var noop = function() {};
-
 my_menu = new RightClickMenu();
 my_submenu = new RightClickMenu();
 my_partsmenu = new RightClickMenu();
@@ -52,10 +50,16 @@ var send_to = new RightClickMenuOption("Send To >", noop, function(owner, menu) 
 });
 
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop);
+var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
+var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop);
+var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop);
 
 my_menu.AddOption(tap);
 my_menu.AddOption(flip);
 my_menu.AddOption(duplicate);
+my_menu.AddOption(add_counter);
+my_menu.AddOption(rem_counter);
+//my_menu.AddOption(spawn);
 my_menu.AddOption(send_to);
 
 if array_length(all_parts) > 0
@@ -81,5 +85,8 @@ if array_length(all_parts) > 0
 	
 	my_menu.AddOption(create_parts);
 }
+
+height_priority = next_height_priority();
+owning_canvas = noone;
 
 event_inherited();

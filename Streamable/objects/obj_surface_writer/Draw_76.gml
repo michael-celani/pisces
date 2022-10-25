@@ -1,8 +1,8 @@
 /// @description Regenerate surface
 
 if !surface_exists(display_surface) {
-	var surface_width = surface_get_width(application_surface);
-	var surface_height = surface_get_height(application_surface);
+	var surface_width = room_width;
+	var surface_height = room_height;
 	display_surface = surface_create(surface_width, surface_height);	
 }
 
