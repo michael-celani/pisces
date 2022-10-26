@@ -28,7 +28,7 @@ var button2 = instance_create_layer(button.x + button.image_xscale + 10, button.
 var slider = instance_create_layer(x + width - 740, y + 115, "UI", obj_slider, 
 { 
 	"parent_component": id,
-	"value_low": 0.25,
+	"value_low": 0.15,
 	"value_high": 0.5,
 	"value": obj_options.default_scaling,
 	"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
