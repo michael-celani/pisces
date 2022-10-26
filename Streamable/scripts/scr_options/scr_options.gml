@@ -26,20 +26,20 @@ function load_decklist(options_inst)
 			card = string_replace(card, "\r", "");
 		    instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_card_request, { "req": card, "spawn_number": real(num) })
 		}
-	}	
+	}
 }
 
 function load_background(options_inst)
 {
 	var file = get_open_filename("Images|*.png;*.jpg", "background.png");
-	
+
 	if file != ""
 	{
 		if (options_inst.background_sprite != spr_black)
 		{
-			sprite_delete(options_inst.background_sprite)	
+			sprite_delete(options_inst.background_sprite)
 		}
-		
+
 		options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
 	}
 }
@@ -56,41 +56,23 @@ function open_options(options_inst)
 	if (!instance_exists(obj_options_window))
 	{
 		if !keys_are_active() return;
-		
-<<<<<<< HEAD
-		var button2 = instance_create_layer(button.x + button.image_xscale + 10, button.y, "UI", obj_button,
-			{
-				"parent_component": window,
-				"on_click": function() { load_background(obj_options) },
-				"button_text": "Load Background"
-			});
-	
-		var slider = instance_create_layer(window.x + window.width - 740, window.y + 115, "UI", obj_slider, 
-			{ 
-				"parent_component": window,
-				"value_low": 0.15,
-				"value_high": 0.5,
-				"value": options_inst.default_scaling,
-				"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
-			});
-=======
+
 		instance_create_layer(room_width / 2 - 640, room_height / 2 - 360, "UI", obj_options_window);
->>>>>>> main
 	}
 	else
 	{
 		instance_destroy(obj_options_window);
-	}	
+	}
 }
 
 function close_top_component()
 {
 	var component = parent_component;
-	
+
 	while (component.parent_component != noone)
 	{
-		component = component.parent_component;	
+		component = component.parent_component;
 	}
-	
+
 	instance_destroy(component);
 }

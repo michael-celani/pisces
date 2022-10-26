@@ -23,11 +23,7 @@ draw_set_halign(fa_left);
 draw_set_font(fnt_beleren);
 var total_dist = x_inactive - x_active
 var perc_dist = ((x - x_active) / total_dist)
-<<<<<<< HEAD
 draw_text_transformed(total_dist * perc_dist + center_point - draw_width / 2, surf_height / 32, draw_string,text_scale,text_scale,image_angle)
-=======
-draw_text(total_dist * perc_dist + center_point - draw_string_width / 2, draw_string_height, draw_string)
->>>>>>> main
 
 if camera_mirroring_enabled()
 {

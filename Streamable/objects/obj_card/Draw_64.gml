@@ -108,18 +108,133 @@ if (skewing)
 	draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
 	draw_sprite_pos_fixed(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 }
+else if (is_zoomed and (is_hovering or is_dragged))
+	{
+	///first determine zoom size, for now double along both axes
+	var zoom_x_offset = sprite_width;
+	var zoom_y_offset = sprite_height;
+
+	///determine offset towards center
+	var disp_x_offset = sprite_width/2 * (room_width/2 - x)/(room_width/2);
+	var disp_y_offset = sprite_height/2 * (room_height/2 - y)/(room_height/2);
+
+	///assemble points
+	var zx1 = x - zoom_x_offset + disp_x_offset;
+	var zy1 = y - zoom_y_offset + disp_y_offset;
+	var zx2 = x + zoom_x_offset + disp_x_offset;
+	var zy2 = y - zoom_y_offset + disp_y_offset;
+	var zx3 = x + zoom_x_offset + disp_x_offset;
+	var zy3 = y + zoom_y_offset + disp_y_offset;
+	var zx4 = x - zoom_x_offset + disp_x_offset;
+	var zy4 = y + zoom_y_offset + disp_y_offset;
+	
+	
+	
+	///render
+	draw_sprite_pos_fixed(spr_card_shadow, image_index, zx1 + off, zy1 + off, zx2 + off, zy2 + off, zx3 + off, zy3 + off, zx4 + off, zy4 + off, c_white, 0.25);
+	draw_sprite_pos_fixed(sprite_index, image_index, zx1, zy1, zx2, zy2, zx3, zy3, zx4, zy4, c_white, 1);
+	if (counters != 0)
+	{
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		
+		draw_set_alpha(0.85);
+		draw_roundrect_color_ext(zx4 - 20, zy4 - 20, zx4 + 20, zy4 + 20, 5, 5, c_black, c_black, false);
+		
+		draw_set_color(c_white);
+		draw_set_alpha(1.0);
+		draw_text(zx4, zy4, string(counters));
+	}
+	
+	///Handle the annotation!
+	if (note_content != "")
+	{
+		var xWinWidth = (zx3-zx4)*0.9;
+		var yOffset = sprite_height;
+		var lxl = zx3 + 0.05*2*sprite_width;
+		var lyl = zy3 - 0.05*2*sprite_height - yOffset;
+		var lxr = lxl + xWinWidth;
+		var lyr = lyl - 0.20*sprite_height;
+		///assumes render on the right side
+		var x_note_center =lxl + (lxr - lxl)*0.5;
+		var y_note_center =lyl + (lyr - lyl)*0.5;
+		///determine if we are on the left or right half of the screen
+		
+		///this version is for notes just on board
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		///box
+		draw_set_alpha(0.4);
+		draw_roundrect_color_ext(lxl,lyl,lxr,lyr,10,10,c_black,c_black,false);
+	
+		///text
+		draw_set_color(c_white);
+		draw_set_alpha(0.90);
+		var text_scale_factor = 1/(0.5 - 0.15);
+		var text_scale = 0.5+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
+		draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
+		///reset for the other menus
+		draw_set_alpha(1.0);
+	}
+	
+}
 else
 {
 	draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
 	draw_sprite_pos(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
 }
 
-if is_hovering or is_dragged or is_selected
+if (is_hovering or is_dragged or is_selected) and !is_zoomed
 {
 	draw_sprite_pos_fixed(spr_border, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 }
 
-if (counters != 0)
+if (note_content != "" and !is_zoomed and !is_tapping)
+	{
+		var lx4 = x4 + 0.05*sprite_width;
+		var ly4 = y4 - 0.05*sprite_height;
+		var lx3 = x3 - 0.05*sprite_width;
+		var ly3 = y3 - 0.20*sprite_height;
+		var x_note_center =x4 + (lx3 - lx4)*0.5;
+		var y_note_center =y4 + (ly3 - ly4)*0.75;
+		if tapped{
+			/// if this is tapped update the above values to move the note appropriately
+			lx4 = x3 + 0.05*sprite_height;
+			ly4 = y3 - 0.05*sprite_width;
+			lx3 = x2 - 0.05*sprite_height;
+			ly3 = y2 - 0.30*sprite_width;
+			x_note_center =x3 + (lx3 - lx4)*0.5;
+			y_note_center =y3 + (ly3 - ly4)*0.75;
+		
+		}	
+		///this version is for notes just on board
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		///box
+		if is_hovering{
+			draw_set_alpha(0.4);
+		}
+		else{
+			draw_set_alpha(0.15);
+		}
+		draw_roundrect_color_ext(lx4,ly4,lx3,ly3,10,10,c_black,c_black,false);
+	
+		///text
+		draw_set_color(c_white);
+		if is_hovering{
+			draw_set_alpha(0.90);
+		}
+		else{
+			draw_set_alpha(0.50);
+		}
+		var text_scale_factor = 1/(0.5 - 0.15);
+		var text_scale = 0.25+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
+		draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
+		///reset for the other menus
+		draw_set_alpha(1.0);
+	}
+
+if (counters != 0 and !is_zoomed)
 {
 		draw_set_valign(fa_center);
 		draw_set_halign(fa_center);
@@ -180,6 +295,50 @@ if camera_mirroring_enabled()
 	///render
 	draw_sprite_pos_fixed(spr_card_shadow, image_index, zx1 + off, zy1 + off, zx2 + off, zy2 + off, zx3 + off, zy3 + off, zx4 + off, zy4 + off, c_white, 0.25);
 	draw_sprite_pos_fixed(spr, image_index, zx1, zy1, zx2, zy2, zx3, zy3, zx4, zy4, c_white, 1);
+	
+	if (counters != 0)
+	{
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		
+		draw_set_alpha(0.85);
+		draw_roundrect_color_ext(zx4 - 20, zy4 - 20, zx4 + 20, zy4 + 20, 5, 5, c_black, c_black, false);
+		
+		draw_set_color(c_white);
+		draw_set_alpha(1.0);
+		draw_text(zx4, zy4, string(counters));
+	}
+	///Handle the annotation!
+	if (note_content != "")
+	{
+		var xWinWidth = (zx3-zx4)*0.9;
+		var yOffset = sprite_height;
+		var lxl = zx3 + 0.05*2*sprite_width;
+		var lyl = zy3 - 0.05*2*sprite_height - yOffset;
+		var lxr = lxl + xWinWidth;
+		var lyr = lyl - 0.20*sprite_height;
+		///assumes render on the right side
+		var x_note_center =lxl + (lxr - lxl)*0.5;
+		var y_note_center =lyl + (lyr - lyl)*0.5;
+		///determine if we are on the left or right half of the screen
+		
+		///this version is for notes just on board
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		///box
+		draw_set_alpha(0.4);
+		draw_roundrect_color_ext(lxl,lyl,lxr,lyr,10,10,c_black,c_black,false);
+	
+		///text
+		draw_set_color(c_white);
+		draw_set_alpha(0.90);
+		var text_scale_factor = 1/(0.5 - 0.15);
+		var text_scale = 0.5+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
+		draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
+		///reset for the other menus
+		draw_set_alpha(1.0);
+	}
+	
 	}
 	else
 	{
@@ -188,7 +347,7 @@ if camera_mirroring_enabled()
 	}
 	
 
-	if (counters != 0)
+	if (counters != 0 and !is_zoomed)
 	{
 		draw_set_valign(fa_center);
 		draw_set_halign(fa_center);
@@ -248,122 +407,5 @@ if camera_mirroring_enabled()
 	surface_reset_target();
 }
 
-// Write to application surface:
-
-/*
-var width_ratio = display_get_gui_width() / 1920;
-var height_ratio = display_get_gui_height() / 1080;
-x1 *= width_ratio;
-x2 *= width_ratio;
-x3 *= width_ratio;
-x4 *= width_ratio;
-y1 *= height_ratio;
-y2 *= height_ratio;
-y3 *= height_ratio;
-y4 *= height_ratio;
-*/
-
-if (skewing)
-{
-	draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
-	draw_sprite_pos_fixed(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
-}
-else if (is_zoomed and (is_hovering or is_dragged))
-{
-	///first determine zoom size, for now double along both axes
-	var zoom_x_offset = sprite_width;
-	var zoom_y_offset = sprite_height;
-
-	///determine offset towards center
-	var disp_x_offset = sprite_width/2 * (room_width/2 - x)/(room_width/2);
-	var disp_y_offset = sprite_height/2 * (room_height/2 - y)/(room_height/2);
-
-	///assemble points
-	var zx1 = x - zoom_x_offset + disp_x_offset;
-	var zy1 = y - zoom_y_offset + disp_y_offset;
-	var zx2 = x + zoom_x_offset + disp_x_offset;
-	var zy2 = y - zoom_y_offset + disp_y_offset;
-	var zx3 = x + zoom_x_offset + disp_x_offset;
-	var zy3 = y + zoom_y_offset + disp_y_offset;
-	var zx4 = x - zoom_x_offset + disp_x_offset;
-	var zy4 = y + zoom_y_offset + disp_y_offset;
-	
-	
-	
-	///render
-	draw_sprite_pos_fixed(spr_card_shadow, image_index, zx1 + off, zy1 + off, zx2 + off, zy2 + off, zx3 + off, zy3 + off, zx4 + off, zy4 + off, c_white, 0.25);
-	draw_sprite_pos_fixed(sprite_index, image_index, zx1, zy1, zx2, zy2, zx3, zy3, zx4, zy4, c_white, 1);
-	draw_sprite_pos_fixed(spr_border, image_index, zx1, zy1, zx2, zy2, zx3, zy3, zx4, zy4, c_white, 0.25);
-}
-else
-{
-	draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
-	draw_sprite_pos(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
-}
-
-if ((is_hovering or is_dragged or is_selected) and !is_zoomed)
-{
-	draw_sprite_pos_fixed(spr_border, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
-}
-
-if (note_content != "" and !is_zoomed and !is_tapping)
-{
-	var lx4 = x4 + 0.05*sprite_width;
-	var ly4 = y4 - 0.05*sprite_height;
-	var lx3 = x3 - 0.05*sprite_width;
-	var ly3 = y3 - 0.20*sprite_height;
-	var x_note_center =x4 + (lx3 - lx4)*0.5;
-	var y_note_center =y4 + (ly3 - ly4)*0.75;
-	if tapped{
-		/// if this is tapped update the above values to move the note appropriately
-		lx4 = x3 + 0.05*sprite_height;
-		ly4 = y3 - 0.05*sprite_width;
-		lx3 = x2 - 0.05*sprite_height;
-		ly3 = y2 - 0.30*sprite_width;
-		x_note_center =x3 + (lx3 - lx4)*0.5;
-		y_note_center =y3 + (ly3 - ly4)*0.75;
-		
-	}	
-	///this version is for notes just on board
-	draw_set_valign(fa_center);
-	draw_set_halign(fa_center);
-	///box
-	if is_hovering{
-		draw_set_alpha(0.4);
-	}
-	else{
-		draw_set_alpha(0.15);
-	}
-	draw_roundrect_color_ext(lx4,ly4,lx3,ly3,10,10,c_black,c_black,false);
-	
-	///text
-	draw_set_color(c_white);
-	if is_hovering{
-		draw_set_alpha(0.90);
-	}
-	else{
-		draw_set_alpha(0.50);
-	}
-	var text_scale_factor = 1/(0.5 - 0.15);
-	var text_scale = 0.25+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
-	draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);
-	///reset for the other menus
-	draw_set_alpha(1.0);
-}
-
-if (counters != 0)
-{
-		draw_set_valign(fa_center);
-		draw_set_halign(fa_center);
-		
-		draw_set_alpha(0.85);
-		draw_roundrect_color_ext(x4 - 20, y4 - 20, x4 + 20, y4 + 20, 5, 5, c_black, c_black, false);
-		
-		draw_set_color(c_white);
-		draw_set_alpha(1.0);
-		draw_text(x4, y4, string(counters));
-}
 
 
-
-//draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true)
