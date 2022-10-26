@@ -1,4 +1,3 @@
-/// @description 
-
-y = 0;
-target_y = room_height / 32;
+/// @description Run request
+card = new CardFactory();
+card.PopulateDataViaScryfallSearch(req);

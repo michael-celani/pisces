@@ -11,33 +11,37 @@ for (var index = 0; index < num_cards; index++) {
 	if (active)
 	{
 		card_id.next_x = x;
-		card_id.next_y = 60 + curr_y + card_id.sprite_height / 2;
+		card_id.next_y = draw_string_height + curr_y + card_id.sprite_height / 2;
 	}
 	else
 	{
 		card_id.x = x;
-		card_id.y = 60 + curr_y + card_id.sprite_height / 2;
+		card_id.y = draw_string_height + curr_y + card_id.sprite_height / 2;
 		card_id.next_x = card_id.x;
 		card_id.next_y = card_id.y;
 	}
 	
 
 	if (index != num_cards - 1) {
-		curr_y += card_id.sprite_height + room_height * 0.02;
-		height += card_id.sprite_height + room_height * 0.02;
+		curr_y += card_id.sprite_height + 20;
+		height += card_id.sprite_height + 20;
 	}
 	
 	card_id.is_revealed = !hidden_zone;
 	
 	if card_id.is_hovering {
-		card_id.depth = -950;	
+		layer_add_instance("Dragging", card_id);
+		obj_height_manager.height_modified = true;
 	}
 	else
 	{
-		card_id.depth = -900 + index;
+		layer_add_instance(zone_layer, card_id);
+		obj_height_manager.height_modified = true;
 	}
 }
 
+draw_string = stack_name + " (" + string(ds_list_size(stack_list)) + ")";
+draw_string_width = string_width(draw_string);
 var next_x = 0;
 var next_y = y;
 
@@ -58,4 +62,4 @@ else
 
 var total_inertia = 5.0
 x = (total_inertia * x + next_x) / (total_inertia + 1.0);
-y = room_height * 0.02 - y_offset;
+y = draw_string_height * 2 - y_offset;

@@ -1,5 +1,3 @@
 /// @description Open options:
-if instance_exists(obj_card_annotation){
-	return;
-}
+if !keys_are_active() return;
 open_options(self);

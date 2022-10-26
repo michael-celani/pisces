@@ -1,5 +1,4 @@
 /// @description Hovered
-animation = (animation * 2 + 1) / 3
 var prev_hovered = hovered;
 bounding_x_start = x;
 bounding_x_end = x + width + padding + padding;
@@ -38,7 +37,7 @@ for (var i = 0; i < ds_list_size(options); i++)
 
 
 
-if (mouse_check_button_released(mb_left))
+if mouse_check_button_released(mb_left)
 {
 	if (hovered == -1 || !is_in)
 	{

@@ -9,4 +9,5 @@ if (parent_component != noone)
 	image_yscale = height;
 }
 
+dragging = false;
 event_inherited();

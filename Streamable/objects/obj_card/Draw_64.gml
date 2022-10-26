@@ -1,4 +1,15 @@
 /// @description
+with owning_canvas
+{
+	if !surface_exists(surf)
+	{
+		surf = surface_create(1920, 1080);	
+	}
+	surface_set_target(surf);
+	draw_clear_alpha(c_black, 0)
+}
+
+
 var x_offset = sprite_width / 2;
 var y_offset = sprite_height / 2;
 
@@ -91,6 +102,41 @@ if (time_hovering != 0)
 }
 
 var off = sprite_width * (image_xscale -  obj_options.default_scaling);
+
+if (skewing)
+{
+	draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
+	draw_sprite_pos_fixed(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
+}
+else
+{
+	draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
+	draw_sprite_pos(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
+}
+
+if is_hovering or is_dragged or is_selected
+{
+	draw_sprite_pos_fixed(spr_border, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
+}
+
+if (counters != 0)
+{
+		draw_set_valign(fa_center);
+		draw_set_halign(fa_center);
+		
+		draw_set_alpha(0.85);
+		draw_roundrect_color_ext(x4 - 20, y4 - 20, x4 + 20, y4 + 20, 5, 5, c_black, c_black, false);
+		
+		draw_set_color(c_white);
+		draw_set_alpha(1.0);
+		draw_text(x4, y4, string(counters));
+}
+
+with (owning_canvas)
+{
+	surface_reset_target();
+	draw_surface_part(surf, box_left, box_top, box_right - box_left, box_bottom - box_top, box_left, box_top);
+}
 
 // Write to webcam surface:
 if camera_mirroring_enabled()

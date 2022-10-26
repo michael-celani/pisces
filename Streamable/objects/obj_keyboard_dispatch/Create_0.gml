@@ -6,5 +6,11 @@ var draw_event = {
 	"ev_repeats": true
 };
 
+var coalesce_event = {
+	"ev_name": "coalesce",
+	"ev_repeats": false
+}
+
 events = {};
 events[$ string(ord("D"))] = draw_event;
+events[$ string(ord("Q"))] = coalesce_event;

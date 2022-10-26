@@ -24,6 +24,18 @@ with (obj_card)
 	}
 }
 
+with (obj_card_spawner)
+{
+	if my_id != id {
+		if front_sprite == front {
+			uniq_front = false;		
+		}
+		if back_sprite == back {
+			uniq_back = false;
+		}
+	}
+}
+
 if uniq_front {
 	sprite_delete(front_sprite)	
 }

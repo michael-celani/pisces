@@ -26,14 +26,26 @@ function flip_card(card_inst)
 
 function duplicate_card(card_inst)
 {
-	instance_create_layer(card_inst.x + card_inst.sprite_width / 9, card_inst.y + card_inst.sprite_height / 9, "Instances", obj_card, 
+	instance_create_layer(card_inst.x + card_inst.sprite_width / 9, card_inst.y + card_inst.sprite_height / 9, "Battlefield", obj_card, 
 	{ 
 		"name": card_inst.name, 
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
 		"is_revealed": card_inst.is_revealed,
-		depth : card_inst.depth - 5
+		"all_parts": card_inst.all_parts
+	});
+}
+
+function create_spawner(card_inst)
+{
+	instance_create_layer(card_inst.sprite_width / 2, card_inst.sprite_height / 2, "LowUI", obj_card_spawner, 
+	{ 
+		"name": card_inst.name, 
+		sprite_index: card_inst.front_sprite, 
+		"front_sprite": card_inst.front_sprite, 
+		"back_sprite": card_inst.back_sprite,
+		"all_parts": card_inst.all_parts
 	});
 }
 
@@ -78,7 +90,10 @@ function add_to_card_stack(card_inst, stack_inst) {
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
-	card_inst.depth = 0;
+	layer_add_instance(stack_inst.zone_layer, card_inst);
+	obj_height_manager.height_modified = true;
+	
+	card_inst.is_selected = false;
 }
 
 function add_to_card_stack_beginning(card_inst, stack_inst) {
@@ -97,7 +112,10 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
-	card_inst.depth = 0;
+	layer_add_instance(stack_inst.zone_layer, card_inst);
+	obj_height_manager.height_modified = true;
+	
+	card_inst.is_selected = false;
 }
 
 function remove_from_card_stack(card_inst) {
@@ -105,6 +123,11 @@ function remove_from_card_stack(card_inst) {
 		var index = ds_list_find_index(card_inst.parent_stack.stack_list, id)
 		ds_list_delete(card_inst.parent_stack.stack_list, index);
 		parent_stack = noone;
+		
+		layer_add_instance("Battlefield", card_inst);
+		obj_height_manager.height_modified = true;
+		
+		card_inst.is_selected = false;
 	}
 }
 
