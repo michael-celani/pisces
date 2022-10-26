@@ -50,6 +50,7 @@ var send_to = new RightClickMenuOption("Send To >", noop, function(owner, menu) 
 });
 
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop);
+var note = new RightClickMenuOption("Update Note", update_note,noop,noop);
 var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
 var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop);
 var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop);
@@ -61,6 +62,7 @@ my_menu.AddOption(add_counter);
 my_menu.AddOption(rem_counter);
 //my_menu.AddOption(spawn);
 my_menu.AddOption(send_to);
+my_menu.AddOption(note);
 
 if array_length(all_parts) > 0
 {

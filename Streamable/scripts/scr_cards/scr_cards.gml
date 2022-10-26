@@ -148,3 +148,14 @@ function clear_menus(card_inst)
 		}
 	}
 }
+
+
+function update_note(card_inst)
+{
+
+		if instance_exists(obj_card_annotation) return;
+			
+		instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_card_annotation);
+		obj_card_annotation.affiliated_card = card_inst;
+		keyboard_string = card_inst.note_content;
+}
