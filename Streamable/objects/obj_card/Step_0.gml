@@ -10,7 +10,8 @@ if (is_dragged)
 	total_scaling += obj_options.dragging_scaling;
 }
 
-is_hovering = id == obj_selector.lowest_object && !is_dragged
+is_hovering = id == obj_selector.lowest_object and not is_dragged
+is_zoomed = (is_hovering or is_dragged) and keyboard_check(vk_alt);
 
 if (is_hovering)
 {
@@ -37,8 +38,21 @@ skew_x = (3 * skew_x + degtorad(clamp(x_vel * 2, -30, 30))) / 4.0;
 skew_y = (3 * skew_y + degtorad(clamp(y_vel * 2, -30, 30))) / 4.0;
 
 // Scaling
-image_xscale = (10.0 * image_xscale + total_scaling) / 11.0;
-image_yscale = (10.0 * image_yscale + total_scaling) / 11.0;
+if is_zoomed
+{
+	image_xscale = 0.6
+	image_yscale = 0.6
+}
+else if (image_xscale = 0.6)
+{
+	image_xscale = total_scaling
+	image_yscale = total_scaling
+}
+else
+{
+	image_xscale = (10.0 * image_xscale + total_scaling) / 11.0;
+	image_yscale = (10.0 * image_yscale + total_scaling) / 11.0;
+}
 
 if (is_tapping) {
 	is_tapping += delta_time
