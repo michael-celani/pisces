@@ -33,3 +33,10 @@ var slider = instance_create_layer(x + width - 740, y + 115, "UI", obj_slider,
 	"value": obj_options.default_scaling,
 	"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
 });
+
+var button3 = instance_create_layer(button2.x + button2.image_xscale + 10, button.y,"UI",obj_button,
+{
+	"parent_component": id,
+	"on_click": function() { toggle_draw_on_turn(obj_options) },
+	"button_text": "Toggle Draw On Turn"
+});
