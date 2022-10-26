@@ -5,7 +5,7 @@ if active {
 }
 else {
 	var active_stack = find_active_stack();
-	
+
 	if (active_stack == noone){
 		active = true;
 	}
