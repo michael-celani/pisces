@@ -36,6 +36,7 @@
     {"id":{"name":"obj_resize_handler","path":"objects/obj_resize_handler/obj_resize_handler.yy",},"order":18,},
     {"id":{"name":"obj_hand","path":"objects/obj_hand/obj_hand.yy",},"order":2,},
     {"id":{"name":"obj_focusable","path":"objects/obj_focusable/obj_focusable.yy",},"order":13,},
+    {"id":{"name":"spr_dot","path":"sprites/spr_dot/spr_dot.yy",},"order":2,},
     {"id":{"name":"obj_label","path":"objects/obj_label/obj_label.yy",},"order":7,},
     {"id":{"name":"scr_camera","path":"scripts/scr_camera/scr_camera.yy",},"order":6,},
     {"id":{"name":"scr_lowest_at_point","path":"scripts/scr_lowest_at_point/scr_lowest_at_point.yy",},"order":2,},
