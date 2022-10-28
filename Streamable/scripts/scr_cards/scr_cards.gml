@@ -51,16 +51,19 @@ function create_spawner(card_inst)
 
 function move_to_deck_top(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack_beginning(card_inst, obj_deck);	
 }
 
 function move_to_deck_bottom(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_deck);
 }
 
 function move_to_hand(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_hand);
 }
 
