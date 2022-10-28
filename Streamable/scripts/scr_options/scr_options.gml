@@ -67,6 +67,7 @@ function load_decklist(options_inst)
 				{
 					//dual purpose, gets the array to the right size and reads the last bit, should be of type string
 					var last_entry = string(splitContents[| arLen-1]);
+					//filter archidekt's foiling (**), categories ([]), and labels (^^)
 					if (string_char_at(last_entry,0) == "*" or string_char_at(last_entry,0) == "[" or string_char_at(last_entry,0) == "^")
 					{
 						ds_list_delete(splitContents,arLen-1);//get that duplicate last piece off
