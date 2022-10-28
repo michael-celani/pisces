@@ -1,6 +1,6 @@
 function scryfall_search(search)
 {
-	var api = "https://api.scryfall.com/cards/search?q=" + string_replace_all(search, "\"", "%22");
+	var api = "https://api.scryfall.com/cards/search?q=" + string_replace_all(string_replace_all(search, "\"", "%22")," ","+");
 	return http_get(api);
 }
 

@@ -1,3 +1,10 @@
 /// @description Run request
 card = new CardFactory();
-card.PopulateDataViaScryfallName(req);
+if searchType == "name"
+{
+	card.PopulateDataViaScryfallName(req);
+}
+else
+{
+	card.PopulateDataViaScryfallSearch(req);
+}
