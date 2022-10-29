@@ -185,6 +185,7 @@ if (note_content != "" and !is_zoomed and !is_tapping)
 		else{
 			draw_set_alpha(0.50);
 		}
+		
 		var text_scale_factor = 1/(0.5 - 0.15);
 		var text_scale = 0.25+0.5*(obj_options.default_scaling - 0.15)*text_scale_factor;
 		draw_text_transformed(x_note_center,y_note_center,string(note_content),text_scale,text_scale,0.0);

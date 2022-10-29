@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_options_window",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_pixel",
+    "path": "sprites/spr_pixel/spr_pixel.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
@@ -29,7 +32,7 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"220",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"280",},
   ],
   "parent": {
     "name": "Options",

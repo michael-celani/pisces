@@ -20,7 +20,6 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_408EA53A","properties":[],"isDnd":false,"objectId":{"name":"obj_selector","path":"objects/obj_selector/obj_selector.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":256.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_79C807C5","properties":[],"isDnd":false,"objectId":{"name":"obj_canvas","path":"objects/obj_canvas/obj_canvas.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":672.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_701D2FA8","properties":[],"isDnd":false,"objectId":{"name":"obj_resize_handler","path":"objects/obj_resize_handler/obj_resize_handler.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":576.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3F66B015","properties":[],"isDnd":false,"objectId":{"name":"obj_autoupdate","path":"objects/obj_autoupdate/obj_autoupdate.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1280.0,"y":512.0,},
       ],"visible":true,"depth":-5000,"userdefinedDepth":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_196F33E2","properties":[],"isDnd":false,"objectId":{"name":"obj_keyboard_dispatch","path":"objects/obj_keyboard_dispatch/obj_keyboard_dispatch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":224.0,},
@@ -60,7 +59,6 @@
     {"name":"inst_622F5FB6","path":"rooms/rm_table/rm_table.yy",},
     {"name":"inst_79C807C5","path":"rooms/rm_table/rm_table.yy",},
     {"name":"inst_701D2FA8","path":"rooms/rm_table/rm_table.yy",},
-    {"name":"inst_3F66B015","path":"rooms/rm_table/rm_table.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
