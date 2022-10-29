@@ -51,22 +51,25 @@ function create_spawner(card_inst)
 
 function move_to_deck_top(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack_beginning(card_inst, obj_deck);	
 }
 
 function move_to_deck_bottom(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_deck);
 }
 
 function move_to_hand(card_inst)
 {
+	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_hand);
 }
 
 function move_to_graveyard(card_inst)
 {
-	add_to_card_stack(card_inst, obj_graveyard);
+	add_to_card_stack_beginning(card_inst, obj_graveyard);
 }
 
 function move_to_exile(card_inst)
@@ -135,7 +138,8 @@ function clear_all_menus()
 {
 	with (obj_menu)
 	{
-		instance_destroy();	
+		clearing = true;
+		alarm[0] = 30;
 	}
 }
 

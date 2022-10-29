@@ -11,8 +11,8 @@ if parent_component != noone
 
 draw_set_color(label_color);
 draw_set_font(label_font);
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
+draw_set_halign(label_halign);
+draw_set_valign(label_valign);
 
 gpu_set_colorwriteenable(true, true, true, false);
 draw_text(draw_x, draw_y, label_text);
