@@ -28,18 +28,11 @@ function CardFactory() constructor
 	internal_id = "";
 	internal_name = "";
 	
-	// continue to update with common error states from archidekt or moxfield via insufficient info. (likely only archidekt, moxfield seems to do a good job)
-	card_request_correction_reference = [["\"The World Tree\" set=khm","\"The World Tree\" set=khm cn=275"]];
+	
 	
 	static PopulateDataViaScryfallSearch = function(search)
 	{
-		for (var i = 0; i < array_length(card_request_correction_reference);i+=1;)
-		{
-			if search == card_request_correction_reference[i][0]
-			{
-				search = card_request_correction_reference[i][1];
-			}
-		}
+		
 		card_data_req = scryfall_search(search);
 	}
 	

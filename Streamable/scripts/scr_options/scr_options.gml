@@ -102,7 +102,7 @@ function load_decklist(options_inst)
 				
 			
 			
-			var cardName = "\""+string_compose_from_ds_list(splitContents," ")+"\"";
+			var cardName = "!\""+string_compose_from_ds_list(splitContents," ")+"\"";
 			ds_list_destroy(splitContents);
 			splitContents = -1;// santitize and delete the array
 			var card = cardName;
