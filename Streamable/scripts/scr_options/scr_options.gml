@@ -33,15 +33,17 @@ function load_background(options_inst)
 {
 	var file = get_open_filename("Images|*.png;*.jpg", "background.png");
 
-	if file != ""
-	{
-		if (options_inst.background_sprite != spr_black)
-		{
-			sprite_delete(options_inst.background_sprite)
-		}
+	if file == "" return;
 
-		options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
+	// Duplicate the file:
+	file_copy(file, "background.img");
+
+	if (options_inst.background_sprite != spr_black)
+	{
+		sprite_delete(options_inst.background_sprite)
 	}
+
+	options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
 }
 
 function search_scryfall(options_inst)
@@ -77,7 +79,36 @@ function close_top_component()
 	instance_destroy(component);
 }
 
+function roll_dice(num, icon)
+{
+	return method({"num_max": num, "icon": icon}, function (options_inst) {
+		instance_create_layer(
+			mouse_x,
+			mouse_y,
+			"Instances",
+			obj_die,
+			{ roll: irandom_range(1, num_max), sprite_index: icon }
+		);
+	});
+}
+
 function toggle_draw_on_turn(options_inst)
 {
 	options_inst.draw_on_turn = !options_inst.draw_on_turn;
+}
+
+function draw_card(options_inst) 
+{
+	with obj_deck
+	{
+		if array_length(stack_list) > 0
+		{
+			with stack_list[0]
+			{
+				x = room_width / 2;
+				y = room_height + sprite_height;
+				add_to_card_stack(self, obj_hand);	
+			}
+		}	
+	}
 }

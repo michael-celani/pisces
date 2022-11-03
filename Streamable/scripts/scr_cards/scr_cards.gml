@@ -87,7 +87,7 @@ function add_to_card_stack(card_inst, stack_inst) {
 	
 	card_inst.parent_stack = stack_inst;
 	card_inst.is_revealed = stack_inst.hidden_zone;
-	ds_list_add(stack_inst.stack_list, card_inst.id);
+	array_push(stack_inst.stack_list, card_inst.id);
 	
 	// Untap the card:
 	card_inst.is_tapping = false;
@@ -109,7 +109,7 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	
 	card_inst.parent_stack = stack_inst;
 	card_inst.is_revealed = stack_inst.hidden_zone;
-	ds_list_insert(stack_inst.stack_list, pos, card_inst.id);
+	array_insert(stack_inst.stack_list, pos, card_inst.id);
 	
 	// Untap the card:
 	card_inst.is_tapping = false;
@@ -123,8 +123,8 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 
 function remove_from_card_stack(card_inst) {
 	if card_inst.parent_stack != noone {
-		var index = ds_list_find_index(card_inst.parent_stack.stack_list, id)
-		ds_list_delete(card_inst.parent_stack.stack_list, index);
+		var index = array_find_index(card_inst.parent_stack.stack_list, card_inst.id)
+		array_delete(card_inst.parent_stack.stack_list, index, 1);
 		parent_stack = noone;
 		
 		layer_add_instance("Battlefield", card_inst);

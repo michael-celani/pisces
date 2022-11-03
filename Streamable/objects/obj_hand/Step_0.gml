@@ -1,12 +1,12 @@
 /// @description Move cards
 
-var num_cards = ds_list_size(stack_list);
+var num_cards = array_length(stack_list);
 
 
 width = num_cards * 745 * obj_options.default_scaling;
 
 for (var index = 0; index < num_cards; index++) {
-	var card_id = stack_list[| index]
+	var card_id = stack_list[index]
 	card_id.next_x = x + (745 / 2 * obj_options.default_scaling) + (((index) / num_cards) * width);
 	card_id.is_revealed = false;
 	
