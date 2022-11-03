@@ -18,13 +18,14 @@ bounding_y_end += padding;
 
 if !surface_exists(draw_surf)
 {
-	draw_surf = surface_create(image_xscale, image_yscale);
+	draw_surf = surface_create(image_xscale, surf_height);
 }
 
 surface_set_target(draw_surf);
 draw_clear_alpha(c_white, 0);
 var num_dividers = 0;
-for (var i = offset; i < min(offset+draw_options, array_length(options)); i++)
+
+for (var i = 0; i < array_length(options); i++)
 {
 	var middle_y = mean(bounding_y_start, bounding_y_end);
 	
@@ -62,7 +63,7 @@ for (var i = offset; i < min(offset+draw_options, array_length(options)); i++)
 		draw_surface(option_surf, bounding_x_start + 1, bounding_y_start);
 	}
 	
-	draw_sprite_stretched_ext(option.icon, 0, bounding_x_start + padding, middle_y - 20, 40, 40, option.draw_color, 1);
+	draw_sprite_stretched_ext(option.icon, 0, bounding_x_start + padding, middle_y - 24, 48, 48, option.draw_color, 1);
 
 	draw_set_alpha(0.25);
 	draw_set_color(c_black);
@@ -88,6 +89,7 @@ surface_reset_target();
 
 var percentage = smootherstep(15, 0, alarm[0])
 var alpha = percentage;
+
 if (clearing) {
 	alpha = 1 - alpha;
 	percentage = 1;
@@ -96,8 +98,8 @@ if (clearing) {
 draw_set_alpha(alpha);
 draw_set_color(menu_color);
 
-var menu_width = (width + 2.0 * padding) * percentage;
-var menu_height = (height * draw_options + 2.0 * padding + divider_height * array_length(dividers)) * percentage
+var menu_width = image_xscale * percentage;
+var menu_height = image_yscale * percentage;
 
 draw_roundrect_ext(
 	x, 
@@ -105,20 +107,22 @@ draw_roundrect_ext(
 	x + menu_width, 
 	y + menu_height, 
 	radius, radius, false);
-	
-draw_surface_stretched(draw_surf, x, y, image_xscale * percentage, image_yscale * percentage);
+
+draw_surface_part(draw_surf, 0, offset, menu_width, menu_height, x, y);
 
 // Draw scrollbar
 if draw_options < array_length(options) and is_in and not clearing
 {
 	draw_set_color(c_gray);
 	draw_set_alpha(scroll_alpha * percentage / 3);
-	var options_percentage = draw_options / array_length(options)
+	var scroll_perc = offset / (surf_height - menu_height)
+	var scroll_height = (menu_height / surf_height) * image_yscale;
 	
 	var scroll_x1 = menu_width - 1;
 	var scroll_x2 = menu_width - 6;
-	var scroll_y1 = (menu_height - menu_height * options_percentage) * offset / (array_length(options) - draw_options);
-	var scroll_y2 = scroll_y1 + options_percentage * menu_height;
+	var scroll_y1 = scroll_perc * (menu_height - scroll_height);
+	var scroll_y2 = scroll_y1 + scroll_height;
+	
 	draw_roundrect(x + scroll_x1, y + scroll_y1, x + scroll_x2, y + scroll_y2, false);
 }
 

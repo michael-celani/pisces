@@ -1,14 +1,25 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-
 function array_contains(array, value)
 {
-	var array_size = array_length(array);
+	return array_find_index(array, value) != -1;
+}
 
-	for (var i = 0; i < array_size; i++)
+function array_shuffle(array)
+{
+	for (var i = array_length(array) - 1; i > 0; i--)
 	{
-		if array[i] == value return true;	
+		var j = irandom_range(0, i);
+		var temp = array[j];
+		array[j] = array[i];
+		array[i] = temp;
+	}	
+}
+
+function array_find_index(array, value)
+{
+	for (var i = 0; i < array_length(array); i++)
+	{
+		if array[i] == value return i;	
 	}
 	
-	return false;
+	return -1;
 }

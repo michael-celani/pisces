@@ -19,11 +19,15 @@ draw_rectangle(draw_box_left, draw_box_top, draw_box_right, draw_box_bottom, fal
 draw_set_color(button_outline_color)
 draw_rectangle(draw_box_left, draw_box_top, draw_box_right, draw_box_bottom, true);
 draw_rectangle(draw_box_left + 2, draw_box_top + 2, draw_box_right - 2, draw_box_bottom - 2, true);
-draw_set_color(c_white);
 
 draw_set_font(button_font);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 gpu_set_colorwriteenable(true, true, true, false);
-draw_text((draw_box_left + draw_box_right) / 2, (draw_box_top + draw_box_bottom) / 2, button_text);
+var draw_text_x = mean(draw_box_left, draw_box_right);
+var draw_text_y = mean(draw_box_top, draw_box_bottom);
+draw_set_color(c_black);
+draw_text(draw_text_x + 2, draw_text_y + 2, button_text);
+draw_set_color(c_white);
+draw_text(draw_text_x, draw_text_y, button_text);
 gpu_set_colorwriteenable(true, true, true, true);

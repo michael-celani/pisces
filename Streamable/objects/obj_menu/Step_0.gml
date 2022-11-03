@@ -4,11 +4,18 @@ if clearing return;
 var prev_hovered = hovered;
 bounding_x_start = x;
 bounding_x_end = x + width + padding + padding;
-bounding_y_start = y + padding;
-bounding_y_end = y + padding + height;
-is_in = false;
+bounding_y_start = y + padding - offset;
+bounding_y_end = y + padding + height - offset;
 
-for (var i = offset; i < min(offset+draw_options, array_length(options)); i++)
+is_in = point_in_rectangle(
+	mouse_x, 
+	mouse_y, 
+	bbox_left, 
+	bbox_top, 
+	bbox_right, 
+	bbox_bottom)
+
+for (var i = 0; i < array_length(options); i++)
 {
 	if array_contains(dividers, i)
 	{
@@ -16,15 +23,15 @@ for (var i = offset; i < min(offset+draw_options, array_length(options)); i++)
 		bounding_y_end += divider_height;
 	}
 	
-	is_in = point_in_rectangle(
+	var in_rect = point_in_rectangle(
 		mouse_x, 
 		mouse_y, 
 		bounding_x_start, 
 		bounding_y_start, 
 		bounding_x_end, 
-		bounding_y_end);
+		bounding_y_end) and is_in;
 		
-	if (is_in) {
+	if (in_rect) {
 		hovered = i;
 		
 		if (i != prev_hovered)
@@ -43,10 +50,15 @@ for (var i = offset; i < min(offset+draw_options, array_length(options)); i++)
 	bounding_y_end += height;
 }
 
+
+
 if is_in
 {
-	offset = clamp(offset - mouse_wheel_up() + mouse_wheel_down(), 0, array_length(options) - draw_options);
+	next_offset = next_offset - mouse_wheel_up() * height + mouse_wheel_down() * height;
+	next_offset = clamp(next_offset, 0, surf_height - image_yscale);
 }
+
+offset = floor(mean(offset, offset, offset, offset, next_offset));
 
 if mouse_check_button_released(mb_left)
 {
