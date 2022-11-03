@@ -1,12 +1,12 @@
 x_active = room_width - 745 * obj_options.default_scaling * 0.6;
 x_inactive = room_width + 745 * obj_options.default_scaling * 0.6;
 
-var num_cards = ds_list_size(stack_list);
+var num_cards = array_length(stack_list);
 var curr_y = y;
 var height = 0;
 
 for (var index = 0; index < num_cards; index++) {
-	var card_id = stack_list[| index]
+	var card_id = stack_list[index]
 	
 	if (active)
 	{
@@ -40,7 +40,7 @@ for (var index = 0; index < num_cards; index++) {
 	}
 }
 
-draw_string = stack_name + " (" + string(ds_list_size(stack_list)) + ")";
+draw_string = stack_name + " (" + string(array_length(stack_list)) + ")";
 draw_string_width = string_width(draw_string);
 var next_x = 0;
 var next_y = y;

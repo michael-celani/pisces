@@ -77,3 +77,38 @@ function RightClickMenuOption(_name, _action, _onhover, _onunhover, _icon = spr_
 		action(owner)
 	}
 }
+
+function RightClickSubMenu(_name, _submenu, _icon = spr_close, _hotkey = "") constructor
+{
+	name = _name;
+	action = noop;
+	submenu = _submenu;
+	
+	onhover = function(owner, menu) {
+		var create_x = menu.x + menu.width + menu.padding + menu.padding;
+		var create_y = menu.bounding_y_start - menu.padding;
+		submenu_obj = submenu.CreateMenu(
+			create_x,
+			create_y,
+			owner
+		);
+		
+		submenu_obj.depth = menu.depth - 1;
+	};
+	
+	onunhover = function() {
+		instance_destroy(submenu_obj);	
+	}
+	
+	icon = _icon;
+	hotkey = _hotkey;
+	draw_color = c_white;
+	
+	static Perform = function(owner) { 
+		with (obj_menu)
+		{
+			clearing = true;
+			alarm[0] = 30;
+		}
+	}
+}
