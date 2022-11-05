@@ -17,3 +17,10 @@ function smootherstep(edge0, edge1, val){
   val = clamp((val - edge0) / (edge1 - edge0), 0.0, 1.0);
   return val * val * val * (val * (val * 6 - 15) + 10);
 }
+
+function approach_point(current, target, steps, inertia)
+{
+	var weight = inertia / (inertia + 1)
+	
+	return (current - target) * power(weight, steps) + target;
+}

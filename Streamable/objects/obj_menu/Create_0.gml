@@ -23,7 +23,7 @@ bounding_y_end = y + padding + height;
 
 draw_surf = surface_create(image_xscale, surf_height);
 option_surf = surface_create(width + 2 * padding, height);
-alarm[0] = 20;
+ticker = 20;
 offset = 0;
 next_offset = 0;
 scroll_alpha = 0;

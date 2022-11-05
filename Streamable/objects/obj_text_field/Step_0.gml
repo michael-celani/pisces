@@ -7,7 +7,8 @@ if focused
 	
 	draw_set_font(fnt_segoe);
 	cursor_next_x = x + 15 + string_width(curr_string);
-	cursor_x = (2 * cursor_x + cursor_next_x) / 3.0;
+	
+	cursor_x = approach_point(cursor_x, cursor_next_x, obj_options.since_last, 2);
 }
 else
 {

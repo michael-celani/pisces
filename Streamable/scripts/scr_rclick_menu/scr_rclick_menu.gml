@@ -71,7 +71,7 @@ function RightClickMenuOption(_name, _action, _onhover, _onunhover, _icon = spr_
 		with (obj_menu)
 		{
 			clearing = true;
-			alarm[0] = 30;
+			ticker = 30;
 		}
 		
 		action(owner)
@@ -108,7 +108,7 @@ function RightClickSubMenu(_name, _submenu, _icon = spr_close, _hotkey = "") con
 		with (obj_menu)
 		{
 			clearing = true;
-			alarm[0] = 30;
+			ticker = 30;
 		}
 	}
 }
