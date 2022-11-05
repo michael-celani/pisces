@@ -30,7 +30,7 @@ while ds_queue_size(component_queue) > 0
 ds_queue_destroy(component_queue);
 surface_reset_target();
 
-var percentage = smoothstep(0, 20, alarm[0]);
+var percentage = smoothstep(0, 20, ticker);
 var draw_y = y + percentage * 15;
 
 draw_set_color(c_black);

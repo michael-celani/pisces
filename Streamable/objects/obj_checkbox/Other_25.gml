@@ -11,10 +11,10 @@ if parent_component != noone
 draw_set_color(draw_color);
 draw_roundrect_ext(draw_x, draw_y, draw_x + 49, draw_y + 49, 25, 25, false);
 
-var percentage = smootherstep(0, 15, alarm[0])
+var percentage = smootherstep(0, 15, ticker)
 
 if checked {
-	percentage = 1 - smootherstep(0, 15, alarm[0]);	
+	percentage = 1 - smootherstep(0, 15, ticker);	
 }
 
 draw_set_color(checked_color);

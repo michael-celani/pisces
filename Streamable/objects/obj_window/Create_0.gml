@@ -2,7 +2,7 @@
 image_xscale = width;
 image_yscale = height;
 window_surface = surface_create(width, height);
-alarm[0] = 20;
+ticker = 20;
 
 var min_depth = depth;
 

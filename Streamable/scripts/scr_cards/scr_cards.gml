@@ -139,7 +139,7 @@ function clear_all_menus()
 	with (obj_menu)
 	{
 		clearing = true;
-		alarm[0] = 30;
+		ticker = 30;
 	}
 }
 

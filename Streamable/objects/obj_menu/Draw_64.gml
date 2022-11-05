@@ -57,7 +57,7 @@ for (var i = 0; i < array_length(options); i++)
 		
 		surface_set_target(option_surf);
 		draw_set_color(click_color);
-		draw_circle(click_point_x, click_point_y, 300 - 10 * alarm[0], false);
+		draw_circle(click_point_x, click_point_y, 300 - 10 * ticker, false);
 		surface_reset_target();
 		
 		draw_surface(option_surf, bounding_x_start + 1, bounding_y_start);
@@ -87,7 +87,7 @@ for (var i = 0; i < array_length(options); i++)
 
 surface_reset_target();
 
-var percentage = smootherstep(15, 0, alarm[0])
+var percentage = smootherstep(15, 0, ticker)
 var alpha = percentage;
 
 if (clearing) {

@@ -1,4 +1,11 @@
 /// @description Hovered
+ticker = max(ticker - obj_options.since_last, -1);
+
+if ticker <= 0 and clearing {
+	instance_destroy(); 
+	return;
+}
+
 if clearing return;
 
 var prev_hovered = hovered;
@@ -64,7 +71,7 @@ if mouse_check_button_released(mb_left)
 {
 	if (hovered == -1 or not is_in)
 	{
-		alarm[0] = 30;
+		ticker = 30;
 		clearing = true;
 	}
 	else
