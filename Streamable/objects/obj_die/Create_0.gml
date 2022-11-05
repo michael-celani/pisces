@@ -1,5 +1,5 @@
-/// @description Set Alarm
-alarm[0] = total_time;
+/// @description
+ticker = total_time;
 image_alpha = 0;
 
 start_y = y;

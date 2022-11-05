@@ -1,6 +1,5 @@
 /// @description Insert description here
-checked = !checked;
-ticker = 15;
+ticker = max(ticker - obj_options.since_last, -1);
 
 // Inherit the parent event
 event_inherited();

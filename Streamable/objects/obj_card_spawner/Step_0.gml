@@ -4,11 +4,9 @@ var total_scaling = obj_options.default_scaling;
 
 is_hovering = id == obj_selector.lowest_object
 
-x = (total_inertia * x + next_x) / (total_inertia + 1.0);
-y = (total_inertia * y + next_y) / (total_inertia + 1.0);
-
-// Scaling
-image_xscale = (10.0 * image_xscale + total_scaling) / 11.0;
-image_yscale = (10.0 * image_yscale + total_scaling) / 11.0;
+x = approach_point(x, next_x, obj_options.since_last, total_inertia);
+y = approach_point(y, next_y, obj_options.since_last, total_inertia);
+image_xscale = approach_point(image_xscale, total_scaling, obj_options.since_last, 10);
+image_xscale = approach_point(image_yscale, total_scaling, obj_options.since_last, 10);
 
 event_inherited();

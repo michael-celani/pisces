@@ -28,14 +28,17 @@ if parent_stack == obj_vertical_stack && !parent_stack.active
 	total_inertia = 0	
 }
 
-x = (total_inertia * x + next_x) / (total_inertia + 1.0);
-y = (total_inertia * y + next_y) / (total_inertia + 1.0);
 
-x_vel = ((x - xprevious) + 3 * x_vel) / 4;
-y_vel = ((y - yprevious) + 3 * y_vel) / 4;
+if obj_options.since_last > 0
+{
+	x = approach_point(x, next_x, obj_options.since_last, total_inertia);
+	y = approach_point(y, next_y, obj_options.since_last, total_inertia);
+	x_vel = ((x - xprevious) + 3 * x_vel) / 4;
+	y_vel = ((y - yprevious) + 3 * y_vel) / 4;
+	skew_x = (3 * skew_x + degtorad(clamp(x_vel * 2, -30, 30))) / 4.0;
+	skew_y = (3 * skew_y + degtorad(clamp(y_vel * 2, -30, 30))) / 4.0;	
+}
 
-skew_x = (3 * skew_x + degtorad(clamp(x_vel * 2, -30, 30))) / 4.0;
-skew_y = (3 * skew_y + degtorad(clamp(y_vel * 2, -30, 30))) / 4.0;
 
 // Scaling
 if is_zoomed
@@ -50,8 +53,8 @@ else if (image_xscale = 0.6)
 }
 else
 {
-	image_xscale = (10.0 * image_xscale + total_scaling) / 11.0;
-	image_yscale = (10.0 * image_yscale + total_scaling) / 11.0;
+	image_xscale = approach_point(image_xscale, total_scaling, obj_options.since_last, 10);
+	image_yscale = approach_point(image_yscale, total_scaling, obj_options.since_last, 10);
 }
 
 if (is_tapping) {

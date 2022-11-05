@@ -61,5 +61,6 @@ else
 }
 
 var total_inertia = 5.0
-x = (total_inertia * x + next_x) / (total_inertia + 1.0);
+
+x = approach_point(x, next_x, obj_options.since_last, total_inertia);
 y = draw_string_height * 2 - y_offset;
