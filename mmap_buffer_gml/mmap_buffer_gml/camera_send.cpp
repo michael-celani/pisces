@@ -12,6 +12,7 @@
 #include "camera_send.h"
 #include "virtual_output.h"
 
+
 // Camera
 VirtualOutput* camera;
 
@@ -51,7 +52,7 @@ extern "C" __declspec(dllexport) double start_camera(unsigned char* buff, unsign
 
     int width = 1920;
     int height = 1080;
-    int fps = 120;
+    int fps = 60;
 
     data_buff = buff;
     data_ready = ready;
