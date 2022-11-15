@@ -15,7 +15,7 @@ for (var index = 0; index < num_cards; index++) {
 	}
 	else
 	{
-		card_id.x = x;
+		card_id.x = max(card_id.x, x + 10);
 		card_id.y = draw_string_height + curr_y + card_id.sprite_height / 2;
 		card_id.next_x = card_id.x;
 		card_id.next_y = card_id.y;
