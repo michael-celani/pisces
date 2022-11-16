@@ -25,7 +25,6 @@ else if room_aspect_ratio < (16 / 9) // Image is too narrow
 	var height_ratio = 1080 / surface_height;
 	var actual_width = height_ratio * surface_width;
 	var draw_x = (1920 - actual_width) / 2;
-	show_debug_message(string(draw_x));
 	draw_surface_stretched(display_surface, draw_x, 0, actual_width, 1080);
 }
 else // Image is too wide

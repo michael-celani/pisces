@@ -22,8 +22,15 @@ var options = new RightClickMenuOption("Open Options", open_options, noop, noop,
 var load_deck = new RightClickMenuOption("Load Decklist...", load_decklist, noop, noop, spr_listul);
 var scry_search = new RightClickMenuOption("Search Scryfall...", search_scryfall, noop, noop, spr_scryfall);
 
+var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save);
+var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load);
+
+
 menu = new RightClickMenu();
 menu.AddOption(roll_submenu);
+menu.AddSeparator();
+menu.AddOption(save);
+menu.AddOption(load);
 menu.AddSeparator();
 menu.AddOption(load_deck);
 menu.AddOption(scry_search);

@@ -49,7 +49,7 @@ var note = new RightClickMenuOption("Update Note", update_note,noop,noop, spr_no
 var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
 var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop, spr_counter_add);
 var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop, spr_counter_rem);
-var destroy = new RightClickMenuOption("Delete", function(card_inst) {instance_destroy(card_inst)}, noop, noop, spr_trash);
+var destroy = new RightClickMenuOption("Delete", card_destroy, noop, noop, spr_trash);
 destroy.draw_color = c_red;
 
 my_menu = new RightClickMenu();
@@ -90,5 +90,7 @@ my_menu.AddOption(destroy);
 
 height_priority = next_height_priority();
 owning_canvas = noone;
+
+save_struct = undefined;
 
 event_inherited();

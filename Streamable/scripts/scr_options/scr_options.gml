@@ -217,3 +217,68 @@ function draw_card(options_inst)
 		}
 	}
 }
+
+function save_state(options_inst)
+{
+	with (obj_card)
+	{
+		if (save_struct != undefined and save_struct.destroyed)
+		{
+			instance_destroy();
+			continue;
+		}
+		
+		save_struct = {
+			"saved_x": x,
+			"saved_y": y,
+			"saved_hp": height_priority,
+			"destroyed": false
+		}	
+	}
+
+	with (obj_card_stack)
+	{
+		saved_list = []
+		array_copy(saved_list, 0, stack_list, 0, array_length(stack_list))
+	}
+}
+
+function load_state(options_inst)
+{
+	obj_height_manager.height_modified = true;
+
+	with (obj_card)
+	{
+		if save_struct == undefined {
+			instance_destroy();
+		}
+		else
+		{
+			remove_from_card_stack(self);
+			layer_add_instance("Battlefield", self);
+		
+			next_x = save_struct.saved_x;
+			next_y = save_struct.saved_y;
+			
+			if save_struct.destroyed
+			{
+				x = next_x;
+				y = next_y;
+				save_struct.destroyed = false;
+			}
+			
+			height_priority = save_struct.saved_hp;
+			
+		}
+	}
+
+	with (obj_card_stack)
+	{
+		for (var i = 0; i < array_length(saved_list); i++)
+		{
+			if not instance_exists(saved_list[i]) continue;
+		
+			add_to_card_stack(saved_list[i], self);
+		}
+	}
+}
