@@ -2,7 +2,7 @@
 var window_width = window_get_width();
 var window_height = window_get_height();
 
-if window_width == prev_window_width return;
+if window_width == prev_window_width and window_height == prev_window_height return;
 if window_width == 0 or window_height == 0 return;
 
 prev_window_width = window_width;

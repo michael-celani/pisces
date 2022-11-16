@@ -20,7 +20,7 @@ is_in = point_in_rectangle(
 	bbox_left, 
 	bbox_top, 
 	bbox_right, 
-	bbox_bottom)
+	bbox_bottom) and id == obj_selector.lowest_object;
 
 for (var i = 0; i < array_length(options); i++)
 {

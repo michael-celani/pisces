@@ -19,6 +19,7 @@
     {"id":{"name":"obj_id_request","path":"objects/obj_id_request/obj_id_request.yy",},"order":12,},
     {"id":{"name":"fnt_beleren","path":"fonts/fnt_beleren/fnt_beleren.yy",},"order":0,},
     {"id":{"name":"fnt_beleren_small","path":"fonts/fnt_beleren_small/fnt_beleren_small.yy",},"order":2,},
+    {"id":{"name":"scr_string_split","path":"scripts/scr_string_split/scr_string_split.yy",},"order":6,},
     {"id":{"name":"obj_background","path":"objects/obj_background/obj_background.yy",},"order":7,},
     {"id":{"name":"spr_hand","path":"sprites/spr_hand/spr_hand.yy",},"order":9,},
     {"id":{"name":"obj_component","path":"objects/obj_component/obj_component.yy",},"order":2,},
@@ -142,6 +143,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Resources","folderPath":"folders/Resources.yy","order":15,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy","order":10,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Scripts.yy","order":5,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Drawing","folderPath":"folders/Scripts/Drawing.yy","order":6,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Game","folderPath":"folders/Scripts/Game.yy","order":3,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Right-Click Menu","folderPath":"folders/Scripts/Game/Right-Click Menu.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Networking","folderPath":"folders/Scripts/Networking.yy","order":5,},
@@ -153,7 +155,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"UI","folderPath":"folders/Sprites/UI.yy","order":9,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy","order":8,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Drawing","folderPath":"folders/Scripts/Drawing.yy","order":6,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
