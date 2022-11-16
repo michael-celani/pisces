@@ -156,7 +156,24 @@ function clear_menus(card_inst)
 
 function update_note(card_inst)
 {
-		if instance_exists(obj_card_annotation) return;
+	if instance_exists(obj_card_annotation) return;
 			
-		instance_create_layer(card_inst.x, card_inst.y, "UI", obj_card_annotation, {"card": card_inst});
+	instance_create_layer(card_inst.x, card_inst.y, "UI", obj_card_annotation, {"card": card_inst});
+}
+
+function card_destroy(card_inst)
+{
+	if save_struct == undefined
+	{
+		instance_destroy();
+		return;
+	}
+
+	save_struct.destroyed = true;
+	
+	remove_from_card_stack(card_inst);
+	next_x = -10000;
+	next_y = -10000;
+	x = next_x;
+	y = next_y;
 }
