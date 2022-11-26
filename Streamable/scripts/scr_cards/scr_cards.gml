@@ -16,11 +16,22 @@ function tap_card(card_inst)
 function flip_card(card_inst)
 {
 	card_inst.is_flipped = !card_inst.is_flipped;
-	
-	if card_inst.is_flipped {
-		card_inst.sprite_index = card_inst.back_sprite;
-	} else {
-		card_inst.sprite_index = card_inst.front_sprite;
+}
+
+function get_card_sprite(card_inst)
+{
+	if card_inst.is_flipped
+	{
+		if card_inst.back_sprite == -1
+		{
+			return obj_options.card_back_sprite;
+		}
+		
+		return card_inst.back_sprite;
+	}
+	else
+	{
+		return card_inst.front_sprite;
 	}
 }
 
@@ -163,13 +174,13 @@ function update_note(card_inst)
 
 function card_destroy(card_inst)
 {
-	if save_struct == undefined
+	if card_inst.save_struct == undefined
 	{
-		instance_destroy();
+		instance_destroy(card_inst);
 		return;
 	}
 
-	save_struct.destroyed = true;
+	card_inst.save_struct.destroyed = true;
 	
 	remove_from_card_stack(card_inst);
 	next_x = -10000;

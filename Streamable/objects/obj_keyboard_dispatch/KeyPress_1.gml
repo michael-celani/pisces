@@ -5,7 +5,7 @@ if !keys_are_active() return;
 if keyboard_lastkey >= 48 && keyboard_lastkey <= 57
 {
 	num_repeats *= 10;
-	num_repeats += int64(keyboard_lastchar);
+	num_repeats += int64(keyboard_lastkey - 48);
 	return;
 }
 

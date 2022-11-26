@@ -47,3 +47,10 @@ var button2 = instance_create_layer(button.x + button.image_xscale + 10, button.
 	"on_click": function() { load_background(obj_options) },
 	"button_text": "Load Background"
 });
+
+var button3 = instance_create_layer(button2.x + button2.image_xscale + 10, button2.y, "UI", obj_button,
+{
+	"parent_component": id,
+	"on_click": function() { load_sleeves(obj_options) },
+	"button_text": "Load Sleeves"
+});

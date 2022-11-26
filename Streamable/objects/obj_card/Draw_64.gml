@@ -50,16 +50,18 @@ var y3 = draw_points.y3;
 var x4 = draw_points.x4;
 var y4 = draw_points.y4;
 
+var spr = get_card_sprite(self);
+
 if (skewing)
 {
 	draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
-	draw_sprite_pos_fixed(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
+	draw_sprite_pos_fixed(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
 }
 else
 {
 	// Fixed is slower and not needed if not skewed
 	draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
-	draw_sprite_pos(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
+	draw_sprite_pos(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
 }
 
 if is_zoomed and not is_dragged and note_content != ""
@@ -158,11 +160,11 @@ if counters != 0
 // Write to webcam surface:
 if camera_mirroring_enabled()
 {
-	var spr = spr_card_bad;
+	var spr = obj_options.card_back_sprite;
 	
 	if is_revealed
 	{
-		spr = sprite_index;	
+		spr = get_card_sprite(self);	
 	}
 	
 	surface_set_target(obj_surface_writer.display_surface);

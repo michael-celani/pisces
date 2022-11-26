@@ -3,12 +3,22 @@ var num_cards = array_length(stack_list);
 
 active = num_cards > 0;
 
+if active_time <= 0
+{
+	is_revealing = false;	
+}
+
 if not active
 {
 	image_xscale = 0;
 	image_yscale = 0;
 	active_time -= delta_time;
 	return;
+}
+
+if keyboard_check_pressed(vk_control)
+{
+	is_revealing = !is_revealing;	
 }
 
 // Active
@@ -25,7 +35,7 @@ for (var index = 0; index < num_cards; index++) {
 	var card_id = stack_list[index];
 	card_id.next_x = lerp(card_start, card_end, (index + 1) / (num_cards + 1));
 	card_id.next_y = room_height / 2;
-	card_id.is_revealed = false;
+	card_id.is_revealed = is_revealing;
 	
 	layer_add_instance("InScry", card_id);
 	card_id.depth += index;

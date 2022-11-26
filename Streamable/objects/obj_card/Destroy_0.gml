@@ -4,7 +4,7 @@ remove_from_card_stack(self)
 var uniq_front = true;
 var uniq_back = true;
 
-if back_sprite = spr_card_bad {
+if back_sprite == -1 {
 	uniq_back = false;	
 }
 

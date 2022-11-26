@@ -92,5 +92,3 @@ height_priority = next_height_priority();
 owning_canvas = noone;
 
 save_struct = undefined;
-
-event_inherited();

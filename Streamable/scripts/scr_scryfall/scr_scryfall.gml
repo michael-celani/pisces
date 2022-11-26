@@ -24,7 +24,7 @@ function CardFactory() constructor
 	
 	card_data = -1;
 	front_sprite = -1;
-	back_sprite = spr_card_bad;
+	back_sprite = -1;
 	internal_id = "";
 	internal_name = "";
 	

@@ -10,6 +10,13 @@ draw_rectangle(0, 0, room_width, room_height, false);
 var draw_x = room_width / 2;
 var draw_y = lerp(room_height / 6, room_height / 6 + 20, percentage);
 var draw_string = "Scrying";
+
+if (is_revealing)
+{
+	draw_string = "Revealing";	
+}
+
+
 draw_set_font(fnt_beleren_large);
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
