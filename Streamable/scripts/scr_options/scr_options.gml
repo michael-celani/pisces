@@ -151,6 +151,44 @@ function load_background(options_inst)
 	options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
 }
 
+function load_sleeves(options_inst)
+{
+	var file = get_open_filename("Images|*.png;*.jpg", "background.png");
+
+	if file == ""
+	{
+		if options_inst.card_back_sprite != spr_card_bad
+		{
+			sprite_delete(options_inst.card_back_sprite);
+		}
+		
+		options_inst.card_back_sprite = spr_card_bad;
+		return;
+	};
+
+	// Duplicate the file:
+	file_copy(file, "sleeves.img");
+
+	var new_sprite = sprite_add(file, 1, false, true, 372, 520);
+	
+	if sprite_get_width(new_sprite) != 745 or sprite_get_height(new_sprite) != 1040
+	{
+		// Sprite has incorrect dimensions
+		sprite_delete(new_sprite);
+		
+		// Create error window
+		
+		return;
+	}
+	
+	if options_inst.card_back_sprite != spr_card_bad
+	{
+		sprite_delete(options_inst.card_back_sprite);
+	}
+	
+	options_inst.card_back_sprite = new_sprite;
+}
+
 function search_scryfall(options_inst)
 {
 	var width = 1280;

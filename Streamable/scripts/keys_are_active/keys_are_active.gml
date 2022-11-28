@@ -5,7 +5,6 @@ function keys_are_active() {
 	{
 		if focused return false;	
 	}
-	if instance_exists(obj_card_annotation) return false;
 	
 	return true;
 }
