@@ -135,17 +135,26 @@ function load_decklist(options_inst)
 
 function load_background(options_inst)
 {
+	var new_sprite, error_struct;
+	
 	var file = get_open_filename("Images|*.png;*.jpg", "background.png");
-
 	if file == "" return;
 
+	// Try to add the new sprite from the file:
+	new_sprite = sprite_add(file, 1, false, true, 0, 0);
+
+	// There was an error
+	if (new_sprite == -1)
+	{
+		return;
+	}
 
 	if (options_inst.background_sprite != spr_black)
 	{
 		sprite_delete(options_inst.background_sprite)
 	}
 
-	options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
+	options_inst.background_sprite = new_sprite;
 	
 	// Duplicate the file:
 	file_copy(file, "background.img");
@@ -174,7 +183,6 @@ function load_sleeves(options_inst)
 	var temp_surf = surface_create(745, 1040);
 	surface_set_target(temp_surf);
 	draw_sprite_stretched(new_sprite, 0, 0, 0, 745, 1040);
-	// draw_sprite_stretched(spr_sleeve_border, 0, 0, 0, 745, 1040);
 	draw_sprite_stretched(spr_sleeve_mask, 0, 0, 0, 745, 1040);
 	surface_reset_target();
 				
