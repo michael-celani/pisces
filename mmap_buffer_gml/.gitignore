@@ -1,4 +1,5 @@
 #ignore VS folder
 /.vs
-#ignore compilation folder
-/mmap_buffer_gml
+#ignore compilation folders
+Debug
+Release
