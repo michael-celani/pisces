@@ -1,0 +1,4 @@
+#ignore VS folder
+/.vs
+#ignore compilation folder
+/mmap_buffer_gml
