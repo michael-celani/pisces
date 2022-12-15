@@ -24,7 +24,9 @@ is_in = point_in_rectangle(
 
 for (var i = 0; i < array_length(options); i++)
 {
-	if array_contains(dividers, i)
+	if array_any(dividers, method({idx: i}, function(val) {
+			return val == idx
+		}))
 	{
 		bounding_y_start += divider_height;
 		bounding_y_end += divider_height;

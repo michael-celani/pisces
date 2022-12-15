@@ -29,7 +29,9 @@ for (var i = 0; i < array_length(options); i++)
 {
 	var middle_y = mean(bounding_y_start, bounding_y_end);
 	
-	if array_contains(dividers, i)
+	if array_any(dividers, method({idx: i}, function(val) {
+			return val == idx
+		}))
 	{
 		var divider_y = bounding_y_start + divider_height / 2;
 		draw_set_color(divider_color);
