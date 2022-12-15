@@ -139,8 +139,6 @@ function load_background(options_inst)
 
 	if file == "" return;
 
-	// Duplicate the file:
-	file_copy(file, "background.img");
 
 	if (options_inst.background_sprite != spr_black)
 	{
@@ -148,6 +146,9 @@ function load_background(options_inst)
 	}
 
 	options_inst.background_sprite = sprite_add(file, 1, false, true, 0, 0);
+	
+	// Duplicate the file:
+	file_copy(file, "background.img");
 }
 
 function load_sleeves(options_inst)
