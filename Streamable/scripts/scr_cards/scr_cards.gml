@@ -134,7 +134,7 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 
 function remove_from_card_stack(card_inst) {
 	if card_inst.parent_stack != noone {
-		var index = array_find_index(card_inst.parent_stack.stack_list, card_inst.id)
+		var index = array_find_indexEx(card_inst.parent_stack.stack_list, card_inst.id);
 		array_delete(card_inst.parent_stack.stack_list, index, 1);
 		parent_stack = noone;
 		

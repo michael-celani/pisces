@@ -1,6 +1,6 @@
 function array_contains(array, value)
 {
-	return array_find_index(array, value) != -1;
+	return array_find_indexEx(array, value) != -1;
 }
 
 function array_shuffle(array)
@@ -14,7 +14,7 @@ function array_shuffle(array)
 	}	
 }
 
-function array_find_index(array, value)
+function array_find_indexEx(array, value)
 {
 	for (var i = 0; i < array_length(array); i++)
 	{

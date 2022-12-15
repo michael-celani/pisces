@@ -1,0 +1,5 @@
+#ignore VS folder
+/.vs
+#ignore compilation folders
+Debug
+Release
