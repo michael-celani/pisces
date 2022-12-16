@@ -27,12 +27,12 @@ counters = 0;
 my_submenu = new RightClickMenu();
 my_partsmenu = new RightClickMenu();
 
-var to_hand = new RightClickMenuOption("Hand", move_to_hand, noop, noop, spr_hand);
-var to_top = new RightClickMenuOption("Top of Library", move_to_deck_top, noop, noop, spr_book);
-var to_bottom = new RightClickMenuOption("Bottom of Library", move_to_deck_bottom, noop, noop, spr_book_bookmark);
-var to_graveyard = new RightClickMenuOption("Graveyard", move_to_graveyard, noop, noop, spr_skull_crossbones);
-var to_exile = new RightClickMenuOption("Exile", move_to_exile, noop, noop, spr_exile);
-var to_command = new RightClickMenuOption("Command Zone", move_to_command, noop, noop, spr_crown);
+var to_hand = new RightClickMenuOption("Hand [H]", move_to_hand, noop, noop, spr_hand);
+var to_top = new RightClickMenuOption("Top of Library [J]", move_to_deck_top, noop, noop, spr_book);
+var to_bottom = new RightClickMenuOption("Bottom of Library [K]", move_to_deck_bottom, noop, noop, spr_book_bookmark);
+var to_graveyard = new RightClickMenuOption("Graveyard [G]", move_to_graveyard, noop, noop, spr_skull_crossbones);
+var to_exile = new RightClickMenuOption("Exile [E]", move_to_exile, noop, noop, spr_exile);
+var to_command = new RightClickMenuOption("Command Zone [C]", move_to_command, noop, noop, spr_crown);
 my_submenu.AddOption(to_hand);
 my_submenu.AddOption(to_top);
 my_submenu.AddOption(to_bottom);
@@ -41,15 +41,15 @@ my_submenu.AddOption(to_exile);
 my_submenu.AddOption(to_command);
 
 
-var tap = new RightClickMenuOption("Tap", tap_card, noop, noop, spr_tap);
-var flip = new RightClickMenuOption("Flip", flip_card, noop, noop, spr_flip);
+var tap = new RightClickMenuOption("Tap [T]", tap_card, noop, noop, spr_tap);
+var flip = new RightClickMenuOption("Flip [F]", flip_card, noop, noop, spr_flip);
 var send_to = new RightClickSubMenu("Send To >", my_submenu, spr_envelope);
-var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop, spr_copy);
+var duplicate = new RightClickMenuOption("Duplicate [Z]", duplicate_card, noop, noop, spr_copy);
 var note = new RightClickMenuOption("Update Note", update_note,noop,noop, spr_note_sticky);
 var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
-var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop, spr_counter_add);
-var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop, spr_counter_rem);
-var destroy = new RightClickMenuOption("Delete", card_destroy, noop, noop, spr_trash);
+var add_counter = new RightClickMenuOption("Add Counter [Numpad +]", function(card_inst) { card_inst.counters++ }, noop, noop, spr_counter_add);
+var rem_counter = new RightClickMenuOption("Remove Counter [Numpad -]", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop, spr_counter_rem);
+var destroy = new RightClickMenuOption("Delete [X]", card_destroy, noop, noop, spr_trash);
 destroy.draw_color = c_red;
 
 my_menu = new RightClickMenu();
