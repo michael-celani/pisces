@@ -28,8 +28,6 @@ function CardFactory() constructor
 	internal_id = "";
 	internal_name = "";
 	
-	
-	
 	static PopulateDataViaScryfallSearch = function(search)
 	{
 		
@@ -51,6 +49,40 @@ function CardFactory() constructor
 		card_data_req = scryfall_id(internal_id);
 	}
 	
+	static LoadBackSprite = function()
+	{
+		var file_name = card_data.id + "-back.png";
+		
+		if file_exists(file_name)
+		{
+			show_debug_message("loading back sprite from file: " + file_name);
+			back_sprite = sprite_add(file_name, 1, false, true, 745 / 2, 1040 / 2);
+		}
+		else
+		{
+			var back_face_url = "https://api.scryfall.com/cards/" + card_data.id + "?format=image&version=png&face=back"
+			show_debug_message("loading back sprite from url: " + back_face_url);
+			image_back_req = http_get_file(back_face_url, file_name);
+		}
+	}
+	
+	static LoadFrontSprite = function()
+	{
+		var file_name = card_data.id + "-front.png";
+		
+		if file_exists(file_name)
+		{
+			show_debug_message("loading front sprite from file: " + file_name);
+			front_sprite = sprite_add(file_name, 1, false, true, 745 / 2, 1040 / 2);
+		}
+		else
+		{
+			var front_face_url = "https://api.scryfall.com/cards/" + card_data.id + "?format=image&version=png&face=front"
+			show_debug_message("loading front sprite from url: " + front_face_url);
+			image_front_req = http_get_file(front_face_url, file_name);
+		}			
+	}
+	
 	static HandleDataPopulation = function() {
 		var response_id = async_load[? "id"];
 		var response_status = async_load[? "status"];
@@ -62,50 +94,33 @@ function CardFactory() constructor
 				var json = async_load[? "result"];
 				var data = json_parse(json);
 				
-				if data.object == "list"
+				switch (data.object)
 				{
-					card_data = data.data[0]
+					case "list":
+						card_data = data.data[0];
+					break;
+					
+					case "card":
+						card_data = data;
+					break;
+					
+					default:
+						return false;
 				}
-				else if data.object = "card"
+
+				// The card layout supports a backface:
+				if (card_data.layout == "modal_dfc" or 
+				card_data.layout == "transform" or 
+				card_data.layout == "double_faced_token")
 				{
-					card_data = data
-				}
-				else if data.object = "error"
-				{
-					return false;
-				}
-				
-				if card_data.layout == "modal_dfc" or card_data.layout == "transform" or card_data.layout == "double_faced_token"
-				{
-					if file_exists(card_data.id + "-back.png")
-					{
-						back_sprite = sprite_add(card_data.id + "-back.png", 1, false, true, 745 / 2, 1040 / 2);
-						
-						if file_exists(card_data.id + "-front.png")
-						{
-							front_sprite = sprite_add(card_data.id + "-front.png", 1, false, true, 745 / 2, 1040 / 2);
-						}
-						else
-						{
-							image_front_req = http_get_file(card_data.card_faces[0].image_uris.png, card_data.id + "-front.png");
-						}
-					}
-					else
-					{
-						image_back_req = http_get_file(card_data.card_faces[1].image_uris.png, card_data.id + "-front.png");
-					}
+					LoadBackSprite()
+					
+					// If the sprite was cached load the front sprite immediately:
+					if back_sprite != -1 LoadFrontSprite();
 				}
 				else
 				{
-					// Handle front
-					if file_exists(card_data.id + "-front.png")
-					{
-						front_sprite = sprite_add(card_data.id + "-front.png", 1, false, true, 745 / 2, 1040 / 2);
-					}
-					else
-					{
-						image_front_req = http_get_file(card_data.image_uris.png, card_data.id + "-front.png");
-					}
+					LoadFrontSprite()	
 				}
 			}
 			else if response_status == -1
@@ -121,7 +136,7 @@ function CardFactory() constructor
 			{
 				var path = async_load[? "result"];
 				back_sprite = sprite_add(path, 1, false, true, 745 / 2, 1040 / 2);
-				image_front_req = http_get_file(card_data.card_faces[0].image_uris.png, card_data.id + "-front.png");
+				LoadFrontSprite();
 			}
 			else if response_status == -1
 			{
@@ -146,6 +161,8 @@ function CardFactory() constructor
 		
 		return true;
 	}
+	
+	
 	
 	static CanCreate = function()
 	{
