@@ -1,5 +1,13 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function add_card_counters(card_inst, num = 1) {
+	card_inst.counters += num;
+}
+
+function sub_card_counters(card_inst, num = 1) {
+	card_inst.counters = max(0, card_inst.counters - num)
+}
+
 function tap_card(card_inst) 
 {
 	if (!card_inst.is_tapping)
@@ -62,19 +70,16 @@ function create_spawner(card_inst)
 
 function move_to_deck_top(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack_beginning(card_inst, obj_deck);	
 }
 
 function move_to_deck_bottom(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_deck);
 }
 
 function move_to_hand(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_hand);
 }
 
@@ -113,6 +118,9 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
+	if stack_inst.hidden_zone {
+		card_inst.counters = 0;
+	}
 	layer_add_instance(stack_inst.zone_layer, card_inst);
 	obj_height_manager.height_modified = true;
 	

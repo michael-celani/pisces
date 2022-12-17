@@ -47,8 +47,8 @@ var send_to = new RightClickSubMenu("Send To >", my_submenu, spr_envelope);
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop, spr_copy);
 var note = new RightClickMenuOption("Update Note", update_note,noop,noop, spr_note_sticky);
 var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
-var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop, spr_counter_add);
-var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop, spr_counter_rem);
+var add_counter = new RightClickMenuOption("Add Counter", add_card_counters, noop, noop, spr_counter_add);
+var rem_counter = new RightClickMenuOption("Remove Counter", sub_card_counters, noop, noop, spr_counter_rem);
 var destroy = new RightClickMenuOption("Delete", card_destroy, noop, noop, spr_trash);
 destroy.draw_color = c_red;
 
