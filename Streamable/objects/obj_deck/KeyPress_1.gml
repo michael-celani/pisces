@@ -20,8 +20,3 @@ switch (keyboard_lastkey)
 	default:
 	break;
 }
-
-if (keyboard_lastkey == global.keys.draw)
-{
-	
-}	
