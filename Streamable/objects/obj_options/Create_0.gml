@@ -61,4 +61,10 @@ since_last_delta = 0;
 since_last_time = game_get_speed(gamespeed_microseconds);
 
 if not file_exists("background.img") return;
-background_sprite = sprite_add("background.img", 1, false, true, 0, 0);
+var bkcg = sprite_add("background.img", 1, false, true, 0, 0);
+
+if (bkcg != -1)
+{
+	background_sprite = bkcg
+}
+

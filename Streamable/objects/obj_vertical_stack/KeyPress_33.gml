@@ -1,5 +1,4 @@
 /// @description 
-if (active)
-{
-	y_offset -= room_height;
-}
+if not active return;
+
+y_offset -= room_height;
