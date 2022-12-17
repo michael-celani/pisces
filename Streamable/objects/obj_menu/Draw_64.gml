@@ -89,7 +89,7 @@ for (var i = 0; i < array_length(options); i++)
 		draw_text(bounding_x_end - 10 + 2, middle_y + 2, option.hotkey);
 		
 		draw_set_alpha(1);
-		draw_set_color(c_gray);
+		draw_set_color(option.hotkey_same_color ? option.draw_color : c_gray)
 		draw_text(bounding_x_end - 10, middle_y, option.hotkey);
 	}
 	

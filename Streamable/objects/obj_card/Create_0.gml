@@ -43,10 +43,10 @@ my_submenu.AddOption(to_command);
 
 var tap = new RightClickMenuOption("Tap", tap_card, noop, noop, spr_tap, "T");
 var flip = new RightClickMenuOption("Flip", flip_card, noop, noop, spr_flip, "F");
-var send_to = new RightClickSubMenu("Send To >", my_submenu, spr_envelope);
+var send_to = new RightClickSubMenu("Send To", my_submenu, spr_envelope, ">");
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop, spr_copy, "Z");
-var note = new RightClickMenuOption("Update Note", update_note,noop,noop, spr_note_sticky);
-var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
+var note = new RightClickMenuOption("Update Note", update_note, noop, noop, spr_note_sticky);
+//var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
 var add_counter = new RightClickMenuOption("Add Counter", function(card_inst) { card_inst.counters++ }, noop, noop, spr_counter_add, "+");
 var rem_counter = new RightClickMenuOption("Remove Counter", function(card_inst) { card_inst.counters = max(0, card_inst.counters - 1) }, noop, noop, spr_counter_rem, "-");
 var destroy = new RightClickMenuOption("Delete", card_destroy, noop, noop, spr_trash, "X");
@@ -73,7 +73,7 @@ if array_length(all_parts) > 0
 		my_partsmenu.AddOption(menu_opt)
 	}
 	
-	var create_parts = new RightClickSubMenu("Tokens >", my_partsmenu, spr_shapes);
+	var create_parts = new RightClickSubMenu("Tokens", my_partsmenu, spr_shapes, ">");
 	create_parts.draw_color = c_yellow;
 	
 	my_menu.AddOption(create_parts);

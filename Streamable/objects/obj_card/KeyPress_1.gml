@@ -5,16 +5,15 @@ if !keys_are_active() return;
 
 clear_menus(self);
 
-#macro EqualPlus 187
-#macro Minus 189
-#macro NumAdd 107
-#macro NumSub 109
+// can't use ord() or vk_* for Equal/Plus or Minus buttons
+#macro vk_EqualPlus 187
+#macro vk_Minus 189
 
 var _key = keyboard_lastkey;
 
 //counters up or down
-if _key == EqualPlus or _key == NumAdd {
+if _key == vk_EqualPlus or _key == vk_add {
 	counters++;
-} else if _key == Minus or _key == NumSub {
+} else if _key == vk_Minus or _key == vk_subtract {
 	counters = max(0, counters - 1);
 }

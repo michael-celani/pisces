@@ -157,10 +157,6 @@ if counters != 0
 		draw_text(x4, y4, string(counters));
 }
 
-draw_set_alpha(1)
-draw_set_color(c_red)
-draw_text(20, 20, string(keyboard_lastkey))
-
 // Write to webcam surface:
 if camera_mirroring_enabled()
 {

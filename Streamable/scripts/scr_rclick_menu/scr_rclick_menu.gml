@@ -59,7 +59,7 @@ function RightClickMenu(_dividers = []) constructor
 	}
 }
 
-function RightClickMenuOption(_name, _action, _onhover, _onunhover, _icon = spr_close, _hotkey = "") constructor
+function RightClickMenuOption(_name, _action, _onhover, _onunhover, _icon = spr_close, _hotkey = "", _hotkey_same_color = false) constructor
 {
 	name = _name;
 	action = _action;
@@ -68,6 +68,7 @@ function RightClickMenuOption(_name, _action, _onhover, _onunhover, _icon = spr_
 	icon = _icon;
 	hotkey = _hotkey;
 	draw_color = c_white;
+	hotkey_same_color = _hotkey_same_color;
 	
 	static Perform = function(owner)
 	{
@@ -106,6 +107,7 @@ function RightClickSubMenu(_name, _submenu, _icon = spr_close, _hotkey = "") con
 	icon = _icon;
 	hotkey = _hotkey;
 	draw_color = c_white;
+	hotkey_same_color = true
 	
 	static Perform = function(owner) { 
 		with (obj_menu)
