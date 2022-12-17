@@ -1,5 +1,4 @@
 /// @description Insert description here
-// You can write your code in this editor
 if not is_hovering and not (is_selected and not is_dragged) return;
 if !keys_are_active() return;
 
@@ -13,7 +12,7 @@ var _key = keyboard_lastkey;
 
 //counters up or down
 if _key == vk_EqualPlus or _key == vk_add {
-	counters++;
+	add_card_counters(self)
 } else if _key == vk_Minus or _key == vk_subtract {
-	counters = max(0, counters - 1);
+	sub_card_counters(self)
 }
