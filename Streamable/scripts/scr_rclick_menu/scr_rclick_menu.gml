@@ -15,7 +15,10 @@ function RightClickMenu(_dividers = []) constructor
 		
 		for (var i = 0; i < array_length(menu_options); i++)
 		{
-			var name_str = menu_options[i].name
+			var name_str = menu_options[i].name;
+			if menu_options[i].hotkey != "" {
+				name_str = name_str + "m" + menu_options[i].hotkey;
+			}
 			var max_height = max(max_height, string_height(name_str));
 			var max_width = max(max_width, string_width(name_str));
 		}
