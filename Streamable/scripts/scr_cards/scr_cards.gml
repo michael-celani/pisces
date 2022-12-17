@@ -94,20 +94,7 @@ function move_to_command(card_inst)
 }
 
 function add_to_card_stack(card_inst, stack_inst) {
-	remove_from_card_stack(card_inst);
-	
-	card_inst.parent_stack = stack_inst;
-	card_inst.is_revealed = stack_inst.hidden_zone;
-	array_push(stack_inst.stack_list, card_inst.id);
-	
-	// Untap the card:
-	card_inst.is_tapping = false;
-	card_inst.tapped = false;
-	card_inst.image_angle = 0;
-	layer_add_instance(stack_inst.zone_layer, card_inst);
-	obj_height_manager.height_modified = true;
-	
-	card_inst.is_selected = false;
+	add_to_card_stack_location(card_inst, stack_inst, array_length(stack_inst.stack_list))
 }
 
 function add_to_card_stack_beginning(card_inst, stack_inst) {
