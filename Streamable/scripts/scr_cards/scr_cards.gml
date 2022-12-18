@@ -45,6 +45,7 @@ function create_kamiflip_sprite(spr) {
 	var h = sprite_get_height(spr);
 	var temp_surf = surface_create(w, h);
 	surface_set_target(temp_surf);
+	// these coordinates do a 180 degree turn
 	draw_sprite_pos(spr, 0, w, h, 0, h, 0, 0, w, 0, 1);
 	surface_reset_target();
 	var new_sprite = sprite_create_from_surface(temp_surf, 0, 0, w, h, false, true, w / 2, h / 2);

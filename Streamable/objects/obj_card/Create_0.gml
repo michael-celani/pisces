@@ -3,7 +3,6 @@ offset_drag = false;
 is_tapping = false;
 tapped = false;
 
-
 next_x = x
 next_y = y
 
