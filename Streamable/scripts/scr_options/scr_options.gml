@@ -146,6 +146,7 @@ function load_background(options_inst)
 	// There was an error
 	if (new_sprite == -1)
 	{
+		instance_create_layer(room_width / 2 - 375, 20, "UI", obj_error_window, {"error_text": "An error occurred while loading the\nbackground." })
 		return;
 	}
 
@@ -175,10 +176,14 @@ function load_sleeves(options_inst)
 		return;
 	};
 
-	// Duplicate the file:
-	file_copy(file, "sleeves.img");
-
 	var new_sprite = sprite_add(file, 1, false, true, 372, 520);
+
+	// There was an error
+	if (new_sprite == -1)
+	{
+		instance_create_layer(room_width / 2 - 375, 20, "UI", obj_error_window, {"error_text": "An error occurred while loading the\ncard sleeves." })
+		return;
+	}
 
 	var temp_surf = surface_create(745, 1040);
 	surface_set_target(temp_surf);
@@ -199,6 +204,9 @@ function load_sleeves(options_inst)
 	}
 	
 	options_inst.card_back_sprite = new_sprite;
+	
+	// Duplicate the file:
+	file_copy(file, "sleeves.img");
 }
 
 function search_scryfall(options_inst)
