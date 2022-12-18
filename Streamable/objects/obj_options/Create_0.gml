@@ -17,13 +17,13 @@ roll_menu.AddOption(roll8);
 roll_menu.AddOption(roll10);
 roll_menu.AddOption(roll12);
 
-var roll_submenu = new RightClickSubMenu("Roll >", roll_menu, spr_dice);
-var options = new RightClickMenuOption("Open Options", open_options, noop, noop, spr_gear);
-var load_deck = new RightClickMenuOption("Load Decklist...", load_decklist, noop, noop, spr_listul);
-var scry_search = new RightClickMenuOption("Search Scryfall...", search_scryfall, noop, noop, spr_scryfall);
+var roll_submenu = new RightClickSubMenu("Roll", roll_menu, spr_dice, ">");
+var options = new RightClickMenuOption("Open Options", open_options, noop, noop, spr_gear, "O");
+var load_deck = new RightClickMenuOption("Load Decklist", load_decklist, noop, noop, spr_listul, "...", true);
+var scry_search = new RightClickMenuOption("Search Scryfall", search_scryfall, noop, noop, spr_scryfall, "...", true);
 
-var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save);
-var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load);
+var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save, "F7");
+var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load, "F8");
 
 
 menu = new RightClickMenu();

@@ -4,7 +4,7 @@ if !keys_are_active() return;
 
 clear_menus(self);
 
-var cards = [];
+//var cards = [];
 var me = id;
 
 var priority = ds_priority_create();
