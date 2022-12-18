@@ -44,7 +44,7 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Options",
-    "path": "folders/Objects/Options.yy",
+    "name": "Windows",
+    "path": "folders/Objects/Windows.yy",
   },
 }

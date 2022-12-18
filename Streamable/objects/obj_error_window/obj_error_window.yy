@@ -1,11 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_scryfall_window",
-  "spriteId": {
-    "name": "spr_pixel",
-    "path": "sprites/spr_pixel/spr_pixel.yy",
-  },
+  "name": "obj_error_window",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
@@ -30,8 +27,12 @@
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"title_text","varType":2,"value":"Error","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"error_text","varType":2,"value":"An error occurred.","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+  ],
   "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"width","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"750",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"220",},
   ],
   "parent": {
