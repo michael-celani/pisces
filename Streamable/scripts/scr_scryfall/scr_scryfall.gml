@@ -25,8 +25,10 @@ function CardFactory() constructor
 	card_data = -1;
 	front_sprite = -1;
 	back_sprite = -1;
+	front_sprite_kamiflipped = -1;
 	internal_id = "";
 	internal_name = "";
+	layout = "";
 	
 	static PopulateDataViaScryfallSearch = function(search)
 	{
@@ -92,6 +94,7 @@ function CardFactory() constructor
 			if response_status == 0
 			{
 				var json = async_load[? "result"];
+				show_debug_message(json);
 				var data = json_parse(json);
 				
 				switch (data.object)
@@ -108,10 +111,12 @@ function CardFactory() constructor
 						return false;
 				}
 
+				layout = card_data.layout;
+				
 				// The card layout supports a backface:
 				if (card_data.layout == "modal_dfc" or 
-				card_data.layout == "transform" or 
-				card_data.layout == "double_faced_token")
+					card_data.layout == "transform" or 
+					card_data.layout == "double_faced_token")
 				{
 					LoadBackSprite()
 					
@@ -173,12 +178,18 @@ function CardFactory() constructor
 	{
 		cards = array_create(number);
 		
+		if layout == "flip" {
+			front_sprite_kamiflipped = create_kamiflip_sprite(front_sprite);
+		}
+		
 		for (var j = 0; j < number; j++) {
 			var data_struct = { 
 				"name": card_data.name, 
 				sprite_index: front_sprite, 
 				"front_sprite": front_sprite, 
 				"back_sprite": back_sprite,
+				"front_sprite_kamiflipped": front_sprite_kamiflipped,
+				"back_sprite_kamiflipped": -1,
 				"all_parts": []
 			}
 			

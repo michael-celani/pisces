@@ -26,20 +26,53 @@ function flip_card(card_inst)
 	card_inst.is_flipped = !card_inst.is_flipped;
 }
 
+function kamiflip_card(card_inst) {	
+	if card_inst.front_sprite_kamiflipped == -1 {
+		card_inst.front_sprite_kamiflipped = create_kamiflip_sprite(card_inst.front_sprite);
+	}
+	
+	if card_inst.back_sprite_kamiflipped == -1 {
+		card_inst.back_sprite_kamiflipped = create_kamiflip_sprite(
+			card_inst.back_sprite != -1 ? card_inst.back_sprite : obj_options.card_back_sprite
+		);
+	}
+	
+	card_inst.is_kamiflipped = !card_inst.is_kamiflipped;
+}
+
+function create_kamiflip_sprite(spr) {
+	var w = sprite_get_width(spr);
+	var h = sprite_get_height(spr);
+	var temp_surf = surface_create(w, h);
+	surface_set_target(temp_surf);
+	draw_sprite_pos(spr, 0, w, h, 0, h, 0, 0, w, 0, 1);
+	surface_reset_target();
+	var new_sprite = sprite_create_from_surface(temp_surf, 0, 0, w, h, false, true, w / 2, h / 2);
+	surface_free(temp_surf);
+	show_debug_message("created new sprite " + string(spr) + " from orig " + string(new_sprite));
+	return new_sprite;
+}
+
 function get_card_sprite(card_inst)
 {
 	if card_inst.is_flipped
 	{
 		if card_inst.back_sprite == -1
 		{
-			return obj_options.card_back_sprite;
+			return card_inst.is_kamiflipped
+				? obj_options.card_back_sprite_kamiflipped
+				: obj_options.card_back_sprite;
 		}
 		
-		return card_inst.back_sprite;
+		return card_inst.is_kamiflipped
+			? card_inst.back_sprite_kamiflipped
+			: card_inst.back_sprite;
 	}
 	else
 	{
-		return card_inst.front_sprite;
+		return card_inst.is_kamiflipped
+			? card_inst.front_sprite_kamiflipped
+			: card_inst.front_sprite;
 	}
 }
 
@@ -51,7 +84,11 @@ function duplicate_card(card_inst)
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
+		"front_sprite_kamiflipped": card_inst.front_sprite_kamiflipped,
+		"back_sprite_kamiflipped": card_inst.back_sprite_kamiflipped,
+		"is_kamiflipped": card_inst.is_kamiflipped,
 		"is_revealed": card_inst.is_revealed,
+		"is_flipped": card_inst.is_flipped,
 		"all_parts": card_inst.all_parts
 	});
 }

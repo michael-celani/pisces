@@ -55,6 +55,7 @@ multi_drag = false;
 
 background_sprite = spr_black;
 card_back_sprite = spr_card_bad;
+card_back_sprite_kamiflipped = create_kamiflip_sprite(spr_card_bad);
 
 since_last = 0;
 since_last_delta = 0;
