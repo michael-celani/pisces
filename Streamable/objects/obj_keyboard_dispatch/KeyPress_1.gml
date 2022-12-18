@@ -2,11 +2,13 @@
 if !keys_are_active() return;
 
 // Key is 0-9:
-if keyboard_lastkey >= 48 && keyboard_lastkey <= 57
-{
-	num_repeats *= 10;
-	num_repeats += int64(keyboard_lastkey - 48);
-	return;
+for (var i = 0; i < 10; ++i) {
+	if (keyboard_lastchar == i)
+	{
+		num_repeats *= 10;
+		num_repeats += int64(keyboard_lastchar);
+		return;
+	}
 }
 
 var num_times = max(1,  min(100, num_repeats));
