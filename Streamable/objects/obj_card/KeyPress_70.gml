@@ -5,7 +5,7 @@ if !keys_are_active() return;
 clear_menus(self);
 
 if keyboard_check(vk_shift) {
-	kamiflip_card(self);
+	toggle_upsidedown_card(self);
 } else {
 	flip_card(self);
 }

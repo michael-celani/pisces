@@ -26,21 +26,21 @@ function flip_card(card_inst)
 	card_inst.is_flipped = !card_inst.is_flipped;
 }
 
-function kamiflip_card(card_inst) {	
-	if card_inst.front_sprite_kamiflipped == -1 {
-		card_inst.front_sprite_kamiflipped = create_kamiflip_sprite(card_inst.front_sprite);
+function toggle_upsidedown_card(card_inst) {	
+	if card_inst.front_sprite_upsidedown == -1 {
+		card_inst.front_sprite_upsidedown = create_upsidedown_sprite(card_inst.front_sprite);
 	}
 	
-	if card_inst.back_sprite_kamiflipped == -1 {
-		card_inst.back_sprite_kamiflipped = create_kamiflip_sprite(
+	if card_inst.back_sprite_upsidedown == -1 {
+		card_inst.back_sprite_upsidedown = create_upsidedown_sprite(
 			card_inst.back_sprite != -1 ? card_inst.back_sprite : obj_options.card_back_sprite
 		);
 	}
 	
-	card_inst.is_kamiflipped = !card_inst.is_kamiflipped;
+	card_inst.is_upsidedown = !card_inst.is_upsidedown;
 }
 
-function create_kamiflip_sprite(spr) {
+function create_upsidedown_sprite(spr) {
 	var w = sprite_get_width(spr);
 	var h = sprite_get_height(spr);
 	var temp_surf = surface_create(w, h);
@@ -60,19 +60,19 @@ function get_card_sprite(card_inst)
 	{
 		if card_inst.back_sprite == -1
 		{
-			return card_inst.is_kamiflipped
-				? obj_options.card_back_sprite_kamiflipped
+			return card_inst.is_upsidedown
+				? obj_options.card_back_sprite_upsidedown
 				: obj_options.card_back_sprite;
 		}
 		
-		return card_inst.is_kamiflipped
-			? card_inst.back_sprite_kamiflipped
+		return card_inst.is_upsidedown
+			? card_inst.back_sprite_upsidedown
 			: card_inst.back_sprite;
 	}
 	else
 	{
-		return card_inst.is_kamiflipped
-			? card_inst.front_sprite_kamiflipped
+		return card_inst.is_upsidedown
+			? card_inst.front_sprite_upsidedown
 			: card_inst.front_sprite;
 	}
 }
@@ -85,9 +85,9 @@ function duplicate_card(card_inst)
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
-		"front_sprite_kamiflipped": card_inst.front_sprite_kamiflipped,
-		"back_sprite_kamiflipped": card_inst.back_sprite_kamiflipped,
-		"is_kamiflipped": card_inst.is_kamiflipped,
+		"front_sprite_upsidedown": card_inst.front_sprite_upsidedown,
+		"back_sprite_upsidedown": card_inst.back_sprite_upsidedown,
+		"is_upsidedown": card_inst.is_upsidedown,
 		"is_revealed": card_inst.is_revealed,
 		"is_flipped": card_inst.is_flipped,
 		"all_parts": card_inst.all_parts
@@ -156,9 +156,13 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
+	
+	// other things to reset:
+	card_inst.is_upsidedown = false;
 	if stack_inst.hidden_zone {
 		card_inst.counters = 0;
 	}
+	
 	layer_add_instance(stack_inst.zone_layer, card_inst);
 	obj_height_manager.height_modified = true;
 	

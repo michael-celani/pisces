@@ -25,7 +25,7 @@ function CardFactory() constructor
 	card_data = -1;
 	front_sprite = -1;
 	back_sprite = -1;
-	front_sprite_kamiflipped = -1;
+	front_sprite_upsidedown = -1;
 	internal_id = "";
 	internal_name = "";
 	layout = "";
@@ -179,7 +179,7 @@ function CardFactory() constructor
 		cards = array_create(number);
 		
 		if layout == "flip" {
-			front_sprite_kamiflipped = create_kamiflip_sprite(front_sprite);
+			front_sprite_upsidedown = create_upsidedown_sprite(front_sprite);
 		}
 		
 		for (var j = 0; j < number; j++) {
@@ -188,8 +188,8 @@ function CardFactory() constructor
 				sprite_index: front_sprite, 
 				"front_sprite": front_sprite, 
 				"back_sprite": back_sprite,
-				"front_sprite_kamiflipped": front_sprite_kamiflipped,
-				"back_sprite_kamiflipped": -1,
+				"front_sprite_upsidedown": front_sprite_upsidedown,
+				"back_sprite_upsidedown": -1,
 				"all_parts": []
 			}
 			
