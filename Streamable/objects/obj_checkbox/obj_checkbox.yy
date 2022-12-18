@@ -45,7 +45,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"button_clicked_color","path":"objects/obj_button/obj_button.yy",},"objectId":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},"value":"$104C3C2B",},
   ],
   "parent": {
-    "name": "Options",
-    "path": "folders/Objects/Options.yy",
+    "name": "Windows",
+    "path": "folders/Objects/Windows.yy",
   },
 }
