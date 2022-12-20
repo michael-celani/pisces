@@ -27,69 +27,18 @@ function flip_card(card_inst)
 }
 
 function toggle_upsidedown_card(card_inst) {
-	if (card_inst.front_sprite_upsidedown == -1) {
-		get_or_create_upsidedown_sprites(card_inst)
-	}
-	
 	card_inst.is_upsidedown = !card_inst.is_upsidedown;
-}
-
-function get_or_create_upsidedown_sprites(card_inst) {
-	with (obj_card) {
-		if (id != card_inst.id) {
-			if (front_sprite == card_inst.front_sprite && front_sprite_upsidedown != -1) {
-				show_debug_message("found sprite " + string(front_sprite_upsidedown) +
-					" from search " + string(card_inst.front_sprite));
-				show_debug_message("found sprite " + string(back_sprite_upsidedown) +
-					" from search " + string(card_inst.back_sprite));
-				card_inst.front_sprite_upsidedown = front_sprite_upsidedown;
-				card_inst.back_sprite_upsidedown = back_sprite_upsidedown;
-				return;
-			}
-		}
-	}
-	
-	card_inst.front_sprite_upsidedown = create_upsidedown_sprite(card_inst.front_sprite);
-	card_inst.back_sprite_upsidedown = create_upsidedown_sprite(card_inst.back_sprite);
-}
-
-function create_upsidedown_sprite(spr) {
-	if !sprite_exists(spr) return -1;
-	
-	var w = sprite_get_width(spr);
-	var h = sprite_get_height(spr);
-	var temp_surf = surface_create(w, h);
-	surface_set_target(temp_surf);
-	// these coordinates do a 180 degree turn
-	draw_sprite_pos(spr, 0, w, h, 0, h, 0, 0, w, 0, 1);
-	surface_reset_target();
-	var new_sprite = sprite_create_from_surface(temp_surf, 0, 0, w, h, false, true, w / 2, h / 2);
-	surface_free(temp_surf);
-	show_debug_message("created new sprite " + string(new_sprite) + " from orig " + string(spr));
-	return new_sprite;
 }
 
 function get_card_sprite(card_inst)
 {
-	if card_inst.is_flipped
-	{
-		if card_inst.back_sprite == -1
-		{
-			return card_inst.is_upsidedown
-				? obj_options.card_back_sprite_upsidedown
-				: obj_options.card_back_sprite;
-		}
-		
-		return card_inst.is_upsidedown
-			? card_inst.back_sprite_upsidedown
+	if card_inst.is_flipped {
+		return card_inst.back_sprite == -1
+			? obj_options.card_back_sprite
 			: card_inst.back_sprite;
 	}
-	else
-	{
-		return card_inst.is_upsidedown
-			? card_inst.front_sprite_upsidedown
-			: card_inst.front_sprite;
-	}
+
+	return card_inst.front_sprite;
 }
 
 function duplicate_card(card_inst)
@@ -100,8 +49,6 @@ function duplicate_card(card_inst)
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
-		"front_sprite_upsidedown": card_inst.front_sprite_upsidedown,
-		"back_sprite_upsidedown": card_inst.back_sprite_upsidedown,
 		"is_upsidedown": card_inst.is_upsidedown,
 		"is_revealed": card_inst.is_revealed,
 		"is_flipped": card_inst.is_flipped,

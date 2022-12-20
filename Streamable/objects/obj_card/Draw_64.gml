@@ -55,13 +55,21 @@ var spr = get_card_sprite(self);
 if (skewing)
 {
 	draw_sprite_pos_fixed(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, c_white, 0.25);
-	draw_sprite_pos_fixed(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
+	if (is_upsidedown) {
+		draw_sprite_pos_fixed(spr, image_index, x3, y3, x4, y4, x1, y1, x2, y2, c_white, 1);
+	} else {
+		draw_sprite_pos_fixed(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, c_white, 1);
+	}
 }
 else
 {
 	// Fixed is slower and not needed if not skewed
 	draw_sprite_pos(spr_card_shadow, image_index, x1 + off, y1 + off, x2 + off, y2 + off, x3 + off, y3 + off, x4 + off, y4 + off, 0.25);
-	draw_sprite_pos(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
+	if (is_upsidedown) {
+		draw_sprite_pos(spr, image_index, x3, y3, x4, y4, x1, y1, x2, y2, 1);
+	} else {		
+		draw_sprite_pos(spr, image_index, x1, y1, x2, y2, x3, y3, x4, y4, 1);
+	}
 }
 
 if is_zoomed and not is_dragged and note_content != ""

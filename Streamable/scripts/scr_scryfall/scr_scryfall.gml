@@ -25,10 +25,8 @@ function CardFactory() constructor
 	card_data = -1;
 	front_sprite = -1;
 	back_sprite = -1;
-	front_sprite_upsidedown = -1;
 	internal_id = "";
 	internal_name = "";
-	layout = "";
 	
 	static PopulateDataViaScryfallSearch = function(search)
 	{
@@ -113,8 +111,6 @@ function CardFactory() constructor
 						return false;
 				}
 
-				layout = card_data.layout;
-				
 				// The card layout supports a backface:
 				if (card_data.layout == "modal_dfc" or 
 					card_data.layout == "transform" or 
@@ -182,18 +178,12 @@ function CardFactory() constructor
 	{
 		cards = array_create(number);
 		
-		if layout == "flip" {
-			front_sprite_upsidedown = create_upsidedown_sprite(front_sprite);
-		}
-		
 		for (var j = 0; j < number; j++) {
 			var data_struct = { 
 				"name": card_data.name, 
 				sprite_index: front_sprite, 
 				"front_sprite": front_sprite, 
 				"back_sprite": back_sprite,
-				"front_sprite_upsidedown": front_sprite_upsidedown,
-				"back_sprite_upsidedown": -1,
 				"all_parts": []
 			}
 			
