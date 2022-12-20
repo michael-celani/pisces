@@ -26,21 +26,36 @@ function flip_card(card_inst)
 	card_inst.is_flipped = !card_inst.is_flipped;
 }
 
-function toggle_upsidedown_card(card_inst) {	
-	if card_inst.front_sprite_upsidedown == -1 {
-		card_inst.front_sprite_upsidedown = create_upsidedown_sprite(card_inst.front_sprite);
-	}
-	
-	if card_inst.back_sprite_upsidedown == -1 {
-		card_inst.back_sprite_upsidedown = create_upsidedown_sprite(
-			card_inst.back_sprite != -1 ? card_inst.back_sprite : obj_options.card_back_sprite
-		);
+function toggle_upsidedown_card(card_inst) {
+	if (card_inst.front_sprite_upsidedown == -1) {
+		get_or_create_upsidedown_sprites(card_inst)
 	}
 	
 	card_inst.is_upsidedown = !card_inst.is_upsidedown;
 }
 
+function get_or_create_upsidedown_sprites(card_inst) {
+	with (obj_card) {
+		if (id != card_inst.id) {
+			if (front_sprite == card_inst.front_sprite && front_sprite_upsidedown != -1) {
+				show_debug_message("found sprite " + string(front_sprite_upsidedown) +
+					" from search " + string(card_inst.front_sprite));
+				show_debug_message("found sprite " + string(back_sprite_upsidedown) +
+					" from search " + string(card_inst.back_sprite));
+				card_inst.front_sprite_upsidedown = front_sprite_upsidedown;
+				card_inst.back_sprite_upsidedown = back_sprite_upsidedown;
+				return;
+			}
+		}
+	}
+	
+	card_inst.front_sprite_upsidedown = create_upsidedown_sprite(card_inst.front_sprite);
+	card_inst.back_sprite_upsidedown = create_upsidedown_sprite(card_inst.back_sprite);
+}
+
 function create_upsidedown_sprite(spr) {
+	if !sprite_exists(spr) return -1;
+	
 	var w = sprite_get_width(spr);
 	var h = sprite_get_height(spr);
 	var temp_surf = surface_create(w, h);
@@ -50,7 +65,7 @@ function create_upsidedown_sprite(spr) {
 	surface_reset_target();
 	var new_sprite = sprite_create_from_surface(temp_surf, 0, 0, w, h, false, true, w / 2, h / 2);
 	surface_free(temp_surf);
-	show_debug_message("created new sprite " + string(spr) + " from orig " + string(new_sprite));
+	show_debug_message("created new sprite " + string(new_sprite) + " from orig " + string(spr));
 	return new_sprite;
 }
 

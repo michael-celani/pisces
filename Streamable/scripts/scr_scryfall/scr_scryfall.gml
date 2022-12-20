@@ -59,6 +59,7 @@ function CardFactory() constructor
 		{
 			show_debug_message("loading back sprite from file: " + file_name);
 			back_sprite = sprite_add(file_name, 1, false, true, 745 / 2, 1040 / 2);
+			show_debug_message("loaded back sprite " + string(back_sprite));
 		}
 		else
 		{
@@ -76,6 +77,7 @@ function CardFactory() constructor
 		{
 			show_debug_message("loading front sprite from file: " + file_name);
 			front_sprite = sprite_add(file_name, 1, false, true, 745 / 2, 1040 / 2);
+			show_debug_message("loaded front sprite " + string(front_sprite));
 		}
 		else
 		{
@@ -141,6 +143,7 @@ function CardFactory() constructor
 			{
 				var path = async_load[? "result"];
 				back_sprite = sprite_add(path, 1, false, true, 745 / 2, 1040 / 2);
+				show_debug_message("loaded back sprite " + string(back_sprite));
 				LoadFrontSprite();
 			}
 			else if response_status == -1
@@ -156,6 +159,7 @@ function CardFactory() constructor
 			{
 				var path = async_load[? "result"];
 				front_sprite = sprite_add(path, 1, false, true, 745 / 2, 1040 / 2);
+				show_debug_message("loaded front sprite " + string(front_sprite));
 			}
 			else if response_status == -1
 			{
