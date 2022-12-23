@@ -13,6 +13,16 @@ if lc >= 48 && lc <= 57
 	num_repeats += lc - 48;
 	return;
 }
+/*
+for (var i = 0; i < 10; ++i) {
+	if (keyboard_lastchar == i)
+	{
+		num_repeats *= 10;
+		num_repeats += i;
+		return;
+	}
+}
+*/
 
 var num_times = max(1,  min(100, num_repeats));
 num_repeats = 0;

@@ -103,19 +103,25 @@ function move_to_command(card_inst)
 }
 
 function add_to_card_stack(card_inst, stack_inst) {
-	add_to_card_stack_location(card_inst, stack_inst, array_length(stack_inst.stack_list))
+	add_to_card_stack_location(card_inst, stack_inst)
 }
 
 function add_to_card_stack_beginning(card_inst, stack_inst) {
 	add_to_card_stack_location(card_inst, stack_inst, 0);
 }
 
-function add_to_card_stack_location(card_inst, stack_inst, pos)
+function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 {
 	remove_from_card_stack(card_inst);
 	
 	card_inst.parent_stack = stack_inst;
 	card_inst.is_revealed = stack_inst.hidden_zone;
+	
+	if pos == -1
+	{
+		pos = array_length(stack_inst.stack_list);	
+	}
+	
 	array_insert(stack_inst.stack_list, pos, card_inst.id);
 	
 	// Untap the card:
