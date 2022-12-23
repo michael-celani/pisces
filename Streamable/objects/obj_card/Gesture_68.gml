@@ -1,9 +1,11 @@
-/// @description Dragging
+/// @description Drag End
 if !is_dragged return;
 
 is_dragged = false;
-subscribed_events = {};
-is_selected = false;
+subscribed_events = default_subbed_events;
+
+//for deselect after drag
+//is_selected = false;
 
 if obj_scry.active
 {
@@ -67,6 +69,7 @@ if (mouse_y > room_height - sprite_height / 2 - 50)
 	return;
 }
 
+show_debug_message("add to battlefield: " + string(id) + " (" + name + ")");
 layer_add_instance("Battlefield", self);
 obj_height_manager.height_modified = true;
 is_revealed = true;

@@ -30,7 +30,9 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":60,"eventType":6,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":61,"eventType":6,"collisionObjectId":null,},
   ],
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"stack_name","varType":2,"value":"Hand","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+  ],
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"hidden_zone","path":"objects/obj_card_stack/obj_card_stack.yy",},"objectId":{"name":"obj_card_stack","path":"objects/obj_card_stack/obj_card_stack.yy",},"value":"True",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"zone_layer","path":"objects/obj_card_stack/obj_card_stack.yy",},"objectId":{"name":"obj_card_stack","path":"objects/obj_card_stack/obj_card_stack.yy",},"value":"\"Hand\"",},

@@ -92,6 +92,7 @@ function CardFactory() constructor
 			if response_status == 0
 			{
 				var json = async_load[? "result"];
+				show_debug_message(json);
 				var data = json_parse(json);
 				
 				switch (data.object)

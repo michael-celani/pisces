@@ -1,5 +1,6 @@
 surface_depth_disable(true);
-gesture_drag_time(0.05);
+gesture_drag_time(0.2);
+gesture_double_tap_time(0.2);
 gpu_set_tex_mip_enable(mip_on);
 gpu_set_tex_mip_filter(tf_anisotropic);
 randomize();

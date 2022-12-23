@@ -1,11 +1,15 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function add_card_counters(card_inst, num = 1) {
-	card_inst.counters += num;
+	change_card_counters(card_inst, num);
 }
 
 function sub_card_counters(card_inst, num = 1) {
-	card_inst.counters = max(0, card_inst.counters - num)
+	change_card_counters(card_inst, num * -1)
+}
+
+function change_card_counters(card_inst, num) {
+	card_inst.counters = max(0, card_inst.counters + num)
 }
 
 function tap_card(card_inst) 
@@ -118,9 +122,22 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
+
+	if stack_inst.object_index != obj_exile {
+		card_inst.is_flipped = false;
+	} /*else if card_inst.is_flipped {
+		card_inst.is_revealed = true;
+	}*/
+	/* 2022-12-19 lyon
+		seems to me they should reset to front face up going to hand, graveyard, library, and command.
+		exile is the only one where they might legit be put there facedown intentionally.
+	*/
+	
 	if stack_inst.hidden_zone {
 		card_inst.counters = 0;
 	}
+	
+	show_debug_message("add to zone " + stack_inst.stack_name + " " + string(stack_inst));
 	layer_add_instance(stack_inst.zone_layer, card_inst);
 	obj_height_manager.height_modified = true;
 	
@@ -131,8 +148,9 @@ function remove_from_card_stack(card_inst) {
 	if card_inst.parent_stack != noone {
 		var index = array_find_indexEx(card_inst.parent_stack.stack_list, card_inst.id);
 		array_delete(card_inst.parent_stack.stack_list, index, 1);
-		parent_stack = noone;
+		card_inst.parent_stack = noone;
 		
+		show_debug_message("add to battlefield");
 		layer_add_instance("Battlefield", card_inst);
 		obj_height_manager.height_modified = true;
 		
