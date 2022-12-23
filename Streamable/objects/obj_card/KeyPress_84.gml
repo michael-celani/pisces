@@ -6,5 +6,6 @@ if parent_stack != noone return;
 clear_menus(self);
 tap_card(self);
 
-//for deselect after tap
-//is_selected = false;
+if obj_options.deselect_after_tap {
+	is_selected = false;
+}

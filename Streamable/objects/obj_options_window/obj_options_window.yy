@@ -32,7 +32,7 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"280",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"480",},
   ],
   "parent": {
     "name": "Windows",

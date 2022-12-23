@@ -260,6 +260,14 @@ function toggle_draw_on_turn(options_inst)
 	options_inst.draw_on_turn = !options_inst.draw_on_turn;
 }
 
+function toggle_deselect_after_tap(options_inst) {
+	options_inst.deselect_after_tap = !options_inst.deselect_after_tap;
+}
+
+function toggle_deselect_after_drag(options_inst) {
+	options_inst.deselect_after_drag = !options_inst.deselect_after_drag;
+}
+
 function draw_card(options_inst)
 {
 	with obj_deck

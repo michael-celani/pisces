@@ -4,8 +4,9 @@ if !is_dragged return;
 is_dragged = false;
 subscribed_events = default_subbed_events;
 
-//for deselect after drag
-//is_selected = false;
+if obj_options.deselect_after_drag {
+	is_selected = false;
+}
 
 if obj_scry.active
 {
