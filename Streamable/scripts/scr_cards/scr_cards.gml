@@ -30,21 +30,19 @@ function flip_card(card_inst)
 	card_inst.is_flipped = !card_inst.is_flipped;
 }
 
+function toggle_upsidedown_card(card_inst) {
+	card_inst.is_upsidedown = !card_inst.is_upsidedown;
+}
+
 function get_card_sprite(card_inst)
 {
-	if card_inst.is_flipped
-	{
-		if card_inst.back_sprite == -1
-		{
-			return obj_options.card_back_sprite;
-		}
-		
-		return card_inst.back_sprite;
+	if card_inst.is_flipped {
+		return card_inst.back_sprite == -1
+			? obj_options.card_back_sprite
+			: card_inst.back_sprite;
 	}
-	else
-	{
-		return card_inst.front_sprite;
-	}
+
+	return card_inst.front_sprite;
 }
 
 function duplicate_card(card_inst)
@@ -55,7 +53,9 @@ function duplicate_card(card_inst)
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
+		"is_upsidedown": card_inst.is_upsidedown,
 		"is_revealed": card_inst.is_revealed,
+		"is_flipped": card_inst.is_flipped,
 		"all_parts": card_inst.all_parts
 	});
 }
@@ -123,6 +123,13 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
 
+	// other things to reset:
+	card_inst.is_upsidedown = false;
+	
+	if stack_inst.hidden_zone {
+		card_inst.counters = 0;
+	}
+
 	if stack_inst.object_index != obj_exile {
 		card_inst.is_flipped = false;
 	} /*else if card_inst.is_flipped {
@@ -132,10 +139,6 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 		seems to me they should reset to front face up going to hand, graveyard, library, and command.
 		exile is the only one where they might legit be put there facedown intentionally.
 	*/
-	
-	if stack_inst.hidden_zone {
-		card_inst.counters = 0;
-	}
 	
 	show_debug_message("add to zone " + stack_inst.stack_name + " " + string(stack_inst));
 	layer_add_instance(stack_inst.zone_layer, card_inst);
