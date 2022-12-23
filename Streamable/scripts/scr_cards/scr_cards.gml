@@ -99,7 +99,8 @@ function move_to_command(card_inst)
 }
 
 function add_to_card_stack(card_inst, stack_inst) {
-	add_to_card_stack_location(card_inst, stack_inst, array_length(stack_inst.stack_list))
+	var newIdx = array_length(stack_inst.stack_list) - (card_inst.parent_stack == stack_inst);
+	add_to_card_stack_location(card_inst, stack_inst, newIdx);
 }
 
 function add_to_card_stack_beginning(card_inst, stack_inst) {
