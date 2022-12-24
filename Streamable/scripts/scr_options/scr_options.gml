@@ -1,5 +1,23 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function ini_b2str(flag) { return flag ? "true" : "false"; }
+
+function load_settings_ini() {
+	ini_open("settings.ini");
+	obj_options.draw_on_turn = bool(ini_read_string("behavior", "draw_on_turn", obj_options.draw_on_turn));
+	obj_options.deselect_after_tap = bool(ini_read_string("behavior", "deselect_after_tap", obj_options.deselect_after_tap));
+	obj_options.deselect_after_drag = bool(ini_read_string("behavior", "deselect_after_drag", obj_options.deselect_after_drag));
+	ini_close();
+}
+
+function save_settings_ini() {
+	ini_open("settings.ini");
+	ini_write_string("behavior", "draw_on_turn", ini_b2str(obj_options.draw_on_turn));
+	ini_write_string("behavior", "deselect_after_tap", ini_b2str(obj_options.deselect_after_tap));
+	ini_write_string("behavior", "deselect_after_drag", ini_b2str(obj_options.deselect_after_drag));
+	ini_close();
+}
+
 function increase_game_size(options_inst)
 {
 	options_inst.default_scaling = clamp(options_inst.default_scaling + 0.05, 0.1, 0.5);
@@ -222,7 +240,10 @@ function open_options(options_inst)
 	{
 		if !keys_are_active() return;
 
-		instance_create_layer(room_width / 2 - 640, room_height / 2 - 360, "UI", obj_options_window);
+		instance_create_layer(
+			(room_width - 1000) / 2,
+			(room_height - 520) / 2,
+			"UI", obj_options_window);
 	}
 	else
 	{
@@ -258,14 +279,17 @@ function roll_dice(num, icon)
 function toggle_draw_on_turn(options_inst)
 {
 	options_inst.draw_on_turn = !options_inst.draw_on_turn;
+	save_settings_ini();
 }
 
 function toggle_deselect_after_tap(options_inst) {
 	options_inst.deselect_after_tap = !options_inst.deselect_after_tap;
+	save_settings_ini();
 }
 
 function toggle_deselect_after_drag(options_inst) {
 	options_inst.deselect_after_drag = !options_inst.deselect_after_drag;
+	save_settings_ini();
 }
 
 function draw_card(options_inst)

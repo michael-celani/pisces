@@ -5,14 +5,15 @@ var title = instance_create_layer(x, y, "UI", obj_title_bar, {"parent_component"
 var close = instance_create_layer(x + width - 60, y + 20, "UI", obj_close, {"parent_component": title});
 
 var ylevel = 95;
+var yldiff = 70;
 
 var check_label = instance_create_layer(x + 20, y + ylevel, "UI", obj_label, {
 	"parent_component": id,
 	"label_font": fnt_beleren,
 	"label_text": "Card Size:"
 });
-		
-var slider = instance_create_layer(x + width - 740, y + ylevel + 20, "UI", obj_slider, 
+
+var slider = instance_create_layer(x + 230, y + ylevel + 20, "UI", obj_slider, 
 { 
 	"parent_component": id,
 	"value_low": 0.15,
@@ -21,7 +22,7 @@ var slider = instance_create_layer(x + width - 740, y + ylevel + 20, "UI", obj_s
 	"on_drag": function(new_value) { obj_options.default_scaling = new_value; }
 });
 
-ylevel += 60;
+ylevel += yldiff;
 var checkboxDraw = instance_create_layer(x + 20, y + ylevel, "UI", obj_checkbox,
 {
 	"parent_component": id,
@@ -42,7 +43,7 @@ var check_labelDraw = instance_create_layer(
 	}
 );
 
-ylevel += 60;
+ylevel += yldiff;
 var checkboxTapDeselect = instance_create_layer(x + 20, y + ylevel, "UI", obj_checkbox,
 {
 	"parent_component": id,
@@ -63,7 +64,7 @@ var labelTapDeselect = instance_create_layer(
 	}
 );
 
-ylevel += 60;
+ylevel += yldiff;
 var checkboxDragEndDeselect = instance_create_layer(x + 20, y + ylevel, "UI", obj_checkbox,
 {
 	"parent_component": id,
@@ -84,17 +85,17 @@ var labelTapDeselect = instance_create_layer(
 	}
 );
 
-ylevel += 70;
+ylevel += yldiff;
 var buttonCamToggle = instance_create_layer(x + 20, y + ylevel, "UI", obj_button,
 {
 	"parent_component": id,
 	"active": camera_exists(),
 	"on_click": toggle_camera_mirroring,
 	"button_text": "Toggle Camera Mirroring",
-	"get_button_text": function () { return "Toggle Camera Mirroring: " + (camera_mirroring_enabled() ? "Off" : "On"); }
+	"get_button_text": function () { return "Toggle Camera Mirroring to " + (camera_mirroring_enabled() ? "OFF" : "ON"); }
 });
 
-ylevel += 60;
+ylevel += yldiff;
 var buttonLoadBG = instance_create_layer(x + 20, y + ylevel, "UI", obj_button,
 {
 	"parent_component": id,

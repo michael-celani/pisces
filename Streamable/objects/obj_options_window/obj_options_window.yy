@@ -32,7 +32,8 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"480",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"520",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"width","path":"objects/obj_window/obj_window.yy",},"objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"value":"1000",},
   ],
   "parent": {
     "name": "Windows",
