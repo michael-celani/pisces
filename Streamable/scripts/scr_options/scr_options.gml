@@ -322,6 +322,11 @@ function save_state(options_inst)
 			"saved_x": x,
 			"saved_y": y,
 			"saved_hp": height_priority,
+			"is_flipped": is_flipped,
+			"is_upsidedown": is_upsidedown,
+			"tapped": tapped,
+			"counters": counters,
+			"note_content": note_content,
 			"destroyed": false
 		}	
 	}
@@ -358,7 +363,11 @@ function load_state(options_inst)
 			}
 			
 			height_priority = save_struct.saved_hp;
-			
+			is_flipped = save_struct.is_flipped;
+			is_upsidedown = save_struct.is_upsidedown;
+			is_tapping = tapped != save_struct.tapped;
+			counters = save_struct.counters;
+			note_content = save_struct.note_content;
 		}
 	}
 
