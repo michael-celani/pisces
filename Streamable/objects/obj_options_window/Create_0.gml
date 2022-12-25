@@ -91,8 +91,8 @@ var buttonCamToggle = instance_create_layer(x + 20, y + ylevel, "UI", obj_button
 	"parent_component": id,
 	"active": camera_exists(),
 	"on_click": toggle_camera_mirroring,
-	"button_text": "Toggle Camera Mirroring",
-	"get_button_text": function () { return "Toggle Camera Mirroring to " + (camera_mirroring_enabled() ? "OFF" : "ON"); }
+	//"button_text": "Toggle Camera Mirroring",
+	"get_button_text": function () { return "Turn Camera Mirroring " + (camera_mirroring_enabled() ? "OFF" : "ON"); }
 });
 
 ylevel += yldiff;
