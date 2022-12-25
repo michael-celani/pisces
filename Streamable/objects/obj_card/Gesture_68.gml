@@ -73,6 +73,7 @@ if (mouse_y > room_height - sprite_height / 2 - 50)
 show_debug_message("add to battlefield: " + string(id) + " (" + name + ")");
 layer_add_instance("Battlefield", self);
 obj_height_manager.height_modified = true;
+sticky_is_revealed = false;
 is_revealed = true;
 
 if event_data[? "isflick"] {

@@ -115,8 +115,7 @@ function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 	remove_from_card_stack(card_inst);
 	
 	card_inst.parent_stack = stack_inst;
-	card_inst.is_revealed = stack_inst.hidden_zone;
-	
+
 	if pos == -1
 	{
 		pos = array_length(stack_inst.stack_list);	
@@ -136,11 +135,17 @@ function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 		card_inst.counters = 0;
 	}
 
-	if stack_inst.object_index != obj_exile {
+	if stack_inst.object_index == obj_exile
+		&& card_inst.is_flipped
+		&& keyboard_check(vk_shift)
+	{
+		card_inst.sticky_is_revealed = true;
+		card_inst.is_revealed = false;
+	} else {
+		card_inst.sticky_is_revealed = false;
+		card_inst.is_revealed = !stack_inst.hidden_zone;
 		card_inst.is_flipped = false;
-	} /*else if card_inst.is_flipped {
-		card_inst.is_revealed = true;
-	}*/
+	}
 	/* 2022-12-19 lyon
 		seems to me they should reset to front face up going to hand, graveyard, library, and command.
 		exile is the only one where they might legit be put there facedown intentionally.
