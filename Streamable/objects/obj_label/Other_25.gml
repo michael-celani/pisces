@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Draw
 
 var draw_x = x;
 var draw_y = y;

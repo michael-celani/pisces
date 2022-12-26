@@ -1,4 +1,5 @@
 /// @description Options for the card game.
+load_settings_ini();
 
 var roll2 = new RightClickMenuOption("Roll d2", roll_dice(2, spr_d2_logo), noop, noop, spr_d2);
 var roll4 = new RightClickMenuOption("Roll d4", roll_dice(4, spr_d4_logo), noop, noop, spr_d4);

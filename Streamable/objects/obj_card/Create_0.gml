@@ -92,3 +92,14 @@ height_priority = next_height_priority();
 owning_canvas = noone;
 
 save_struct = undefined;
+
+default_subbed_events = {
+	"counter_increment": 1,
+	"counter_decrement": 2
+};
+
+during_drag_events = {
+	"coalesce": 0
+};
+
+subscribed_events = default_subbed_events;
