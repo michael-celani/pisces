@@ -2,7 +2,7 @@
 - Added upside-down flip with shift+F. (No right-click menu entry yet)
 - Fixed bug where only the keyboard top row numbers could be used to preceed `D`, `M`, or `R` keybinds with an amount of cards to draw, mill, or scry (respectively). Now the numpad numbers work, too.
 - Fixed issue where using E (exile), C (command zone), or K (bottom of deck) on a card that was already in the destination zone caused an error and crash.
-- Refactored counter +/- keybinds (numpad + and - keys, -/_ key, and =/+ key but you don't have to hold shift) to use the repeatable event like draw, mill, and scry do so you can preceed it with numbers to add that many counters. Example: type `1`, `2`, and then whichever keybind to add counters, and it'll add 12 counters.
+- Refactored counter +/- keybinds -- the numpad + and - keys, minus/underscore key, and equal/plus key (but you don't have to hold shift) -- to use the repeatable event like draw, mill, and scry do so you can preceed it with numbers to add that many counters. Example: type `1`, `2`, and then whichever keybind to add counters, and it'll add 12 counters.
 - Allow Flip (front/back) of cards that are selected, not just the card that's hovered. In case of werewolves... or Ixidron.
 - Holding Ctrl before starting the rubber-band selection area will add cards to the current selection instead of starting over.
 - Ctrl + left-click on a card adds it to the current selection.
