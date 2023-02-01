@@ -1,5 +1,9 @@
 /// @description Draw
 
+var text = get_button_text() ?? button_text;
+
+image_xscale = 20 + string_width(text);
+
 var draw_box_left = bbox_left;
 var draw_box_top = bbox_top;
 var draw_box_right = bbox_right;
@@ -27,7 +31,7 @@ gpu_set_colorwriteenable(true, true, true, false);
 var draw_text_x = mean(draw_box_left, draw_box_right);
 var draw_text_y = mean(draw_box_top, draw_box_bottom);
 draw_set_color(c_black);
-draw_text(draw_text_x + 2, draw_text_y + 2, button_text);
+draw_text(draw_text_x + 2, draw_text_y + 2, text);
 draw_set_color(c_white);
-draw_text(draw_text_x, draw_text_y, button_text);
+draw_text(draw_text_x, draw_text_y, text);
 gpu_set_colorwriteenable(true, true, true, true);
