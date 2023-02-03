@@ -4,7 +4,7 @@
   "name": "Windows",
   "option_windows_display_name": "Pisces Goldfishing Simulator",
   "option_windows_executable_name": "Pisces.exe",
-  "option_windows_version": "22.12.17.0",
+  "option_windows_version": "23.2.3.0",
   "option_windows_company_info": "Michael Celani",
   "option_windows_product_info": "",
   "option_windows_copyright_info": "",
