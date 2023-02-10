@@ -1,4 +1,5 @@
 /// @description Options for the card game.
+load_settings_ini();
 
 var roll2 = new RightClickMenuOption("Roll d2", roll_dice(2, spr_d2_logo), noop, noop, spr_d2);
 var roll4 = new RightClickMenuOption("Roll d4", roll_dice(4, spr_d4_logo), noop, noop, spr_d4);
@@ -17,13 +18,13 @@ roll_menu.AddOption(roll8);
 roll_menu.AddOption(roll10);
 roll_menu.AddOption(roll12);
 
-var roll_submenu = new RightClickSubMenu("Roll >", roll_menu, spr_dice);
-var options = new RightClickMenuOption("Open Options", open_options, noop, noop, spr_gear);
-var load_deck = new RightClickMenuOption("Load Decklist...", load_decklist, noop, noop, spr_listul);
-var scry_search = new RightClickMenuOption("Search Scryfall...", search_scryfall, noop, noop, spr_scryfall);
+var roll_submenu = new RightClickSubMenu("Roll", roll_menu, spr_dice, ">");
+var options = new RightClickMenuOption("Open Options", open_options, noop, noop, spr_gear, "O");
+var load_deck = new RightClickMenuOption("Load Decklist", load_decklist, noop, noop, spr_listul, "...", true);
+var scry_search = new RightClickMenuOption("Search Scryfall", search_scryfall, noop, noop, spr_scryfall, "...", true);
 
-var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save);
-var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load);
+var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save, "F7");
+var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load, "F8");
 
 
 menu = new RightClickMenu();
@@ -61,4 +62,10 @@ since_last_delta = 0;
 since_last_time = game_get_speed(gamespeed_microseconds);
 
 if not file_exists("background.img") return;
-background_sprite = sprite_add("background.img", 1, false, true, 0, 0);
+var bkcg = sprite_add("background.img", 1, false, true, 0, 0);
+
+if (bkcg != -1)
+{
+	background_sprite = bkcg
+}
+

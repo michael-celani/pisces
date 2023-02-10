@@ -27,7 +27,9 @@ for (var index = 0; index < num_cards; index++) {
 		height += card_id.sprite_height + 20;
 	}
 	
-	card_id.is_revealed = !hidden_zone;
+	if !card_id.sticky_is_revealed {
+		card_id.is_revealed = !hidden_zone;
+	}
 	
 	if card_id.is_hovering {
 		layer_add_instance("Dragging", card_id);

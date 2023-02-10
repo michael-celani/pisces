@@ -1,5 +1,17 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function add_card_counters(card_inst, num = 1) {
+	change_card_counters(card_inst, num);
+}
+
+function sub_card_counters(card_inst, num = 1) {
+	change_card_counters(card_inst, num * -1)
+}
+
+function change_card_counters(card_inst, num) {
+	card_inst.counters = max(0, card_inst.counters + num)
+}
+
 function tap_card(card_inst) 
 {
 	if (!card_inst.is_tapping)
@@ -18,21 +30,19 @@ function flip_card(card_inst)
 	card_inst.is_flipped = !card_inst.is_flipped;
 }
 
+function toggle_upsidedown_card(card_inst) {
+	card_inst.is_upsidedown = !card_inst.is_upsidedown;
+}
+
 function get_card_sprite(card_inst)
 {
-	if card_inst.is_flipped
-	{
-		if card_inst.back_sprite == -1
-		{
-			return obj_options.card_back_sprite;
-		}
-		
-		return card_inst.back_sprite;
+	if card_inst.is_flipped {
+		return card_inst.back_sprite == -1
+			? obj_options.card_back_sprite
+			: card_inst.back_sprite;
 	}
-	else
-	{
-		return card_inst.front_sprite;
-	}
+
+	return card_inst.front_sprite;
 }
 
 function duplicate_card(card_inst)
@@ -43,7 +53,9 @@ function duplicate_card(card_inst)
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
+		"is_upsidedown": card_inst.is_upsidedown,
 		"is_revealed": card_inst.is_revealed,
+		"is_flipped": card_inst.is_flipped,
 		"all_parts": card_inst.all_parts
 	});
 }
@@ -62,19 +74,16 @@ function create_spawner(card_inst)
 
 function move_to_deck_top(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack_beginning(card_inst, obj_deck);	
 }
 
 function move_to_deck_bottom(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_deck);
 }
 
 function move_to_hand(card_inst)
 {
-	card_inst.counters = 0; //this is a private zone and thus it should strip away any counters on the card
 	add_to_card_stack(card_inst, obj_hand);
 }
 
@@ -94,38 +103,55 @@ function move_to_command(card_inst)
 }
 
 function add_to_card_stack(card_inst, stack_inst) {
-	remove_from_card_stack(card_inst);
-	
-	card_inst.parent_stack = stack_inst;
-	card_inst.is_revealed = stack_inst.hidden_zone;
-	array_push(stack_inst.stack_list, card_inst.id);
-	
-	// Untap the card:
-	card_inst.is_tapping = false;
-	card_inst.tapped = false;
-	card_inst.image_angle = 0;
-	layer_add_instance(stack_inst.zone_layer, card_inst);
-	obj_height_manager.height_modified = true;
-	
-	card_inst.is_selected = false;
+	add_to_card_stack_location(card_inst, stack_inst)
 }
 
 function add_to_card_stack_beginning(card_inst, stack_inst) {
 	add_to_card_stack_location(card_inst, stack_inst, 0);
 }
 
-function add_to_card_stack_location(card_inst, stack_inst, pos)
+function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 {
 	remove_from_card_stack(card_inst);
 	
 	card_inst.parent_stack = stack_inst;
-	card_inst.is_revealed = stack_inst.hidden_zone;
+
+	if pos == -1
+	{
+		pos = array_length(stack_inst.stack_list);	
+	}
+	
 	array_insert(stack_inst.stack_list, pos, card_inst.id);
 	
 	// Untap the card:
 	card_inst.is_tapping = false;
 	card_inst.tapped = false;
 	card_inst.image_angle = 0;
+
+	// other things to reset:
+	card_inst.is_upsidedown = false;
+	
+	if stack_inst.hidden_zone {
+		card_inst.counters = 0;
+	}
+
+	if stack_inst.object_index == obj_exile
+		&& card_inst.is_flipped
+		&& keyboard_check(vk_shift)
+	{
+		card_inst.sticky_is_revealed = true;
+		card_inst.is_revealed = false;
+	} else {
+		card_inst.sticky_is_revealed = false;
+		card_inst.is_revealed = !stack_inst.hidden_zone;
+		card_inst.is_flipped = false;
+	}
+	/* 2022-12-19 lyon
+		seems to me they should reset to front face up going to hand, graveyard, library, and command.
+		exile is the only one where they might legit be put there facedown intentionally.
+	*/
+	
+	show_debug_message("add to zone " + stack_inst.stack_name + " " + string(stack_inst));
 	layer_add_instance(stack_inst.zone_layer, card_inst);
 	obj_height_manager.height_modified = true;
 	
@@ -134,10 +160,11 @@ function add_to_card_stack_location(card_inst, stack_inst, pos)
 
 function remove_from_card_stack(card_inst) {
 	if card_inst.parent_stack != noone {
-		var index = array_find_index(card_inst.parent_stack.stack_list, card_inst.id)
+		var index = array_find_indexEx(card_inst.parent_stack.stack_list, card_inst.id);
 		array_delete(card_inst.parent_stack.stack_list, index, 1);
-		parent_stack = noone;
+		card_inst.parent_stack = noone;
 		
+		show_debug_message("add to battlefield");
 		layer_add_instance("Battlefield", card_inst);
 		obj_height_manager.height_modified = true;
 		

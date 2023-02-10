@@ -1,19 +1,33 @@
 /// @description
 if !keys_are_active() return;
 
+var pressed_key = string(keyboard_lastkey);
+show_debug_message("pressed_key: " + pressed_key + " -- misc: " + chr(vk_EqualPlus) + chr(vk_numpad0) + chr(vk_numpad9))
+
 // Key is 0-9:
-if keyboard_lastkey >= 48 && keyboard_lastkey <= 57
+var lc = ord(keyboard_lastchar)
+
+if lc >= 48 && lc <= 57
 {
 	num_repeats *= 10;
-	num_repeats += int64(keyboard_lastkey - 48);
+	num_repeats += lc - 48;
 	return;
 }
+/*
+for (var i = 0; i < 10; ++i) {
+	if (keyboard_lastchar == i)
+	{
+		num_repeats *= 10;
+		num_repeats += i;
+		return;
+	}
+}
+*/
 
 var num_times = max(1,  min(100, num_repeats));
 num_repeats = 0;
 
 // Find the event:
-var pressed_key = string(keyboard_lastkey);
 var event_def = events[$ pressed_key];
 if event_def == undefined return;
 
@@ -27,6 +41,8 @@ for (var i = 0; i < array_length(subscribers); i++)
 {
 	repeat (num_times)
 	{
-		with (subscribers[i].obj) event_user(subscribers[i].ev);
+		with (subscribers[i].obj) {
+			event_user(subscribers[i].ev);
+		}
 	}
 }

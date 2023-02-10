@@ -41,10 +41,11 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"button_hover_color","varType":7,"value":"$00F48146","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"button_clicked_color","varType":7,"value":"$00DAC255","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"on_enter","varType":3,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"get_button_text","varType":4,"value":"noop","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Options",
-    "path": "folders/Objects/Options.yy",
+    "name": "Windows",
+    "path": "folders/Objects/Windows.yy",
   },
 }

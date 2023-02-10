@@ -27,9 +27,11 @@ var num_dividers = 0;
 
 for (var i = 0; i < array_length(options); i++)
 {
+	draw_set_halign(fa_left);
+
 	var middle_y = mean(bounding_y_start, bounding_y_end);
 	
-	if array_contains(dividers, i)
+	if array_containsEx(dividers, i)
 	{
 		var divider_y = bounding_y_start + divider_height / 2;
 		draw_set_color(divider_color);
@@ -80,6 +82,17 @@ for (var i = 0; i < array_length(options); i++)
 	draw_set_alpha(1);
 	draw_text(bounding_x_start + padding + 60, middle_y, option.name);
 
+	if option.hotkey != "" {
+		draw_set_halign(fa_center);
+		draw_set_alpha(0.25);
+		draw_set_color(c_black);
+		draw_text(bounding_x_end - 10 + 2, middle_y + 2, option.hotkey);
+		
+		draw_set_alpha(1);
+		draw_set_color(option.hotkey_same_color ? option.draw_color : c_gray)
+		draw_text(bounding_x_end - 10, middle_y, option.hotkey);
+	}
+	
 	bounding_y_start += height;
 	bounding_y_end += height;
 }
