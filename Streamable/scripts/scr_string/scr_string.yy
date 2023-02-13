@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_string_split",
+  "name": "scr_string",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

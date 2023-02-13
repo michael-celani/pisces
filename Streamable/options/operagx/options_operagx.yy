@@ -10,7 +10,7 @@
   "option_operagx_interpolate_pixels": true,
   "option_operagx_next_version": "1.0.0.4",
   "option_operagx_publicShareUrl": "",
-  "option_operagx_scale": 0,
+  "option_operagx_scale": 1,
   "option_operagx_team_id": "6bdbd494-d088-4e8d-9a55-1d7f6bb99b65",
   "option_operagx_team_name": "Woogachaka studio",
   "option_operagx_texture_page": "2048x2048",
