@@ -1,9 +1,9 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_string_split",
-  "isDnD": false,
+  "name": "scr_string",
   "isCompatibility": false,
+  "isDnD": false,
   "parent": {
     "name": "Scripts",
     "path": "folders/Scripts.yy",
