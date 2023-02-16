@@ -30,8 +30,6 @@ function CardSearch(_name = "", _quantity = 1) constructor
 
 function parse_decklist_line(content, index)
 {
-	
-	
 	// Extract the quantity:
 	content = string_trim(content);
 	var str_temp = string_split(content, " ", false, 1);
@@ -121,7 +119,15 @@ function load_decklist_website(deck_url)
 
 function load_decklist_lines(lines)
 {
-	var searches = array_map(lines, parse_decklist_line)
+	var trimmed_lines = array_map(lines, function (elem) {
+		return string_trim(elem);	
+	});
+	
+	var filtered_lines = array_filter(trimmed_lines, function (elem) {
+		return elem != ""	
+	});
+	
+	var searches = array_map(filtered_lines, parse_decklist_line);
 
 	for (var i = 0; i < array_length(searches); i++)
 	{
