@@ -103,3 +103,6 @@ As rudimentary ways to do vertical and horizontal arrangements, you can do `Shif
 
 # Feedback and Bug Reports
 To give us feedback, suggestions, to get help, or to submit a bug report, please visit the [Discord server](https://discord.gg/XxrzyphTPd).
+
+# Additional Credits
+Camera mirroring code derived from pyvirtualcam - https://github.com/letmaik/pyvirtualcam

@@ -51,7 +51,7 @@ function parse_decklist_line(content, index)
 	// Create the card search object:
 	var name = string_trim(split_content[0]);
 	
-	card = new CardSearch(name, quantity);
+	var card = new CardSearch(name, quantity);
 	
 	if array_length(split_content) > 1
 	{
