@@ -7,7 +7,7 @@
   ],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"value":"520",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"propertyId":{"name":"height","path":"objects/obj_window/obj_window.yy",},"value":"700",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},"propertyId":{"name":"width","path":"objects/obj_window/obj_window.yy",},"value":"1000",},
   ],
   "parent": {

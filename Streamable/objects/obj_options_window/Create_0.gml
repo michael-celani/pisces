@@ -95,7 +95,7 @@ var checkboxToggleFullscreen = instance_create_layer(x + 20, y + ylevel, "UI", o
 
 var labelToggleFullscreen = instance_create_layer(
 	checkboxToggleFullscreen.x + checkboxToggleFullscreen.image_xscale + 10,
-	checkboxToggleFullscreen.y + checkboxToggleFullscreen.image_yscale /2,
+	checkboxToggleFullscreen.y + checkboxToggleFullscreen.image_yscale / 2,
 	"UI",	
 	obj_label,
 	{
@@ -130,4 +130,12 @@ var buttonLoadSleeves = instance_create_layer(buttonLoadBG.x + buttonLoadBG.imag
 	"parent_component": id,
 	"on_click": function() { load_sleeves(obj_options) },
 	"button_text": "Load Sleeves"
+});
+
+ylevel += yldiff;
+var buttonExitGame = instance_create_layer(x + 20, y + ylevel, "UI", obj_button,
+{
+	"parent_component": id,
+	"on_click": function() { game_end() },
+	"button_text": "Exit Game"
 });
