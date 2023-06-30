@@ -35,7 +35,6 @@ var scry_search = new RightClickMenuOption("Search Scryfall", search_scryfall, n
 var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save, "F7");
 var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load, "F8");
 
-
 menu = new RightClickMenu();
 menu.AddOption(roll_submenu);
 menu.AddSeparator();

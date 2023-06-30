@@ -86,6 +86,28 @@ var labelTapDeselect = instance_create_layer(
 );
 
 ylevel += yldiff;
+var checkboxToggleFullscreen = instance_create_layer(x + 20, y + ylevel, "UI", obj_checkbox,
+{
+	"parent_component": id,
+	"checked": obj_options.fullscreen,
+	"on_click": function() { toggle_fullscreen(obj_options) }
+});
+
+var labelToggleFullscreen = instance_create_layer(
+	checkboxToggleFullscreen.x + checkboxToggleFullscreen.image_xscale + 10,
+	checkboxToggleFullscreen.y + checkboxToggleFullscreen.image_yscale /2,
+	"UI",	
+	obj_label,
+	{
+		"parent_component": id,
+		"label_font": fnt_beleren,
+		"label_text": "Toggle fullscreen mode",
+		"label_valign": fa_center
+	
+	}
+);
+
+ylevel += yldiff;
 var buttonCamToggle = instance_create_layer(x + 20, y + ylevel, "UI", obj_button,
 {
 	"parent_component": id,

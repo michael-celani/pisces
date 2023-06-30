@@ -7,6 +7,7 @@ function load_settings_ini() {
 	obj_options.draw_on_turn = bool(ini_read_string("behavior", "draw_on_turn", obj_options.draw_on_turn));
 	obj_options.deselect_after_tap = bool(ini_read_string("behavior", "deselect_after_tap", obj_options.deselect_after_tap));
 	obj_options.deselect_after_drag = bool(ini_read_string("behavior", "deselect_after_drag", obj_options.deselect_after_drag));
+	obj_options.fullscreen = bool(ini_read_string("behavior", "fullscreen", obj_options.fullscreen));
 	ini_close();
 }
 
@@ -15,6 +16,7 @@ function save_settings_ini() {
 	ini_write_string("behavior", "draw_on_turn", ini_b2str(obj_options.draw_on_turn));
 	ini_write_string("behavior", "deselect_after_tap", ini_b2str(obj_options.deselect_after_tap));
 	ini_write_string("behavior", "deselect_after_drag", ini_b2str(obj_options.deselect_after_drag));
+	ini_write_string("behavior", "fullscreen", ini_b2str(obj_options.fullscreen));
 	ini_close();
 }
 
@@ -116,6 +118,13 @@ function load_deck_from_website(options_inst)
 	var width = 1280;
 	var create_x = room_width / 2 - width/ 2;
 	var search_window = instance_create_layer(create_x, 50, "Instances", obj_decklist_window, {"width": width, "height": 240});
+}
+
+function toggle_fullscreen(options_inst)
+{
+	options_inst.fullscreen = !options_inst.fullscreen;
+	window_set_fullscreen(options_inst.fullscreen);
+	save_settings_ini();
 }
 
 function open_options(options_inst)
