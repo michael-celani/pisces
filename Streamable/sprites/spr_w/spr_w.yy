@@ -23,7 +23,7 @@
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"343684bd-ca90-4f9d-8821-b1af64fe2969","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
-  "origin": 9,
+  "origin": 4,
   "parent": {
     "name": "Mana-Symbols",
     "path": "folders/Sprites/Mana-Symbols.yy",
@@ -60,7 +60,7 @@
     "visibleRange": null,
     "volume": 1.0,
     "xorigin": 209,
-    "yorigin": 212,
+    "yorigin": 209,
   },
   "swatchColours": null,
   "swfPrecision": 2.525,

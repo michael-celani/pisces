@@ -2,10 +2,10 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_down_arrow",
-  "bbox_bottom": 69,
-  "bbox_left": 20,
-  "bbox_right": 83,
-  "bbox_top": 30,
+  "bbox_bottom": 34,
+  "bbox_left": 10,
+  "bbox_right": 41,
+  "bbox_top": 15,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"aea9761e-f1b7-49a0-84a1-658d5bed1ab4",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4a86a329-4ba3-4057-aa2c-8e56fbf34693",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 100,
+  "height": 50,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"aa4a3856-796f-46da-89e9-212179a5dd9d","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"5122da36-4b64-4e96-ab0a-14d642305508","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"aea9761e-f1b7-49a0-84a1-658d5bed1ab4","path":"sprites/spr_down_arrow/spr_down_arrow.yy",},},},"Disabled":false,"id":"39a0f74e-a25c-40d4-aa2a-7e0c710b7d1e","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4a86a329-4ba3-4057-aa2c-8e56fbf34693","path":"sprites/spr_down_arrow/spr_down_arrow.yy",},},},"Disabled":false,"id":"8f17e64f-5c92-4fdf-ad17-0c3a799a4330","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 100,
+  "width": 50,
 }
