@@ -1,8 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-isVisible = !isVisible
-visible = isVisible;
+is_visible = !is_visible
+visible = is_visible;
 
-for(var i = 0; i < 6; i++){
-	variable_instance_set(manaInstanceIDs[i], "visible", isVisible);	
-}
+array_foreach(mana_instance_ids, set_visibility);
