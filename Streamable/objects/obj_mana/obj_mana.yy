@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Mana",
-    "path": "folders/Objects/Mana.yy",
+    "name": "ManaCounter",
+    "path": "folders/Objects/ManaCounter.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -5,3 +5,4 @@ image_yscale = 0.1;
 if(sprite_index != -1){
 	draw_self();
 }
+
