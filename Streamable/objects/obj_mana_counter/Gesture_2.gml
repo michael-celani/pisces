@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description
 drag_offset_x = x - event_data[?"posX"];
 drag_offset_y = y - event_data[?"posY"];
 

@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description toggle visibility
 // You can write your code in this editor
 is_visible = !is_visible
 visible = is_visible;

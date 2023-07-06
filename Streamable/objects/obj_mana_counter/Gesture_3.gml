@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description 
 // You can write your code in this editor
 if(!is_visible) return;
 var _x_change = event_data[?"posX"] + drag_offset_x;

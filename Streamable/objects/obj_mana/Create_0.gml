@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description 
 // You can write your code in this editor
 
 arrow_instance_ids = [];
