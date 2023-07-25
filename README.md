@@ -26,6 +26,35 @@ Download the zip file, unzip it whereever you want, and run Pisces.exe.
 ## Camera Mirroring
 If you want to use the camera mirroring feature (Turned on/off in the `O`ptions screen), you'll need to install [OBS](https://obsproject.com/download) version 28 or higher. Currently we use its Virtual Camera to render the mirrored view that doesn't display hidden zone cards.
 
+# Importing Cards
+Pisces provides several different ways of importing cards. The options can be found by right-clicking on the playmat, and choosing either Load Cards or Search Scryfall.
+
+## Loading from file
+Pisces supports loading cards from a text file. It expects the format to be as follows:
+```
+10 Island
+1 Thassa's Oracle
+```
+
+You can import a specific printing by including the set name, and where applicable, the card number in the set:
+```
+10 Island (THB) 251
+1 Inspiration (7ED)
+```
+
+> **Note:**
+> Any content between `[]`, `**` or `^^` is ignored. Pisces does not currently treat commanders separately from other cards.
+
+## Loading from website
+Pisces supports importing decks from two sites: [Archidekt](https://archidekt.com/) and [Moxfield](https://www.moxfield.com/). On the deck pages of those sites is a share button. Simply use that button to copy the link for the deck, and then paste it into the field.
+
+## Loading from clipboard
+Pisces supports importing decks from the clipboard. The format follows the same format as the text file import.
+
+Once the import finishes, you will need to manually move the cards into your Deck by opening the Deck window with `F2` and then using left-click to draw a box around the cards to select them all, and then drag them into the Deck window. If playing EDH, you will need to manually move your Commander(s) to the Command Zone with `F5`
+
+<!-- TODO: Add information about importing via Scryfall -->
+
 # Keybinds
 |Function|Inputs|
 |-|-|
