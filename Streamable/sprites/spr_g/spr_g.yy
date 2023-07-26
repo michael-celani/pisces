@@ -13,20 +13,20 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"55623ea3-b86d-44d4-a244-de0586af8adc",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c44ce28d-5b0c-457d-8107-d4da940a1718",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 418,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e9aabe0d-92fd-4d30-a7ab-8c6af88181dc","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"2cd74894-696f-4f02-add7-defe576cc23d","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
-  "origin": 0,
+  "origin": 4,
   "parent": {
-    "name": "group1",
-    "path": "folders/Sprites/group1.yy",
+    "name": "Mana-Symbols",
+    "path": "folders/Sprites/Mana-Symbols.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -54,13 +54,13 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"55623ea3-b86d-44d4-a244-de0586af8adc","path":"sprites/spr_g/spr_g.yy",},},},"Disabled":false,"id":"4333f316-9b7a-4b17-ab2d-eb148b3877a6","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c44ce28d-5b0c-457d-8107-d4da940a1718","path":"sprites/spr_g/spr_g.yy",},},},"Disabled":false,"id":"fe21cb99-5108-4e96-bfcc-6d27cf9ff0b4","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
     "volume": 1.0,
-    "xorigin": 0,
-    "yorigin": 0,
+    "xorigin": 209,
+    "yorigin": 209,
   },
   "swatchColours": null,
   "swfPrecision": 2.525,

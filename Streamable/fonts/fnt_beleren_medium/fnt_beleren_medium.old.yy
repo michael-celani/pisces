@@ -1,7 +1,7 @@
 {
   "resourceType": "GMFont",
   "resourceVersion": "1.0",
-  "name": "fnt_beleren",
+  "name": "fnt_beleren_medium",
   "AntiAlias": 1,
   "applyKerning": 0,
   "ascender": 30,
@@ -2338,7 +2338,7 @@
     {"amount":1,"first":123,"second":106,},
   ],
   "last": 0,
-  "lineHeight": 0,
+  "lineHeight": 39,
   "maintainGms1Font": false,
   "parent": {
     "name": "Fonts",
