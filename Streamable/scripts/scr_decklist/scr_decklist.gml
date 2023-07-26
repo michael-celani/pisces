@@ -56,6 +56,13 @@ function parse_decklist_line(content, index)
 	if array_length(split_content) > 1
 	{
 		card.set = string_trim(split_content[1]);
+ 		// Most sites use MED as the Master's Edition tag,
+                // but Scryfall uses ME1 instead
+                if card.set == "MED"
+                {
+                        card.set = "ME1"
+                }
+
 	}
 	
 	if array_length(split_content) > 2
