@@ -3,19 +3,23 @@
   "resourceVersion": "1.0",
   "name": "obj_mana",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":25,"eventType":7,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":6,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},"propertyId":{"name":"button_active_color","path":"objects/obj_button/obj_button.yy",},"value":"$00D8D8D8",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},"propertyId":{"name":"button_hover_color","path":"objects/obj_button/obj_button.yy",},"value":"$00FFFFFF",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},"propertyId":{"name":"button_clicked_color","path":"objects/obj_button/obj_button.yy",},"value":"$00B2B2B2",},
+  ],
   "parent": {
     "name": "ManaCounter",
     "path": "folders/Objects/ManaCounter.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_button",
+    "path": "objects/obj_button/obj_button.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -30,11 +34,14 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"count","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":1,},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"is_moving","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"parent_mana_obj_id","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":1,},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"arrow_type","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":0,},
   ],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_w",
+    "path": "sprites/spr_w/spr_w.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

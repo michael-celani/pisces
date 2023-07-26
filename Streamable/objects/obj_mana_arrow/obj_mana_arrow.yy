@@ -3,12 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_mana_arrow",
   "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":25,"eventType":7,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":6,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -16,7 +12,10 @@
     "name": "ManaCounter",
     "path": "folders/Objects/ManaCounter.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_button",
+    "path": "objects/obj_button/obj_button.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -35,7 +34,10 @@
     {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"arrow_type","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":0,},
   ],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_up_arrow",
+    "path": "sprites/spr_up_arrow/spr_up_arrow.yy",
+  },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

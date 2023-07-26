@@ -1,29 +1,58 @@
-/// @description initialize sprites and bounding box
+/// @description Insert description here
+event_inherited();
 
-is_visible = false;
-is_clicked = false;
-drag_offset_x = 0;
-drag_offset_y= 0;
-mana_instance_ids = [];
-var _sprite_vars = [spr_w, spr_u, spr_b, spr_r, spr_g, spr_c];
-visible = is_visible;
-count = 0;
+dragging = false;
 
-function set_visibility(_object){
-	variable_instance_set(_object, "visible", is_visible);	
-	var _arrows = variable_instance_get(_object, "arrow_instance_ids");
-	array_foreach(_arrows, function(_object){
-		variable_instance_set(_object, "visible", is_visible);
+var mana_sprites = [spr_w, spr_u, spr_b, spr_r, spr_g, spr_c]
+
+for (var i = 0; i < array_length(mana_sprites); i++)
+{
+	var x_loc = 40 + 60 * i;
+	
+	var mana_label = instance_create_layer (x + x_loc, y + 150, "UI", obj_label,
+	{
+		"parent_component": id,
+		"label_font": fnt_beleren,
+		"label_text": "0",
+		"label_halign": fa_middle,
+		"label_valign": fa_center
 	});
-}
 
+	var mana_up = instance_create_layer(x + x_loc, y + 30, "UI", obj_mana_arrow,
+	{
+		"parent_component": id,
+		"on_click": method({"mana_label": mana_label}, function() 
+		{ 
+			mana_label.label_text = string(int64(mana_label.label_text) + 1)
+		})
+	});
 
-// create the mana objects
-var _tmp = 70
-for(var _i = 0; _i < 6; _i++){
-	array_push(mana_instance_ids, instance_create_layer(_tmp, 70, "ManaCounter", obj_mana, 
-	{sprite_index : _sprite_vars[_i], visible: is_visible}));
-	_tmp += 70;
+	var mana = instance_create_layer(x + x_loc, y + 70, "UI", obj_mana,
+	{
+		"parent_component": id,
+		"on_click": method({"mana_label": mana_label}, function() 
+		{ 
+			if keyboard_check(vk_shift)
+			{
+				mana_label.label_text = string(max(0, int64(mana_label.label_text) - 1))
+			}
+			else
+			{
+				mana_label.label_text = string(int64(mana_label.label_text) + 1)
+			}
+		}),
+		"sprite_index": mana_sprites[i]
+	});
+
+	var mana_down = instance_create_layer(x + x_loc, y + 110, "UI", obj_mana_arrow,
+	{
+		"parent_component": id,
+		"image_angle": 180,
+		"on_click": method({"mana_label": mana_label}, function() 
+		{ 
+			mana_label.label_text = string(max(0, int64(mana_label.label_text) - 1))
+		})
+	});
 }
 
 

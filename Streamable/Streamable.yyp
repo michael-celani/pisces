@@ -38,7 +38,10 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"CHANGELOG.md","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"README.md","CopyToMask":-1,"filePath":"datafiles",},
+  ],
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
@@ -70,6 +73,7 @@
     {"id":{"name":"obj_background","path":"objects/obj_background/obj_background.yy",},},
     {"id":{"name":"fnt_segoe_italics","path":"fonts/fnt_segoe_italics/fnt_segoe_italics.yy",},},
     {"id":{"name":"spr_hand","path":"sprites/spr_hand/spr_hand.yy",},},
+    {"id":{"name":"obj_mana","path":"objects/obj_mana/obj_mana.yy",},},
     {"id":{"name":"spr_sleeve_mask","path":"sprites/spr_sleeve_mask/spr_sleeve_mask.yy",},},
     {"id":{"name":"obj_component","path":"objects/obj_component/obj_component.yy",},},
     {"id":{"name":"spr_exile","path":"sprites/spr_exile/spr_exile.yy",},},
@@ -100,7 +104,6 @@
     {"id":{"name":"spr_d4","path":"sprites/spr_d4/spr_d4.yy",},},
     {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
     {"id":{"name":"draw_sprite_pos_fixed","path":"scripts/draw_sprite_pos_fixed/draw_sprite_pos_fixed.yy",},},
-    {"id":{"name":"spr_down_arrow","path":"sprites/spr_down_arrow/spr_down_arrow.yy",},},
     {"id":{"name":"spr_d20","path":"sprites/spr_d20/spr_d20.yy",},},
     {"id":{"name":"obj_error_window","path":"objects/obj_error_window/obj_error_window.yy",},},
     {"id":{"name":"fnt_beleren_medium","path":"fonts/fnt_beleren_medium/fnt_beleren_medium.yy",},},
@@ -141,7 +144,6 @@
     {"id":{"name":"obj_keyboard_dispatch","path":"objects/obj_keyboard_dispatch/obj_keyboard_dispatch.yy",},},
     {"id":{"name":"spr_rhombus","path":"sprites/spr_rhombus/spr_rhombus.yy",},},
     {"id":{"name":"obj_text_field","path":"objects/obj_text_field/obj_text_field.yy",},},
-    {"id":{"name":"obj_mana","path":"objects/obj_mana/obj_mana.yy",},},
     {"id":{"name":"obj_slider","path":"objects/obj_slider/obj_slider.yy",},},
     {"id":{"name":"spr_trash","path":"sprites/spr_trash/spr_trash.yy",},},
     {"id":{"name":"scr_components","path":"scripts/scr_components/scr_components.yy",},},
@@ -177,7 +179,6 @@
     {"id":{"name":"scr_scryfall","path":"scripts/scr_scryfall/scr_scryfall.yy",},},
     {"id":{"name":"obj_scryfall_window","path":"objects/obj_scryfall_window/obj_scryfall_window.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
-    {"id":{"name":"spr_mask","path":"sprites/spr_mask/spr_mask.yy",},},
     {"id":{"name":"rm_table","path":"rooms/rm_table/rm_table.yy",},},
   ],
   "RoomOrderNodes": [
