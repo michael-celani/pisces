@@ -18,14 +18,22 @@ roll_menu.AddOption(roll8);
 roll_menu.AddOption(roll10);
 roll_menu.AddOption(roll12);
 
+var load_deck_file = new RightClickMenuOption("From File", load_decklist_file, noop, noop, spr_listul, "...", true);
+var load_deck_site = new RightClickMenuOption("From Website", load_deck_from_website, noop, noop, spr_rhombus, "...", true);
+var load_deck_clip = new RightClickMenuOption("From Clipboard", load_decklist_clip, noop, noop, spr_note_sticky, "", true);
+load_menu = new RightClickMenu();
+load_menu.AddOption(load_deck_file);
+load_menu.AddOption(load_deck_site);
+load_menu.AddOption(load_deck_clip);
+
 var roll_submenu = new RightClickSubMenu("Roll", roll_menu, spr_dice, ">");
+var load_submenu = new RightClickSubMenu("Load Cards", load_menu, spr_cards_stack_high, ">");
 var options = new RightClickMenuOption("Open Options", open_options, noop, noop, spr_gear, "O");
-var load_deck = new RightClickMenuOption("Load Decklist", load_decklist, noop, noop, spr_listul, "...", true);
+
 var scry_search = new RightClickMenuOption("Search Scryfall", search_scryfall, noop, noop, spr_scryfall, "...", true);
 
 var save = new RightClickMenuOption("Save State", save_state, noop, noop, spr_save, "F7");
 var load = new RightClickMenuOption("Load State", load_state, noop, noop, spr_load, "F8");
-
 
 menu = new RightClickMenu();
 menu.AddOption(roll_submenu);
@@ -33,7 +41,7 @@ menu.AddSeparator();
 menu.AddOption(save);
 menu.AddOption(load);
 menu.AddSeparator();
-menu.AddOption(load_deck);
+menu.AddOption(load_submenu);
 menu.AddOption(scry_search);
 menu.AddSeparator();
 menu.AddOption(options);
