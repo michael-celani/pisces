@@ -4,6 +4,7 @@ function CardSearch(_name = "", _quantity = 1) constructor
 	quantity = _quantity;
 	set = "";
 	collector_number = "";
+	is_commander = false;
 	
 	static CreateRequest = function()
 	{
@@ -23,8 +24,15 @@ function CardSearch(_name = "", _quantity = 1) constructor
 		}
 		
 		show_debug_message(search);
-		
-		instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_card_request, { "req": search, "spawn_number": real(quantity), "searchType": search_type })
+		show_debug_message(is_commander);
+		if is_commander
+		{
+			instance_create_layer(room_width * 0.3, room_height / 2, "Instances", obj_card_request, { "req": search, "spawn_number": real(quantity), "searchType": search_type })
+		}
+		else
+		{
+			instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_card_request, { "req": search, "spawn_number": real(quantity), "searchType": search_type })
+		}
 	}
 }
 
@@ -124,7 +132,7 @@ function load_decklist_website(deck_url)
 }
 
 
-function load_decklist_lines(lines)
+function load_decklist_lines(lines,isCommander=false,commanderCount=1)
 {
 	var trimmed_lines = array_map(lines, function (elem) {
 		return string_trim(elem);	
@@ -135,7 +143,13 @@ function load_decklist_lines(lines)
 	});
 	
 	var searches = array_map(filtered_lines, parse_decklist_line);
-
+	if isCommander
+	{
+		for (var i =0; i < commanderCount; i++)
+		{
+			searches[i].is_commander = true //update the first commanderCount entries to be mapped as "commanders"
+		}
+	}
 	for (var i = 0; i < array_length(searches); i++)
 	{
 		searches[i].CreateRequest();

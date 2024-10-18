@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "swap_stack_visibility",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Game",
-    "path": "folders/Scripts/Game.yy",
+  "$GMScript":"v1",
+  "%Name":"swap_stack_visibility",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"swap_stack_visibility",
+  "parent":{
+    "name":"Game",
+    "path":"folders/Scripts/Game.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
