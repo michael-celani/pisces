@@ -1,5 +1,4 @@
 /// @description Set hidden zone.
-
 event_inherited();
 
 subscribed_events = {

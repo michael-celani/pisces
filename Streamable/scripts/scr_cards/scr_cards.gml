@@ -56,19 +56,22 @@ function duplicate_card(card_inst)
 		"is_upsidedown": card_inst.is_upsidedown,
 		"is_revealed": card_inst.is_revealed,
 		"is_flipped": card_inst.is_flipped,
-		"all_parts": card_inst.all_parts
+		"all_parts": card_inst.all_parts,
+		"is_token": true
 	});
 }
 
 function create_spawner(card_inst)
 {
-	instance_create_layer(card_inst.sprite_width / 2, card_inst.sprite_height / 2, "LowUI", obj_card_spawner, 
+	instance_create_layer(card_inst.x, card_inst.y, "LowUI", obj_card_spawner, 
 	{ 
 		"name": card_inst.name, 
 		sprite_index: card_inst.front_sprite, 
 		"front_sprite": card_inst.front_sprite, 
 		"back_sprite": card_inst.back_sprite,
-		"all_parts": card_inst.all_parts
+		"all_parts": card_inst.all_parts,
+		"image_xscale": card_inst.image_xscale,
+		"image_yscale": card_inst.image_yscale
 	});
 }
 
@@ -112,6 +115,12 @@ function add_to_card_stack_beginning(card_inst, stack_inst) {
 
 function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 {
+	if (card_inst.is_token)
+	{
+		card_destroy(card_inst);
+		return;
+	}
+	
 	remove_from_card_stack(card_inst);
 	
 	card_inst.parent_stack = stack_inst;
@@ -159,17 +168,17 @@ function add_to_card_stack_location(card_inst, stack_inst, pos = -1)
 }
 
 function remove_from_card_stack(card_inst) {
-	if card_inst.parent_stack != noone {
-		var index = array_find_indexEx(card_inst.parent_stack.stack_list, card_inst.id);
-		array_delete(card_inst.parent_stack.stack_list, index, 1);
-		card_inst.parent_stack = noone;
+	if card_inst.parent_stack == noone return;
+	
+	var index = array_find_indexEx(card_inst.parent_stack.stack_list, card_inst.id);
+	array_delete(card_inst.parent_stack.stack_list, index, 1);
+	card_inst.parent_stack = noone;
 		
-		show_debug_message("add to battlefield");
-		layer_add_instance("Battlefield", card_inst);
-		obj_height_manager.height_modified = true;
+	show_debug_message("add to battlefield");
+	layer_add_instance("Battlefield", card_inst);
+	obj_height_manager.height_modified = true;
 		
-		card_inst.is_selected = false;
-	}
+	card_inst.is_selected = false;
 }
 
 function clear_all_menus()

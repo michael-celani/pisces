@@ -144,6 +144,21 @@ function open_options(options_inst)
 	}
 }
 
+function open_mana_counter(options_inst)
+{
+	if (!instance_exists(obj_mana_counter))
+	{
+		instance_create_layer(
+			mouse_x - 20,
+			mouse_y - 20,
+			"UI", obj_mana_counter);
+	}
+	else
+	{
+		instance_destroy(obj_mana_counter);
+	}
+}
+
 function close_top_component()
 {
 	var component = parent_component;

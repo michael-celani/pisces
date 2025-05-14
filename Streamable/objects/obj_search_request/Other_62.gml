@@ -8,7 +8,7 @@ if (!success) {
 
 if (card.CanCreate())
 {
-	var new_card = card.Create(x, y, 1)[0];
+	var new_card = card.Create(x, y, 1, false)[0];
 	
 	instance_destroy();
 }

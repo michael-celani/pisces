@@ -46,7 +46,7 @@ var flip = new RightClickMenuOption("Flip", flip_card, noop, noop, spr_flip, "F"
 var send_to = new RightClickSubMenu("Send To", my_submenu, spr_envelope, ">");
 var duplicate = new RightClickMenuOption("Duplicate", duplicate_card, noop, noop, spr_copy, "Z");
 var note = new RightClickMenuOption("Update Note", update_note, noop, noop, spr_note_sticky);
-//var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
+var spawn = new RightClickMenuOption("Make Spawner", create_spawner, noop, noop);
 var add_counter = new RightClickMenuOption("Add Counter", add_card_counters, noop, noop, spr_counter_add, "+");
 var rem_counter = new RightClickMenuOption("Remove Counter", sub_card_counters, noop, noop, spr_counter_rem, "-");
 var destroy = new RightClickMenuOption("Delete", card_destroy, noop, noop, spr_trash, "X");
@@ -67,8 +67,18 @@ if array_length(all_parts) > 0
 		
 		var func = method(curr_card, function(card_inst)
 		{
-			instance_create_layer(card_inst.x + card_inst.sprite_width / 9, card_inst.y + card_inst.sprite_height / 9, "Instances", obj_id_request, { "req": self.internal_id, "spawn_number": 1 })
+			instance_create_layer(
+				card_inst.x + card_inst.sprite_width / 9, 
+				card_inst.y + card_inst.sprite_height / 9, 
+				"Instances", 
+				obj_id_request, 
+				{ 
+					"req": self.internal_id, 
+					"spawn_number": 1,
+					"spawn_token": true
+				})
 		})
+		
 		var menu_opt = new RightClickMenuOption(curr_card.internal_name, func, noop, noop, spr_shapes);
 		my_partsmenu.AddOption(menu_opt)
 	}
@@ -82,10 +92,12 @@ if array_length(all_parts) > 0
 my_menu.AddSeparator();
 my_menu.AddOption(add_counter);
 my_menu.AddOption(rem_counter);
-//my_menu.AddOption(spawn);
+
+// if (is_token) { my_menu.AddOption(spawn); }
+
 my_menu.AddOption(note);
 my_menu.AddSeparator();
-my_menu.AddOption(send_to);
+if (!is_token) { my_menu.AddOption(send_to); }
 my_menu.AddOption(destroy);
 
 height_priority = next_height_priority();

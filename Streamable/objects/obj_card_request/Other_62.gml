@@ -8,6 +8,6 @@ if (!success) {
 
 if (card.CanCreate())
 {
-	card.Create(x, y, spawn_number);
+	card.Create(x, y, spawn_number, false);
 	instance_destroy();
 }

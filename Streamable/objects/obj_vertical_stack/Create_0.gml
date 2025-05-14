@@ -1,7 +1,4 @@
 /// @description Add active.
-
-event_inherited();
-
 active = false;
 y_offset = 0;
 x = room_width;
@@ -16,3 +13,4 @@ draw_string_width = string_width(draw_string);
 draw_string_height = string_height(draw_string);
 
 search_term = "";
+searching = false;

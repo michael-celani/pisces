@@ -126,18 +126,27 @@ function load_decklist_website(deck_url)
 
 function load_decklist_lines(lines)
 {
-	var trimmed_lines = array_map(lines, function (elem) {
-		return string_trim(elem);	
-	});
-	
-	var filtered_lines = array_filter(trimmed_lines, function (elem) {
-		return elem != ""	
-	});
-	
-	var searches = array_map(filtered_lines, parse_decklist_line);
-
-	for (var i = 0; i < array_length(searches); i++)
+	try
 	{
-		searches[i].CreateRequest();
+		var trimmed_lines = array_map(lines, function (elem) {
+			return string_trim(elem);	
+		});
+	
+		var filtered_lines = array_filter(trimmed_lines, function (elem) {
+			return elem != ""	
+		});
+	
+		var searches = array_map(filtered_lines, parse_decklist_line);
+
+		for (var i = 0; i < array_length(searches); i++)
+		{
+			searches[i].CreateRequest();
+		}
+	}
+	catch (_exception)
+	{
+		instance_create_layer(-500, 10, "UI", obj_notification, {
+			notification_text: "An error occurred when reading the decklist."
+		});
 	}
 }

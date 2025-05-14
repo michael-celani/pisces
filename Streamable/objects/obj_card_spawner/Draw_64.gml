@@ -11,6 +11,11 @@ with owning_canvas
 
 draw_self();
 
+if (is_hovering)
+{
+	draw_sprite_ext(spr_border_white, 0, x, y, image_xscale, image_yscale, image_angle, c_yellow, image_alpha);
+}
+
 with (owning_canvas)
 {
 	surface_reset_target();

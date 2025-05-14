@@ -174,7 +174,7 @@ function CardFactory() constructor
 		return front_sprite != -1
 	}
 	
-	static Create = function(create_x, create_y, number)
+	static Create = function(create_x, create_y, number, token)
 	{
 		cards = array_create(number);
 		
@@ -184,7 +184,8 @@ function CardFactory() constructor
 				sprite_index: front_sprite, 
 				"front_sprite": front_sprite, 
 				"back_sprite": back_sprite,
-				"all_parts": []
+				"all_parts": [],
+				"is_token": token
 			}
 			
 			if variable_struct_exists(card_data, "all_parts")
